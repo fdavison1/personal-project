@@ -3,7 +3,8 @@ import styled from 'styled-components'
 
 //Div
 export const Div = styled.div`
-text-align: center`
+text-align: center
+border: 1px solid red`
 
 //Container
 export const Container = styled.div`

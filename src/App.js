@@ -1,29 +1,44 @@
 import React from 'react';
 import { Div, Title } from './css/styledComponents'
+import routes from './utils/routes'
+import { Link } from 'react-router-dom'
 
 
 function App() {
   return (
     <Div>
+
+      <Link to='/'>
+        <button>landing</button>
+      </Link>
+
+      <Link to='/login'>
+        <button>login</button>
+      </Link>
+
+      <Link to='/register'>
+        <button>register</button>
+      </Link>
+
+      <Link to='/dash'>
+        <button>dash</button>
+      </Link>
+
+
       <Title>App.js</Title>
-    
-      <h1>test</h1>
-      <h2>test</h2>
-      <h3>test</h3>
-      <h4>test</h4>
-      <h5>test</h5>
-      <h6>test</h6>
-    
-    
-    
-    
-    
-    
+
+
+
+      {routes}
+
+
+
+
     </Div>
-     
 
 
-    
+
+
   );
 }
 
