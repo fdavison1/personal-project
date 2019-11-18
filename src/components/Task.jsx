@@ -1,13 +1,11 @@
 import React from 'react'
 import { Div, Title } from '../css/styledComponents'
-import Project from './Project'
 
-export default function Dash() {
+export default function Task() {
     return (
         <Div>
 
-            <Title>Dash.jsx</Title>
-            <Project />
+            <Title>Task.jsx</Title>
 
         </Div>
     )
