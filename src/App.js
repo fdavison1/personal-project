@@ -1,14 +1,16 @@
 import React from 'react';
-import './App.css';
+import { App1 } from './css'
+
 
 function App() {
   return (
-    <div className="App">
+    <App1>
+      <h1>App.js</h1>
+    </App1>
      
 
-    <h1>App.js</h1>
 
-    </div>
+    
   );
 }
 
