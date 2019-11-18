@@ -1,12 +1,25 @@
 import React from 'react';
-import { App1 } from './css'
+import { Div, Title } from './css/styledComponents'
 
 
 function App() {
   return (
-    <App1>
-      <h1>App.js</h1>
-    </App1>
+    <Div>
+      <Title>App.js</Title>
+    
+      <h1>test</h1>
+      <h2>test</h2>
+      <h3>test</h3>
+      <h4>test</h4>
+      <h5>test</h5>
+      <h6>test</h6>
+    
+    
+    
+    
+    
+    
+    </Div>
      
 
 
