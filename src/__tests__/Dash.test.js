@@ -1,5 +1,14 @@
+import React from 'react'
+import { shallow, mount, configure } from 'enzyme'
+import Adapter from 'enzyme-adapter-react-16'
+import Dash from '../components/Dash'
 
-//placeholder test
-test('2 equals 2', ()=> {
-    expect(2).toBe(2)
+configure({ adapter: new Adapter()})
+
+describe('Dash.jsx tests', () => {
+  test('render', () => {
+    const wrapper = shallow(<Dash/>)
+
+    expect(wrapper.exists()).toBe(true)
   })
+})
