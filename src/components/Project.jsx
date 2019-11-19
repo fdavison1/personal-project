@@ -4,18 +4,29 @@ import Task from './Task'
 
 class Project extends React.Component {
     state = {
-        tasks : ['fred', 'fred']
+        tasks : [{
+            id: 1,
+            content: 'fred',
+            index: 1
+        },
+        {
+            id: 2,
+            content: 'fred',
+            index: 2
+        }]
     }
     render() {
         const {tasks} = this.state
+        const {projectObj} = this.props
         return (
             <Container>
 
-                <Title>Project.jsx</Title>
+                <Title>{projectObj.title}</Title>
 
                 {/* MAP OUT TASKS FOR EACH PROJECT */}
                 {tasks.map(task => (
-                    <Task />
+                    <Task 
+                    taskObj = {task}/>
                 ))}
 
                 <Right>

@@ -5,7 +5,11 @@ import Sidebar from './Sidebar'
 
 class Dash extends React.Component {
     state = {
-        projects: ['fred']
+        projects: [{
+            id: 1,
+            title: 'fred',
+            index: 1
+        }]
     }
     render() {
         const { projects}  = this.state
@@ -22,7 +26,10 @@ class Dash extends React.Component {
                     
                 {/* MAP OUT PROJECTS */}
                 {projects.map(project => (
-                    <Project />
+                    <Project 
+                    projectObj = {project}
+                    key={project.id}
+                    />
                 ))}
 
                 </DashDisplay>
