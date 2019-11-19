@@ -26,7 +26,8 @@ class Project extends React.Component {
                 {/* MAP OUT TASKS FOR EACH PROJECT */}
                 {tasks.map(task => (
                     <Task 
-                    taskObj = {task}/>
+                    taskObj = {task}
+                    key={task.content}/>
                 ))}
 
                 <Right>
