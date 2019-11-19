@@ -1,5 +1,5 @@
 import React from 'react'
-import { DashContainer, DashDisplay, Title } from '../css/styledComponents'
+import { DashContainer, DashDisplay} from '../css/styledComponents'
 import Project from './Project'
 import Sidebar from './Sidebar'
 
@@ -13,10 +13,9 @@ export default function Dash() {
 
 
             <DashDisplay>
-                <Title>Dash.jsx</Title>
                 <Project />
             </DashDisplay>
-
+ß
         </DashContainer>
     )
 }

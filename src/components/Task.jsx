@@ -1,12 +1,12 @@
 import React from 'react'
-import { Div, Title } from '../css/styledComponents'
+import { TaskContainer, Content } from '../css/styledComponents'
 
 export default function Task() {
     return (
-        <Div>
+        <TaskContainer>
             
-            <Title>Task.jsx</Title>
+            <Content>Task.jsx</Content>
 
-        </Div>
+        </TaskContainer>
     )
 }

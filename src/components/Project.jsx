@@ -1,14 +1,14 @@
 import React from 'react'
-import { Div, Title } from '../css/styledComponents'
+import { Container, Title } from '../css/styledComponents'
 import Task from './Task'
 
 export default function Project() {
     return (
-        <Div>
+        <Container>
 
             <Title>Project.jsx</Title>
             <Task/>
 
-        </Div>
+        </Container>
     )
 }
