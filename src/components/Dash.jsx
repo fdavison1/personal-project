@@ -1,14 +1,22 @@
 import React from 'react'
-import { Div, Title } from '../css/styledComponents'
+import { DashContainer, DashDisplay, Title } from '../css/styledComponents'
 import Project from './Project'
+import Sidebar from './Sidebar'
 
 export default function Dash() {
     return (
-        <Div>
+        <DashContainer>
 
-            <Title>Dash.jsx</Title>
-            <Project />
+            <div>
+                <Sidebar />
+            </div>
 
-        </Div>
+
+            <DashDisplay>
+                <Title>Dash.jsx</Title>
+                <Project />
+            </DashDisplay>
+
+        </DashContainer>
     )
 }

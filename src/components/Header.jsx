@@ -1,11 +1,11 @@
 import React from 'react'
 import { Div, Title } from '../css/styledComponents'
 
-export default function Task() {
+export default function Header() {
     return (
         <Div>
-            
-            <Title>Task.jsx</Title>
+
+            <Title>Header.jsx</Title>
 
         </Div>
     )
