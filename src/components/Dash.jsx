@@ -16,7 +16,7 @@ export default function Dash() {
                 <Project />
                 <Project />
             </DashDisplay>
-ß
+
         </DashContainer>
     )
 }
