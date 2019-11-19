@@ -3,7 +3,11 @@ import { Div } from './css/styledComponents'
 import routes from './utils/routes'
 
 
-function App() {
+class  App extends React.Component {
+  render(){
+
+  
+  
   return (
     <Div>
 
@@ -24,5 +28,5 @@ function App() {
 
   );
 }
-
+}
 export default App;

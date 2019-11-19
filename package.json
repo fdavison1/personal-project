@@ -12,7 +12,9 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --verbose=true",
+    "test:watch": "jest --watchAll --verbose",
+    "test:coverage": "jest --verbose --coverage",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -31,6 +33,10 @@
     ]
   },
   "devDependencies": {
-    "@testing-library/react": "^9.3.2"
+    "@babel/preset-react": "^7.7.0",
+    "@testing-library/react": "^9.3.2",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.15.1",
+    "jest": "^24.9.0"
   }
 }
