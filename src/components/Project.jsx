@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, Title } from '../css/styledComponents'
+import { Container, Title, TaskButton, Right } from '../css/styledComponents'
 import Task from './Task'
 
 export default function Project() {
@@ -8,6 +8,12 @@ export default function Project() {
 
             <Title>Project.jsx</Title>
             <Task/>
+            <Task/>
+            <Task/>
+
+            <Right>
+            <TaskButton>+</TaskButton>
+            </Right>
 
         </Container>
     )
