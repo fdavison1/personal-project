@@ -5,9 +5,13 @@ import Project from '../components/Project'
 
 configure({ adapter: new Adapter()})
 
+// beforeEach(()=> {
+//   wrapper = shallow(<Project/>)
+// })
+
 describe ('Project.jsx tests', () => {
   it('renders', () => {
-    const wrapper = shallow(<Project/>)
+    const wrapper = shallow(<Project projectObj/>)
 
     expect(wrapper.exists()).toBe(true)
   })

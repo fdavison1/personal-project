@@ -7,7 +7,7 @@ configure({adapter: new Adapter() })
 
 describe('Task.jsx tests', ()=> {
     test('renders', () => {
-        const wrapper = shallow(<Task/>)
+        const wrapper = shallow(<Task taskObj/>)
 
         expect(wrapper.exists()).toBe(true)
     })

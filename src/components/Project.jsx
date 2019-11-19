@@ -6,12 +6,12 @@ class Project extends React.Component {
     state = {
         tasks : [{
             id: 1,
-            content: 'fred',
+            content: 'task-1',
             index: 1
         },
         {
             id: 2,
-            content: 'fred',
+            content: 'task-2',
             index: 2
         }]
     }

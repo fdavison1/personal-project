@@ -7,7 +7,7 @@ class Dash extends React.Component {
     state = {
         projects: [{
             id: 1,
-            title: 'fred',
+            title: 'project-1',
             index: 1
         }]
     }
