@@ -6,7 +6,7 @@ import App from '../App'
 configure({ adapter: new Adapter() })
 
 describe('App.js tests', () => {
-  test('renders', () => {
+  it('renders', () => {
     const wrapper = shallow(<App/>)
 
     expect(wrapper.exists()).toBe(true)

@@ -1,22 +1,35 @@
 import React from 'react'
-import { DashContainer, DashDisplay} from '../css/styledComponents'
+import { DashContainer, DashDisplay } from '../css/styledComponents'
 import Project from './Project'
 import Sidebar from './Sidebar'
 
-export default function Dash() {
-    return (
-        <DashContainer>
+class Dash extends React.Component {
+    state = {
+        projects: ['fred']
+    }
+    render() {
+        const { projects}  = this.state
 
-            <div>
-                <Sidebar />
-            </div>
+        return (
+            <DashContainer>
+
+                <div>
+                    <Sidebar />
+                </div>
 
 
-            <DashDisplay>
-                <Project />
-                <Project />
-            </DashDisplay>
+                <DashDisplay>
+                    
+                {/* MAP OUT PROJECTS */}
+                {projects.map(project => (
+                    <Project />
+                ))}
 
-        </DashContainer>
-    )
+                </DashDisplay>
+
+            </DashContainer>
+        )
+    }
 }
+
+export default Dash

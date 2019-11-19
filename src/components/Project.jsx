@@ -2,19 +2,29 @@ import React from 'react'
 import { Container, Title, TaskButton, Right } from '../css/styledComponents'
 import Task from './Task'
 
-export default function Project() {
-    return (
-        <Container>
+class Project extends React.Component {
+    state = {
+        tasks : ['fred', 'fred']
+    }
+    render() {
+        const {tasks} = this.state
+        return (
+            <Container>
 
-            <Title>Project.jsx</Title>
-            <Task/>
-            <Task/>
-            <Task/>
+                <Title>Project.jsx</Title>
 
-            <Right>
-            <TaskButton>+</TaskButton>
-            </Right>
+                {/* MAP OUT TASKS FOR EACH PROJECT */}
+                {tasks.map(task => (
+                    <Task />
+                ))}
 
-        </Container>
-    )
+                <Right>
+                    <TaskButton>+</TaskButton>
+                </Right>
+
+            </Container>
+        )
+    }
 }
+
+export default Project
