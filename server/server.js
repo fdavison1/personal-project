@@ -13,4 +13,9 @@ app.use(express.json())
 //endpoints
 
 //listening
-app.listen(SERVER_PORT, () => console.log(`port ${ SERVER_PORT } is working?`))
+massive(CONNECTION_STRING).then(db => {
+    app.set('db', db)
+    app.listen(SERVER_PORT, () => console.log(`port ${ SERVER_PORT } is working?`))
+})
+
+
