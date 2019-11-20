@@ -1,42 +1,56 @@
 import React from 'react'
-import { Container, Title, TaskButton, Right } from '../css/styledComponents'
+import styled from 'styled-components'
 import Task from './Task'
+import { Droppable, Draggable } from 'react-beautiful-dnd'
 
-class Project extends React.Component {
-    state = {
-        tasks : [{
-            id: 1,
-            content: 'task-1',
-            index: 1
-        },
-        {
-            id: 2,
-            content: 'task-2',
-            index: 2
-        }]
-    }
+const Container = styled.div`
+margin: 8px
+border: 1px solid lightgray
+border-radius: 2px
+display: flex
+flex-direction: column
+background: white`
+const Title = styled.p`
+padding: 0 8px
+font-size: 1.2rem`
+const TaskList = styled.div`
+padding: 8px
+transition: background-color 0.2s ease
+background-color: ${props => (props.isDraggingOver ? 'skyblue' : 'inherit')}
+flex-grow: 1`
+
+export default class Project extends React.Component {
+    state = {}
     render() {
-        const {tasks} = this.state
-        const {projectObj} = this.props
         return (
-            <Container>
+            <Draggable draggableId={this.props.project.id} index={this.props.index}>
+                {(provided) => (
+                <Container
+                    {...provided.draggableProps}
+                    ref = {provided.innerRef}
+                >
+                    <Title
+                        {...provided.dragHandleProps}
+                        type = 'task'
+                    >{this.props.project.title}</Title>
 
-                <Title>{projectObj.title}</Title>
+                    <Droppable droppableId={this.props.project.id}>
+                        {(provided, snapshot) => (
+                            <TaskList
+                                ref={provided.innerRef}
+                                {...provided.droppableProps}
+                                isDraggingOver={snapshot.isDraggingOver}
+                            >
+                                {this.props.tasks.map((task, index) => <Task key={task.id} task={task} index={index} />)}
+                                {provided.placeholder}
+                            </TaskList>
+                        )}
+                        
+                    </Droppable>
+                </Container>
+                )}
+            </Draggable>
 
-                {/* MAP OUT TASKS FOR EACH PROJECT */}
-                {tasks.map(task => (
-                    <Task 
-                    taskObj = {task}
-                    key={task.content}/>
-                ))}
-
-                <Right>
-                    <TaskButton>+</TaskButton>
-                </Right>
-
-            </Container>
         )
     }
 }
-
-export default Project
