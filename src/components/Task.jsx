@@ -14,7 +14,8 @@ export default class Task extends React.Component{
 
     }
     render(){
-        const content = this.props.tasks.find(el => el.task_id === this.props.task.droppable_id)
+        const content = this.props.tasks.find(el => el.task_id === +this.props.task.droppable_id)
+
         return (
         
         <Draggable draggableId={this.props.task.task_id.toString()} index={this.props.index}>
@@ -25,6 +26,7 @@ export default class Task extends React.Component{
                 ref={provided.innerRef}>
 
             <span>{content.content}</span>
+            {/* {this.props.task.task_id} */}
                 <br/>
 
         </Container>
