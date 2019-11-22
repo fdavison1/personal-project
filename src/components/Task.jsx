@@ -11,8 +11,22 @@ background: oldlace`
 
 export default class Task extends React.Component{
     state = {
-
+        editField: false,
+        localContent: ''
     }
+
+    editTask(){
+        this.setState({
+            editField: !this.state.editField
+        })
+    }
+
+    contentChange(e){
+        this.setState({
+            localContent: e.target.value
+        })
+    }
+
     render(){
         // console.log(this.props.task.task_id, this.props.task.content, this.props.task.droppable_id)
         const content = this.props.tasks.find(el => el.task_id === +this.props.task.droppable_id)
@@ -23,13 +37,30 @@ export default class Task extends React.Component{
         <Draggable draggableId={this.props.task.task_id.toString()} index={this.props.index}>
             {(provided)=> (
                 <Container
+                onDoubleClick={() => this.editTask()}
                 {...provided.draggableProps}
                 {...provided.dragHandleProps}
                 ref={provided.innerRef}>
 
-            {content ? <span>{content.content}</span> : <span>new task</span>}
+
+
+            {!this.state.editField ? 
+
+            content ? <span>{content.content}</span> : <span>new task</span>
+            
+            :
+
+            <input 
+            onChange={(e)=> this.contentChange(e)}
+            placeholder={content ? content.content : 'new task'}
+            type="text"/>
+
+            }
+
+            {/* *****FOR TESTING PURPOSES***** */}
             {/* {this.props.task.task_id} */}
-            {this.props.task.droppable_id}
+            {/* {this.props.task.droppable_id} */}
+            {this.state.editField}
                 <br/>
 
         </Container>
