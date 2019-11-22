@@ -10,7 +10,9 @@ app.use(express.json())
 
 //endpoints
 app.get('/api/tasks', c.getTasks)
-// app.put('/api/tasks', c.updateTasks)
+app.post('/api/tasks', c.addTask)
+// app.put('/api/tasks', c.updateTask)
+app.delete('/api/task/:id', c.deleteTask)
 
 app.get('/api/taskOrder', c.getTaskOrder)
 
