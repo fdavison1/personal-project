@@ -16,16 +16,16 @@ export default function Sidebar() {
             <Link to='/register'>
                 <button>register</button>
             </Link>
+            <Content>username</Content>
+            <Content>log out</Content>
             </div>
 
             <div>
-            <Content>username</Content>
-            <Content>add project</Content>
-            <TaskButton>trash</TaskButton>
+            {/* <Content>add project</Content> */}
+            {/* <TaskButton>trash</TaskButton> */}
             </div>
             
             <div>
-            <Content>log out</Content>
             </div>
 
            
