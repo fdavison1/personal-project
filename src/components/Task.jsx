@@ -20,12 +20,19 @@ export default class Task extends React.Component{
             editField: !this.state.editField
         })
     }
-
+    
     contentChange(e){
         this.setState({
             localContent: e.target.value
-        })
+        }) 
     }
+
+    submit(event){
+        const code = event.keyCode || event.which 
+        if(code === 13){console.log('fred')}
+    }
+
+    
 
     render(){
         // console.log(this.props.task.task_id, this.props.task.content, this.props.task.droppable_id)
@@ -53,7 +60,9 @@ export default class Task extends React.Component{
             <input 
             onChange={(e)=> this.contentChange(e)}
             placeholder={content ? content.content : 'new task'}
-            type="text"/>
+            type="text"
+            onKeyPress={this.submit}
+            />
 
             }
 
