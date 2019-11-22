@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Droppable } from 'react-beautiful-dnd'
+
 import Task from './Task'
 
 
@@ -47,8 +48,6 @@ export default class Project extends React.Component {
                             {tasks.map((task, index) => <Task key={task.task_id} task={task} index={index} tasks={tasks} />)}
                             {provided.placeholder}
                         </TaskList>
-
-
 
                     </Container>
                 )}

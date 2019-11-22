@@ -1,6 +1,6 @@
 INSERT INTO tasks (content, droppable_id)
 VALUES 
 
-('new task', '7');
+('new task', '9');
 
 SELECT * FROM tasks;
