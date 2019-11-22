@@ -36,8 +36,12 @@ module.exports = {
     // },
     deleteTask: (req, res) => {
         const db = req.app.get('db')
-        const id = req.body
-        console.log(req.params)
-        return console.log(id)
+        // console.log(req.params)
+        const id = req.params.id
+        // return console.log(id)
+        db.delete_task(id)
+        .then(result => {
+            res.status(200).send(result)
+        })
     }
 }

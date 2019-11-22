@@ -8,7 +8,8 @@ const Container = styled.div`
 border: 1px solid lightgray
 border-radius: 3px
 margin: 8px
-min-width: 500px`
+min-width: 500px
+max-width: 100px`
 const Title = styled.h3`
 font-family: sans-serif
 margin: 3px
@@ -31,12 +32,19 @@ export default class Project extends React.Component {
                     <Container>
 
                         <Title>{this.props.project.title}</Title>
+
+                        {/* ADD BUTTON */}
+                        <button
+                        onClick={() => this.props.addButton()}
+                        >add
+                        </button>
+
                         <TaskList
                             ref={provided.innerRef}
                             {...provided.droppableProps}
                         >
 
-                            {tasks.map((task, index) => <Task key={task.task_id} task={task} index={index} tasks={tasks}/>)}
+                            {tasks.map((task, index) => <Task key={task.task_id} task={task} index={index} tasks={tasks} />)}
                             {provided.placeholder}
                         </TaskList>
 

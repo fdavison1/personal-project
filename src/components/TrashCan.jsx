@@ -3,14 +3,16 @@ import styled from 'styled-components'
 import { Droppable } from 'react-beautiful-dnd'
 
 const TrashCanDiv = styled.div`
-background: #262626
+
+background-image: url('https://www.logolynx.com/images/logolynx/34/3448d15fc06ab3360c592fd69585236d.jpeg')
 color: white
-width: 500px
 height: 100px
-margin: 0 auto
 display: flex
 align-items: center
-justify-content: center`
+justify-content: center
+border: solid red
+margin: 0 auto
+`
 
 
 export default class extends React.Component {
@@ -28,7 +30,7 @@ export default class extends React.Component {
 
 
             
-                [trashcan]
+                    <img src="https://www.logolynx.com/images/logolynx/34/3448d15fc06ab3360c592fd69585236d.jpeg" alt=""/>
                 
                 
                 
