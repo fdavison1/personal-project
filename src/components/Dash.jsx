@@ -15,13 +15,13 @@ export default class Dash extends React.Component {
         projects: []
     }
 
+
+    //INITIAL RENDER
     componentDidMount() {
         this.getTaskOrder()
         this.getProjects()
         this.getTasks()
     }
-
-
     getTasks() {
         axios.get('/api/tasks')
             .then(res => {
@@ -31,8 +31,7 @@ export default class Dash extends React.Component {
             }) 
             
         }
-        
-        getTaskOrder(){
+    getTaskOrder(){
             axios.get('/api/taskOrder').then(res => {
 
                 const newTaskOrder = []
@@ -44,9 +43,6 @@ export default class Dash extends React.Component {
         })
         
     })}
-   
-    
-
     getProjects() {
         axios.get('/api/projects')
             .then(res => {
@@ -55,8 +51,8 @@ export default class Dash extends React.Component {
                 })
             })
     }
-
-        onDragEnd =   result => {
+    //ON DRAG END
+    onDragEnd =   result => {
             const { destination, source } = result
             if (!destination) {
                 return
@@ -90,12 +86,18 @@ export default class Dash extends React.Component {
             }
         }
         
-        updateTasks(id, droppable){
-                    axios.post('/api/tasks', {id, droppable}).then(res => 
-                        this.setState({
-                            tasks: res.data
-                        }))
-                }
+        //ADD BUTTON METHOD
+        addButton(){
+            console.log('fred')
+        }
+
+
+        // updateTasks(id, droppable){
+        //             axios.post('/api/tasks', {id, droppable}).then(res => 
+        //                 this.setState({
+        //                     tasks: res.data
+        //                 }))
+        //         }
   
 
     render() {
@@ -118,7 +120,9 @@ export default class Dash extends React.Component {
                                 return <Project key={project.project_id} project={project} tasks={tasks} />
                             })}
 
-                            <button>add</button>
+                            <button
+                            onClick={() => this.addButton()}
+                            >add</button>
                             [trashcan]
                         </div>}
                 </DragDropContext>

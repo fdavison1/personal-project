@@ -1,5 +1,5 @@
 import React from 'react'
-import { Bar, TaskButton, Content } from '../css/styledComponents'
+import { Bar, Content } from '../css/styledComponents'
 import { Link } from 'react-router-dom'
 
 export default function Sidebar() {
