@@ -27,18 +27,19 @@ module.exports = {
             res.status(200).send(result)
         })
     },
-    // updateTask: (req, res) => {
-    //     const db = req.app.get('db')
-    //     const { task_id, content } = req.body
-    //     db.update_task([task_id, content]).then(result => {
-    //         res.status(200).send(result)
-    //     })
-    // },
+    updateTask: (req, res) => {
+        const db = req.app.get('db')
+        const content = req.body[0]
+        const id = req.params.id
+        console.log(id, content)
+        db.update_task([id, content]).then(result => {
+            res.status(200).send(result)
+        })
+    },
     deleteTask: (req, res) => {
         const db = req.app.get('db')
         // console.log(req.params)
         const id = req.params.id
-        // return console.log(id)
         db.delete_task(id)
         .then(result => {
             res.status(200).send(result)

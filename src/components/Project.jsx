@@ -22,8 +22,12 @@ font-weight: 200`
 
 
 export default class Project extends React.Component {
-    state = {
-
+    constructor(){
+        super()
+        
+        this.state = {
+        }
+        // this.getTasks = this.getTasks.bind(this)
     }
     render() {
         const { tasks } = this.props
@@ -46,7 +50,8 @@ export default class Project extends React.Component {
                             {...provided.droppableProps}
                         >
 
-                            {tasks.map((task, index) => <Task key={task.task_id} task={task} index={index} tasks={tasks} />)}
+                            {tasks.map((task, index) => <Task key={task.task_id} 
+                            task={task} index={index} tasks={tasks} getTasks={this.props.getTasks}/>)}
                             {provided.placeholder}
                         </TaskList>
 
