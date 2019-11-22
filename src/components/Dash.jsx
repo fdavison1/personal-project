@@ -7,7 +7,8 @@ import Sidebar from './Sidebar'
 import TrashCan from './TrashCan'
 
 const Container = styled.div`
-display: flex`
+display: flex
+background: white`
 
 
 

@@ -19,11 +19,7 @@ h1, h2, h3, h4, h5, h6 {
    object-fit: cover
  }
 
- .trash {
-  border: solid red;
-  height: 100px;
-  background: url('https://www.logolynx.com/images/logolynx/34/3448d15fc06ab3360c592fd69585236d.jpeg');
-  background-position: center;
-  background-size: 100px;
-}
+
+
+
 

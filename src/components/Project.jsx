@@ -10,7 +10,8 @@ border: 1px solid lightgray
 border-radius: 3px
 margin: 8px
 min-width: 500px
-max-width: 100px`
+max-width: 100px
+background: white`
 const Title = styled.h3`
 font-family: sans-serif
 margin: 3px
