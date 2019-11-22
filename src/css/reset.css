@@ -19,7 +19,13 @@ h1, h2, h3, h4, h5, h6 {
    object-fit: cover
  }
 
-
+.test {
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
+  /* may need to edit...... */
+  width: 500px; 
+}
 
 
 

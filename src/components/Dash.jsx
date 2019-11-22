@@ -10,21 +10,51 @@ const Container = styled.div`
 display: flex
 background: white`
 
+const Add = styled.div`
+height: 90px
+width: 90px
+background: black
+border-radius: 50%
+color: white
+display: flex
+align-items: center
+justify-content: center
+font-size: 5.5rem
+font-weight: 200
+padding-bottom: 20px
+box-sizing: border-box
+&:hover {
+    height: 135px
+    width: 135px
+    font-size: 7rem
+}`
+
+const Buttons = styled.div`
+display: flex
+justify-content: space-evenly
+align-items: center
+margin: 8px
+width: 40%`
+
+
+
+
+
 
 
 export default class Dash extends React.Component {
-    constructor(){
+    constructor() {
         super()
-    this.state = {
-        tasks: [],
-        taskOrder: [],
-        projects: []
+        this.state = {
+            tasks: [],
+            taskOrder: [],
+            projects: []
+        }
+        this.addButton = this.addButton.bind(this)
+        this.getTasks = this.getTasks.bind(this)
     }
-this.addButton = this.addButton.bind(this)
-this.getTasks = this.getTasks.bind(this)
-}
 
-    
+
 
 
     //INITIAL RENDER--------------------------------------------------------------------------
@@ -35,16 +65,16 @@ this.getTasks = this.getTasks.bind(this)
     }
     getTasks() {
         axios.get('/api/tasks')
-        .then(res => {
-            this.setState({
-                tasks: res.data
+            .then(res => {
+                this.setState({
+                    tasks: res.data
+                })
             })
-        })
     }
-        
-    
 
-    
+
+
+
     getTaskOrder() {
         axios.get('/api/taskOrder').then(res => {
 
@@ -83,7 +113,7 @@ this.getTasks = this.getTasks.bind(this)
         ////TRASH CAN: AXIOS DELETE
         if (
             destination.droppableId === 'trash-can'
-        ){
+        ) {
             const id = this.state.tasks[source.index].task_id
             // console.log(id)
             // console.log(this.state.tasks[source.index])
@@ -126,13 +156,13 @@ this.getTasks = this.getTasks.bind(this)
             const newTasks = Array.from(this.state.tasks)
 
 
-        for (let i = 0; i < this.state.taskOrder.length; i++) {
-            newTasks[i].droppable_id = this.state.taskOrder[i]
-        }
+            for (let i = 0; i < this.state.taskOrder.length; i++) {
+                newTasks[i].droppable_id = this.state.taskOrder[i]
+            }
 
-        this.setState({
-            tasks: newTasks
-        })
+            this.setState({
+                tasks: newTasks
+            })
             // this.getTasks()
             // this.getTaskOrder()
         })
@@ -154,34 +184,43 @@ this.getTasks = this.getTasks.bind(this)
 
 
 
-                    <DragDropContext
-                        onDragEnd={this.onDragEnd}>
+                <DragDropContext
+                    onDragEnd={this.onDragEnd}>
 
-                        {(this.state.projects.length > 0) &&
+                    {(this.state.projects.length > 0) &&
 
-                            <div>
+                        <div className='test1'>
 
-                                {this.state.projects.map((projectID, index) => {
-                                    const project = this.state.projects[index]
+                            {this.state.projects.map((projectID, index) => {
+                                const project = this.state.projects[index]
 
-                                    const tasks = this.state.tasks.map((taskId, index) => this.state.tasks[index])
-                                    return <Project key={project.project_id} 
-                                    project={project} 
-                                    tasks={tasks} 
+                                const tasks = this.state.tasks.map((taskId, index) => this.state.tasks[index])
+                                return <Project key={project.project_id}
+                                    project={project}
+                                    tasks={tasks}
                                     addButton={this.addButton}
                                     getTasks={this.getTasks}
-                                    />
-                                })}
-
-                               
+                                />
+                            })}
 
 
-                                <TrashCan/>
+                            <div className="test">
+
+                            <Buttons>
+                                <Add
+                                onClick={()=> this.addButton()}
+                                >+</Add>
+                            </Buttons>
+                           
+
+                                <TrashCan />
+                            </div>
 
 
 
-                            </div>}
-                    </DragDropContext>
+
+                        </div>}
+                </DragDropContext>
 
 
 

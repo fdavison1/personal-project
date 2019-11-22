@@ -6,13 +6,15 @@ import { Droppable } from 'react-beautiful-dnd'
 const Trash = styled.div`
 display: flex
 margin: 8px
-height: 100px;
+height: ${props => (props.isDraggingOver ? '150px': '100px')}
 background: url('https://www.logolynx.com/images/logolynx/34/3448d15fc06ab3360c592fd69585236d.jpeg');
-border: 1px solid lightgray
 background-position: center;
 background-size: contain;
 background-repeat: no-repeat
-border-radius: 5px`
+border-radius: 5px
+width: 40%`
+
+
 
 
 export default class extends React.Component {
@@ -22,14 +24,19 @@ export default class extends React.Component {
         return (
 
             <Droppable droppableId={'trash-can'}>
-                {(provided) => (
+                {(provided, snapshot) => (
                     <Trash
                     
                     ref={provided.innerRef}
-                    {...provided.droppableProps}>
+                    {...provided.droppableProps}
+                    isDraggingOver={snapshot.isDraggingOver}>
+
+
+
                     {provided.placeholder}
 
-                   
+                    
+                  
             </Trash>
                     )}
             </Droppable>

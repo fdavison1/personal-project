@@ -31,7 +31,7 @@ module.exports = {
         const db = req.app.get('db')
         const content = req.body[0]
         const id = req.params.id
-        console.log(id, content)
+        // console.log(id, content)
         db.update_task([id, content]).then(result => {
             res.status(200).send(result)
         })

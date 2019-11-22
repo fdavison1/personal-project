@@ -7,7 +7,7 @@ const Container = styled.div`
 border: 1px solid lightgray
 padding: 8px
 margin: 8px
-background: oldlace`
+background: ${props => (props.isDragging ? 'lightgreen': 'oldlace')}`
 
 
 export default class Task extends React.Component{
@@ -41,7 +41,7 @@ export default class Task extends React.Component{
             const id = this.props.task.task_id
 
             axios.put(`/api/task/${id}`, [this.state.localContent]).then( res => {
-                console.log('fred')
+                // console.log('fred')
                 this.props.getTasks()
             })
             this.setState({
@@ -63,12 +63,13 @@ export default class Task extends React.Component{
         return (
         
         <Draggable draggableId={this.props.task.task_id.toString()} index={this.props.index}>
-            {(provided)=> (
+            {(provided, snapshot)=> (
                 <Container
                 onDoubleClick={() => this.editTask()}
                 {...provided.draggableProps}
                 {...provided.dragHandleProps}
-                ref={provided.innerRef}>
+                ref={provided.innerRef}
+                isDragging={snapshot.isDragging}>
 
 
 

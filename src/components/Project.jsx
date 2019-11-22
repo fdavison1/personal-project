@@ -18,7 +18,8 @@ margin: 3px
 font-size: 3rem
 font-weight: 200`
 const TaskList = styled.div`
-font-weight: 200`
+font-weight: 200
+background: white`
 
 
 export default class Project extends React.Component {
@@ -34,20 +35,22 @@ export default class Project extends React.Component {
         return (
 
             <Droppable droppableId={this.props.project.droppable_id}>
-                {(provided) => (
+                {(provided, snapshot) => (
                     <Container>
 
                         <Title>{this.props.project.title}</Title>
 
                         {/* ADD BUTTON */}
-                        <button
+                        {/* <button
                         onClick={() => this.props.addButton()}
                         >add
-                        </button>
+                        </button> */}
+                        
 
                         <TaskList
                             ref={provided.innerRef}
                             {...provided.droppableProps}
+                            isDraggingOver={snapshot.isDraggingOver}
                         >
 
                             {tasks.map((task, index) => <Task key={task.task_id} 
