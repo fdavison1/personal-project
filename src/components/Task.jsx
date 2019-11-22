@@ -1,4 +1,5 @@
 import React from 'react'
+import axios from 'axios'
 import styled from 'styled-components'
 import { Draggable } from 'react-beautiful-dnd'
 
@@ -22,14 +23,34 @@ export default class Task extends React.Component{
     }
     
     contentChange(e){
+        // console.log(e.target.value)
         this.setState({
             localContent: e.target.value
-        }) 
+        })
     }
 
     submit(event){
-        const code = event.keyCode || event.which 
-        if(code === 13){console.log('fred')}
+        const code = event.key
+        if(code === 'Enter'){
+            if(this.state.localContent.length === 0){
+            this.setState({
+                editField: false
+            })
+            return}
+            // console.log('fred')
+            const id = this.props.task.task_id
+
+            axios.put(`/api/task/${id}`, [this.state.localContent]).then( res => {
+                console.log('fred')
+                this.props.getTasks()
+            })
+            this.setState({
+                editField: false
+            })
+            
+            
+            
+        }
     }
 
     
@@ -61,7 +82,7 @@ export default class Task extends React.Component{
             onChange={(e)=> this.contentChange(e)}
             placeholder={content ? content.content : 'new task'}
             type="text"
-            onKeyPress={this.submit}
+            onKeyPress={(e) => this.submit(e)}
             />
 
             }

@@ -21,6 +21,7 @@ export default class Dash extends React.Component {
         projects: []
     }
 this.addButton = this.addButton.bind(this)
+this.getTasks = this.getTasks.bind(this)
 }
 
     
@@ -164,7 +165,12 @@ this.addButton = this.addButton.bind(this)
                                     const project = this.state.projects[index]
 
                                     const tasks = this.state.tasks.map((taskId, index) => this.state.tasks[index])
-                                    return <Project key={project.project_id} project={project} tasks={tasks} addButton={this.addButton}/>
+                                    return <Project key={project.project_id} 
+                                    project={project} 
+                                    tasks={tasks} 
+                                    addButton={this.addButton}
+                                    getTasks={this.getTasks}
+                                    />
                                 })}
 
                                
