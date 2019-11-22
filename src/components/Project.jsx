@@ -10,8 +10,10 @@ border-radius: 3px
 margin: 8px
 min-width: 500px`
 const Title = styled.h3`
+font-family: sans-serif
 margin: 3px
-font-size: 3rem`
+font-size: 3rem
+font-weight: 200`
 const TaskList = styled.div`
 font-weight: 200`
 
