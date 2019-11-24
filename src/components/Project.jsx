@@ -28,7 +28,6 @@ export default class Project extends React.Component {
         
         this.state = {
         }
-        // this.getTasks = this.getTasks.bind(this)
     }
     render() {
         const { tasks } = this.props
@@ -38,13 +37,10 @@ export default class Project extends React.Component {
                 {(provided, snapshot) => (
                     <Container>
 
+
+                        <h1>---username---</h1>
                         <Title>{this.props.project.title}</Title>
 
-                        {/* ADD BUTTON */}
-                        {/* <button
-                        onClick={() => this.props.addButton()}
-                        >add
-                        </button> */}
                         
 
                         <TaskList

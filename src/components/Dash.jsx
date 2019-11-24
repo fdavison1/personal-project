@@ -187,14 +187,6 @@ export default class Dash extends React.Component {
     }
 
 
-    // updateTasks(id, droppable){
-    //             axios.post('/api/tasks', {id, droppable}).then(res => 
-    //                 this.setState({
-    //                     tasks: res.data
-    //                 }))
-    //         }
-
-
     render() {
         return (
             <Container>

@@ -4,7 +4,7 @@ import styled from 'styled-components'
 export const Bar = styled.div`
 height: 100vh
 background: lightgray
-width: 150px
+width: 200px
 border-right: 1px solid black
 display: flex
 flex-direction: column
