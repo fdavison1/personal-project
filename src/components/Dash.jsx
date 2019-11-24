@@ -102,10 +102,14 @@ export default class Dash extends React.Component {
         }
 
         ////TRASH CAN: AXIOS DELETE
+
+// console.log(this.props)
+
+
         if (
             destination.droppableId === 'trash-can'
         ) {
-            const id = this.state.tasks[source.index].task_id
+            const id = this.state.tasks[source.index].droppable_id
             // console.log(id)
             // console.log(this.state.tasks[source.index])
             axios.delete(`/api/task/${id}`, this.state.tasks[source.index].task_id).then(res => {
@@ -142,7 +146,7 @@ export default class Dash extends React.Component {
             drop_id: this.state.drop_id + 1
         })
 
-        console.log(this.state.drop_id)
+        // console.log(this.state.drop_id)
 
         axios.post('/api/tasks', [this.state.drop_id.toString()]).then(res => {
             // console.log(res.data)
