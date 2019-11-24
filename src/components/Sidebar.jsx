@@ -1,35 +1,45 @@
 import React from 'react'
-import { Bar, Content } from '../css/styledComponents'
 import { Link } from 'react-router-dom'
+import styled from 'styled-components'
+import { Content } from '../css/styledComponents'
+
+const SideBar = styled.div`
+height: 100vh
+background: lightgray
+width: 300px
+display: flex
+flex-direction: column
+align-items: center
+justify-content: space-between`
+
+const StyledLink = styled(Link)`
+    text-decoration: none;
+    color: black
+    &:focus, &:hover, &:visited, &:link, &:active {
+        text-decoration: none;
+    }
+`
 
 export default function Sidebar() {
     return (
-        <Bar>
+        <SideBar>
 
             <div>
-            <Link to='/'>
-                <button>landing</button>
-            </Link>
-            <Link to='/login'>
-                <button>login</button>
-            </Link>
-            <Link to='/register'>
-                <button>register</button>
-            </Link>
+
             <Content>---username---</Content>
+
             <Content>all lists</Content>
+            <StyledLink to='/'>
             <Content>log out</Content>
+            </StyledLink>
             </div>
 
-            <div>
-            {/* <Content>add project</Content> */}
-            </div>
+
+
             
-            <div>
-            </div>
 
            
 
-        </Bar>
+        </SideBar>
     )
 }

@@ -5,6 +5,7 @@ import { Draggable } from 'react-beautiful-dnd'
 
 const Container = styled.div`
 border: 1px solid lightgray
+border-radius: 5px
 padding: 8px
 margin: 8px
 background: ${props => (props.isDragging ? 'lightgreen' : 'oldlace')}`
@@ -91,8 +92,8 @@ export default class Task extends React.Component {
                         {!this.state.editField ?
 
 
-                        <span>{content.content}</span>
-                                // content ? <span>{content.content}</span> : <span>new task</span>
+                        // <span>{content.content}</span>
+                                content ? <span>{content.content}</span> : <span>new task</span>
                             // this.props.task.task_id <= 6 ? <span>{content.content}</span> 
                             // : this.state.localContent ? <span>{this.state.localContent}</span> :
                             // <span>new task</span>
@@ -102,7 +103,7 @@ export default class Task extends React.Component {
 
                             <input
                                 onChange={(e) => this.contentChange(e)}
-                                // placeholder={content ? content.content : 'new task'}
+                                placeholder={content ? content.content : 'new task'}
                                 placeholder={content.content}
                                 type="text"
                                 onKeyPress={(e) => this.submit(e)}

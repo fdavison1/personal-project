@@ -4,37 +4,37 @@ import styled from 'styled-components'
 import { DragDropContext } from 'react-beautiful-dnd'
 import Project from './Project'
 import Sidebar from './Sidebar'
-import TrashCan from './TrashCan'
+// import TrashCan from './TrashCan'
 
 const Container = styled.div`
 display: flex
 background: white`
 
-const Add = styled.div`
-height: 90px
-width: 90px
-background: black
-border-radius: 50%
-color: white
-display: flex
-align-items: center
-justify-content: center
-font-size: 5.5rem
-font-weight: 200
-padding-bottom: 20px
-box-sizing: border-box
-&:hover {
-    height: 135px
-    width: 135px
-    font-size: 7rem
-}`
+// const Add = styled.div`
+// height: 90px
+// width: 90px
+// background: black
+// border-radius: 50%
+// color: white
+// display: flex
+// align-items: center
+// justify-content: center
+// font-size: 5.5rem
+// font-weight: 200
+// padding-bottom: 20px
+// box-sizing: border-box
+// &:hover {
+//     height: 135px
+//     width: 135px
+//     font-size: 7rem
+// }`
 
-const Buttons = styled.div`
-display: flex
-justify-content: space-evenly
-align-items: center
-margin: 8px
-width: 40%`
+// const Buttons = styled.div`
+// display: flex
+// justify-content: space-evenly
+// align-items: center
+// margin: 8px
+// width: 40%`
 
 
 export default class Dash extends React.Component {
@@ -214,7 +214,7 @@ export default class Dash extends React.Component {
                             })}
 
 
-                            <div className="test">
+                            {/* <div className="test">
 
                             <Buttons>
                                 <Add
@@ -224,7 +224,7 @@ export default class Dash extends React.Component {
                            
 
                                 <TrashCan />
-                            </div>
+                            </div> */}
 
 
 

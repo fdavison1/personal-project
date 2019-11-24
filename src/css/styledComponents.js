@@ -1,22 +1,5 @@
 import styled from 'styled-components'
 
-//Sidebar
-export const Bar = styled.div`
-height: 100vh
-background: lightgray
-width: 200px
-border-right: 1px solid black
-display: flex
-flex-direction: column
-align-items: center
-justify-content: space-between`
-
-//Header
-export const StyledHeader = styled.header`
-background: lightgray
-height: 100px
-border-bottom: solid 1px black`
-
 //Dashboard Container
 export const DashContainer = styled.div`
 display: flex`
@@ -61,12 +44,18 @@ border: 1px solid lightgray
 `
 
 //Project Title
-export const Title = styled.h1`
-  font-size: 3rem`
+export const Title = styled.p`
+  font-size: 3rem
+  font-weight: 200
+  margin: 0`
 
 //Task Content
 export const Content = styled.h1`
-font-size: 1.5rem`
+font-size: 1.5rem
+&:hover {
+  font-weight: 600
+}
+margin-top: 25px`
 
 //New task button
 export const TaskButton = styled.div`

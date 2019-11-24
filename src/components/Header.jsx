@@ -1,28 +1,30 @@
 import React from 'react'
-import { StyledHeader, Title } from '../css/styledComponents'
+import styled from 'styled-components'
+import { Title } from '../css/styledComponents'
 import { Link } from 'react-router-dom'
+
+const StyledHeader = styled.header`
+background: lightgray
+height: 200px
+display: flex
+align-items: center
+justify-content: center`
+
+const StyledLink = styled(Link)`
+    text-decoration: none;
+    color: black
+    &:focus, &:hover, &:visited, &:link, &:active {
+        text-decoration: none;
+    }
+`
 
 export default function Header() {
     return (
         <StyledHeader>
 
-            <Title>Header.jsx</Title>
-
-            <Link to='/'>
-                <button>landing</button>
-            </Link>
-
-            <Link to='/login'>
-                <button>login</button>
-            </Link>
-
-            <Link to='/register'>
-                <button>register</button>
-            </Link>
-
-            <Link to='/dash'>
-                <button>dash</button>
-            </Link>
+            <StyledLink to='/'>
+            <Title>Header</Title>
+            </StyledLink>
 
         </StyledHeader>
     )
