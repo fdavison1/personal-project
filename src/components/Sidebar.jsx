@@ -17,12 +17,12 @@ export default function Sidebar() {
                 <button>register</button>
             </Link>
             <Content>username</Content>
+            <Content>all lists</Content>
             <Content>log out</Content>
             </div>
 
             <div>
             {/* <Content>add project</Content> */}
-            {/* <TaskButton>trash</TaskButton> */}
             </div>
             
             <div>

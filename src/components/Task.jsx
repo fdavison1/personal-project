@@ -110,14 +110,12 @@ export default class Task extends React.Component {
                         }
 
                         {/* *****FOR TESTING PURPOSES***** */}
-                        {this.props.task.content}
-                        {this.state.localContent}
+                        {/* {this.props.task.content} */}
+                        {/* {this.state.localContent} */}
                         <br />
                         <span>task_id:</span>{this.props.task.task_id}
                         <br />
                         <span>drop_id</span>{this.props.task.droppable_id}
-                        {this.state.editField}
-                        <br />
 
                     </Container>
                 )}

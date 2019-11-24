@@ -88,7 +88,7 @@ export default class Dash extends React.Component {
             })
     }
     //ON DRAG END--------------------------------------------------------------------------
-    onDragEnd = result => {
+    onDragEnd = async result => {
         const { destination, source } = result
         //NO ACTION REQUIRED: no destination or dropped in same location
         if (!destination) {
@@ -102,20 +102,17 @@ export default class Dash extends React.Component {
         }
 
         ////TRASH CAN: AXIOS DELETE
-
-// console.log(this.props)
-
-
         if (
             destination.droppableId === 'trash-can'
         ) {
+            console.log(this.state.tasks)
             const id = this.state.tasks[source.index].droppable_id
             // console.log(id)
             // console.log(this.state.tasks[source.index])
-            axios.delete(`/api/task/${id}`, this.state.tasks[source.index].task_id).then(res => {
+            axios.delete(`/api/task/${id}`, this.state.tasks[destination.index].task_id).then(res => {
                 // console.log('fred')
-                this.getTasks()
                 this.getTaskOrder()
+                this.getTasks()
                 return
 
             })
@@ -127,9 +124,12 @@ export default class Dash extends React.Component {
         const sourceValue = newTaskOrder.splice(source.index, 1)
         newTaskOrder.splice(destination.index, 0, sourceValue[0])
 
-        ///need to fix (mutating state)
+        ///need to fix (mutating state)?
         this.state.taskOrder = newTaskOrder
 
+        // this.setState({
+        //     taskOrder : newTaskOrder
+        // })
 
         const newTasks = Array.from(this.state.tasks)
 
@@ -140,7 +140,7 @@ export default class Dash extends React.Component {
     }
 
     //ADD BUTTON METHOD--------------------------------------------------------------------------
-    async addButton() {
+    addButton() {
 
         this.setState({
             drop_id: this.state.drop_id + 1

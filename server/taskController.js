@@ -40,7 +40,7 @@ module.exports = {
     },
     deleteTask: (req, res) => {
         const db = req.app.get('db')
-        // console.log(req.params)
+        // console.log(req.params.id)
         const id = req.params.id
         db.delete_task(id)
         .then(result => {
