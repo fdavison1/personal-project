@@ -1,7 +1,8 @@
 require('dotenv').config()
 const express = require('express')
+const session = require('express-session')
 const massive = require('massive')
-const { SERVER_PORT, CONNECTION_STRING } = process.env
+const { SERVER_PORT, CONNECTION_STRING, SESSION_SECRET } = process.env
 const c = require('./taskController')
 const a = require('./authController')
 
@@ -17,7 +18,7 @@ app.use(
 )
 
 //AUTH CONTROLLER ENDPOINTS--------------------------------------------------------------------------
-app.post('/auth/register', a.register)
+// app.post('/auth/register', a.register)
 
 //TASK CONTROLLER ENDPOINTS--------------------------------------------------------------------------
 app.get('/api/tasks', c.getTasks)

@@ -44,6 +44,12 @@ export default function Register() {
 
             <br/>
 
+            {/* <button
+            onClick={()=> this.register()}
+            >Register</button> */}
+
+
+
             <Link to='/login'>
             <button>Login</button>
             </Link>
