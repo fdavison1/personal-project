@@ -3,12 +3,23 @@ const express = require('express')
 const massive = require('massive')
 const { SERVER_PORT, CONNECTION_STRING } = process.env
 const c = require('./taskController')
+const a = require('./authController')
 
+//MIDDLEWARE---------------------------------------------------------------------------------
 const app = express()
 app.use(express.json())
+app.use(
+    session({
+        resave: false, 
+        saveUninitialized: false, 
+        secret: SESSION_SECRET
+    })
+)
 
+//AUTH CONTROLLER ENDPOINTS--------------------------------------------------------------------------
+app.post('/auth/register', a.register)
 
-//endpoints
+//TASK CONTROLLER ENDPOINTS--------------------------------------------------------------------------
 app.get('/api/tasks', c.getTasks)
 app.post('/api/tasks', c.addTask)
 app.put('/api/task/:id', c.updateTask)
@@ -17,6 +28,7 @@ app.delete('/api/task/:id', c.deleteTask)
 app.get('/api/taskOrder', c.getTaskOrder)
 
 app.get('/api/projects', c.getProjects)
+
 
 
 
