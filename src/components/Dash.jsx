@@ -37,24 +37,18 @@ margin: 8px
 width: 40%`
 
 
-
-
-
-
-
 export default class Dash extends React.Component {
     constructor() {
         super()
         this.state = {
             tasks: [],
             taskOrder: [],
-            projects: []
+            projects: [],
+            drop_id: 7
         }
         this.addButton = this.addButton.bind(this)
         this.getTasks = this.getTasks.bind(this)
     }
-
-
 
 
     //INITIAL RENDER--------------------------------------------------------------------------
@@ -63,6 +57,7 @@ export default class Dash extends React.Component {
         this.getProjects()
         this.getTasks()
     }
+
     getTasks() {
         axios.get('/api/tasks')
             .then(res => {
@@ -71,10 +66,6 @@ export default class Dash extends React.Component {
                 })
             })
     }
-
-
-
-
     getTaskOrder() {
         axios.get('/api/taskOrder').then(res => {
 
@@ -145,26 +136,33 @@ export default class Dash extends React.Component {
     }
 
     //ADD BUTTON METHOD--------------------------------------------------------------------------
-    addButton() {
+    async addButton() {
 
-        axios.post('/api/tasks').then(res => {
+        this.setState({
+            drop_id: this.state.drop_id + 1
+        })
+
+        console.log(this.state.drop_id)
+
+        axios.post('/api/tasks', [this.state.drop_id.toString()]).then(res => {
             // console.log(res.data)
             this.setState({
 
                 tasks: res.data
             })
-            const newTasks = Array.from(this.state.tasks)
+
+            // const newTasks = Array.from(this.state.tasks)
+            // for (let i = 0; i < this.state.taskOrder.length; i++) {
+            //     newTasks[i].droppable_id = this.state.taskOrder[i]
+            // }
+
+            // this.setState({
+            //     tasks: newTasks
+            // })
 
 
-            for (let i = 0; i < this.state.taskOrder.length; i++) {
-                newTasks[i].droppable_id = this.state.taskOrder[i]
-            }
-
-            this.setState({
-                tasks: newTasks
-            })
-            // this.getTasks()
-            // this.getTaskOrder()
+            this.getTasks()
+            this.getTaskOrder()
         })
     }
 

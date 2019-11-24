@@ -21,8 +21,10 @@ module.exports = {
             })
     },
     addTask: (req, res) => {
+        // console.log(req.body)
+        const drop_id = req.body[0]
         const db = req.app.get('db')
-        db.add_task()
+        db.add_task(drop_id)
         .then(result => {
             res.status(200).send(result)
         })
