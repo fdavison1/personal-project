@@ -79,7 +79,7 @@ class Login extends React.Component {
                         <StyledSpan>Password: </StyledSpan>
                         <input
                             onChange={e => this.handleChange('password', e.target.value)}
-                            type="text" />
+                            type="password" />
                     </div>
 
                     <br />

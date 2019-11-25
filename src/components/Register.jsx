@@ -97,7 +97,7 @@ class Register extends React.Component {
                         <StyledSpan>Password: </StyledSpan>
                         <input 
                         onChange={e => this.handleChange('password1', e.target.value)}
-                        type="text" />
+                        type="password" />
                     <br />
                     </div>}
 
@@ -107,7 +107,7 @@ class Register extends React.Component {
                         <StyledSpan>Re-enter Password: </StyledSpan>
                         <input 
                         onChange={e => this.handleChange('password2', e.target.value)}
-                        type="text" />
+                        type="password" />
                     </div>}
                     
 
