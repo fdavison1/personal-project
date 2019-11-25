@@ -1,27 +1,25 @@
---------------------USERS
-
 DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS hash;
+
+--------------------USERS
 
 CREATE TABLE users
 (
   id SERIAL PRIMARY KEY,
-  username VARCHAR(120),
-  project_id INT REFERENCES projects(project_id),
-  hash_id TEXT REFERENCES hash(id)
+  username VARCHAR(20),
+  project_id INT REFERENCES projects(project_id)
 );
 
 --dummy data
-INSERT INTO users (username, project_id)
-VALUES
-('fred', 1);
-
+-- INSERT INTO users (username, project_id)
+-- VALUES
+-- ('fred', 1);
 
 --------------------HASH
-
-DROP TABLE IF EXISTS hash;
 
 CREATE TABLE hash 
 (
     hash_id SERIAL PRIMARY KEY,
-    hash TEXT
+    hash TEXT,
+    user_id INT REFERENCES users
 );

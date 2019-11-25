@@ -3,7 +3,7 @@ const bcrypt = require('bcryptjs')
 module.exports = {
     register: async (req, res) => {
         const { username, password } = req.body
-        console.log(username, password)
+        // console.log(username, password)
         const db = req.app.get('db')
 
         //check to see if already registered (or if user already exists)
@@ -17,10 +17,14 @@ module.exports = {
         const registeredUser = await db.register_user(username)
         const user = registeredUser[0]
 
+        console.log(user)
 
         //generate hash for new user
-        const salt = bcrypt.genSalt(10)
+        const salt = bcrypt.genSaltSync(10)
         const hash = bcrypt.hashSync(password, salt)
-        db.insert_hash({})
+
+        console.log(user.id)
+
+        db.insert_hash({user_id: user.id, hash})
     }
 }
