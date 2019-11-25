@@ -1,5 +1,5 @@
-DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS hash;
+DROP TABLE IF EXISTS users;
 
 --------------------USERS
 

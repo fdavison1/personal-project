@@ -23,6 +23,20 @@ const StyledSpan = styled.span`
 font-size: 1.5rem
 font-weight: 200`
 
+const StyledLink = styled(Link)`
+    text-decoration: none;
+    color: black
+    &:focus, &:hover, &:visited, &:link, &:active {
+        text-decoration: none;
+    }
+`
+const Title2 = styled.p`
+font-size: 3rem
+font-weight: 200
+&:hover {
+    font-weight: 500
+} `
+
 class Register extends React.Component {
     state = {
         username: '',
@@ -60,43 +74,56 @@ class Register extends React.Component {
             <Div>
                 <Header />
                 <Section>
-                    <Title>Register</Title>
+                {!this.props.username && 
+                    <Title>Register</Title>}
 
-
+                    
+                     
+                    {!this.props.username && 
                     <div>
+
                         <StyledSpan>Username: </StyledSpan>
                         <input 
                         onChange={e => this.handleChange('username', e.target.value)}
                         type="text" />
-                    </div>
                     <br />
+                    </div>}
 
+                    {!this.props.username && 
                     <div>
                         <StyledSpan>Password: </StyledSpan>
                         <input 
                         onChange={e => this.handleChange('password1', e.target.value)}
                         type="text" />
-                    </div>
-
                     <br />
+                    </div>}
+
+
+                    {!this.props.username && 
                     <div>
                         <StyledSpan>Re-enter Password: </StyledSpan>
                         <input 
                         onChange={e => this.handleChange('password2', e.target.value)}
                         type="text" />
-                    </div>
+                    </div>}
+                    
 
-                    <br />
 
-                    {/* make ternary... after register, login button appears */}
 
+
+                    {!this.props.username && 
                     <button
                     onClick={this.register}>Register</button>
+                }
 
-                    
-                    <Link to='/dash'>
-                        <button>Login</button>
-                    </Link>
+                    {this.props.username &&
+                    <div>
+                    <StyledLink to='/dash'>
+                        <Title2>Login as {this.props.username}</Title2>
+                    </StyledLink>
+                    <button>cancel</button>
+                    </div>
+                    }
 
                 </Section>
 

@@ -1,5 +1,5 @@
 const initialState = {
-    username: 'fred'
+    username: ''
 }
 
 //ACTION CONSTANTS----------------------------------

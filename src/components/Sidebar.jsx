@@ -23,13 +23,12 @@ const StyledLink = styled(Link)`
 `
 
 function Sidebar(props) {
-    console.log(props.username)
+    // console.log(props.username)
     return (
         <SideBar>
 
             <div>
 
-            {/* <Content>---username---</Content> */}
             <Content>{props.username}</Content>
 
             <Content>all lists</Content>
