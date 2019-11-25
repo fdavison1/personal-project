@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { updateUsername } from '../dux/reducer'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+import Swal from 'sweetalert2'
 import { Content } from '../css/styledComponents'
 
 const SideBar = styled.div`
@@ -26,6 +27,10 @@ const StyledLink = styled(Link)`
 function Sidebar(props) {
     const logout = () => {
         axios.delete('/auth/logout').then(res => {
+            Swal.fire(
+                res.data.message,
+                'log out successful',
+                'success')
             props.updateUsername('')
         })
     }

@@ -58,7 +58,6 @@ class Register extends React.Component {
         }
 
         const { username, password1:password } = this.state
-        // console.log(password)
         axios.post('/auth/register', { username, password })
         .then(res => {
             this.props.updateUsername(res.data.user.username)

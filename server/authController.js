@@ -40,14 +40,14 @@ module.exports = {
         const hash = findHash[0].hash
         const goodPassword = bcrypt.compareSync(password, hash)
         if (!goodPassword){
-            return res.status(401).send({message: 'incorrect password'})
+            return res.status(403).send({message: 'incorrect password'})
         }
         req.session.user = {username: user.username}
-        res.status(200).send({message: 'logged in', user: req.session.user})
+        res.status(200).send({message: 'hooray!', user: req.session.user})
 
     },
     logout: (req, res) => {
         req.session.destroy()
-        res.sendStatus(200)
+        res.status(200).send({message: 'Logged Out'})
     }
 }
