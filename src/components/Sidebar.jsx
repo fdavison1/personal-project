@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { updateUsername } from '../dux/reducer'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { Content } from '../css/styledComponents'
@@ -22,6 +23,7 @@ const StyledLink = styled(Link)`
 `
 
 function Sidebar(props) {
+    console.log(props.username)
     return (
         <SideBar>
 
@@ -50,4 +52,4 @@ function mapStateToProps(reduxState){
     return reduxState
 }
 
-export default connect(mapStateToProps)(Sidebar)
+export default connect(mapStateToProps, {updateUsername})(Sidebar)
