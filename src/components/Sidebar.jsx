@@ -26,7 +26,6 @@ const StyledLink = styled(Link)`
 function Sidebar(props) {
     const logout = () => {
         axios.delete('/auth/logout').then(res => {
-            console.log('fred')
             props.updateUsername('')
         })
     }

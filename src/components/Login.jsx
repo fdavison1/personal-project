@@ -1,7 +1,9 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import axios from 'axios'
+import { connect } from 'react-redux'
 import styled from 'styled-components'
 import { Div, Title } from '../css/styledComponents'
+import { updateUsername } from '../dux/reducer'
 import Header from './Header'
 
 const Section = styled.div`
@@ -21,34 +23,69 @@ const StyledSpan = styled.span`
 font-size: 1.5rem
 font-weight: 200`
 
-export default function Login() {
-    return (
-        <Div>
+class Login extends React.Component {
+    state = {
+        username: '',
+        password: ''
+    }
 
-            <Header />
+    handleChange = (key, value) => {
+        this.setState({
+            [key]: value
+        })
+    }
 
-            <Section>
-            <Title>Login</Title>
-            <br/>
-            
-            <div>
-            <StyledSpan>Username: </StyledSpan><input type="text"/>
-            </div>
-            <br/>
-           
-            <div>
-            <StyledSpan>Password: </StyledSpan><input type="text"/>
-            </div>
-            
-            <br/>
+    login(){
+        const { username, password } = this.state
+        axios.post('/auth/login', { username, password } )
+        .then(res => {
+            console.log('res')
+            this.props.updateUsername(res.data.user)
+            //link to dash....
+            this.props.history.push('/dash')
+        })
+    }
 
+    render() {
+        return (
+            <Div>
 
-            <Link to='/dash'>
-                <button>dash</button>
-            </Link>
-           
-            </Section>
+                <Header />
 
-        </Div>
-    )
+                <Section>
+                    <Title>Login</Title>
+                    <br />
+
+                    <div>
+                        <StyledSpan>Username: </StyledSpan>
+                        <input 
+                        onChange={e => this.handleChange('username', e.target.value)}
+                        type="text" />
+                    </div>
+                    <br />
+
+                    <div>
+                        <StyledSpan>Password: </StyledSpan>
+                        <input 
+                        onChange={e => this.handleChange('password', e.target.value)}
+                        type="text" />
+                    </div>
+
+                    <br />
+
+                    <button
+                    onClick={() => this.login()}
+                    >Login</button>
+
+                </Section>
+
+            </Div>
+        )
+    }
 }
+
+function mapStateToProps(reduxState){
+    return reduxState
+}
+
+export default connect(mapStateToProps, {updateUsername})(Login)

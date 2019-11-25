@@ -45,7 +45,6 @@ class Register extends React.Component {
     }
 
     handleChange = (key, value) => {
-        // console.log(key, value)
         this.setState({
             [key]: value
         })
@@ -68,7 +67,6 @@ class Register extends React.Component {
 
     logout(){
         axios.delete('/auth/logout').then(res => {
-            console.log('fred')
             this.props.updateUsername('')
         })
     }

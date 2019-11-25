@@ -104,7 +104,6 @@ export default class Task extends React.Component {
                             <input
                                 onChange={(e) => this.contentChange(e)}
                                 placeholder={content ? content.content : 'new task'}
-                                placeholder={content.content}
                                 type="text"
                                 onKeyPress={(e) => this.submit(e)}
                             />
