@@ -36,8 +36,8 @@ module.exports = {
             return res.status(401).send({message: 'user not found, please make an account'})
         }
         //if password incorrect...
-        const findHash = await db.find_hash(username)
-        const hash = findHash[0]
+        const findHash = await db.find_hash(user.id)
+        const hash = findHash[0].hash
         const goodPassword = bcrypt.compareSync(password, hash)
         if (!goodPassword){
             return res.status(401).send({message: 'incorrect password'})

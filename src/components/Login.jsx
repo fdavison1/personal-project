@@ -39,8 +39,7 @@ class Login extends React.Component {
         const { username, password } = this.state
         axios.post('/auth/login', { username, password } )
         .then(res => {
-            console.log('res')
-            this.props.updateUsername(res.data.user)
+            this.props.updateUsername(res.data.user.username)
             //link to dash....
             this.props.history.push('/dash')
         })
