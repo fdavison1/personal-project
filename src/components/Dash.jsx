@@ -4,37 +4,10 @@ import styled from 'styled-components'
 import { DragDropContext } from 'react-beautiful-dnd'
 import Project from './Project'
 import Sidebar from './Sidebar'
-// import TrashCan from './TrashCan'
 
 const Container = styled.div`
 display: flex
 background: white`
-
-// const Add = styled.div`
-// height: 90px
-// width: 90px
-// background: black
-// border-radius: 50%
-// color: white
-// display: flex
-// align-items: center
-// justify-content: center
-// font-size: 5.5rem
-// font-weight: 200
-// padding-bottom: 20px
-// box-sizing: border-box
-// &:hover {
-//     height: 135px
-//     width: 135px
-//     font-size: 7rem
-// }`
-
-// const Buttons = styled.div`
-// display: flex
-// justify-content: space-evenly
-// align-items: center
-// margin: 8px
-// width: 40%`
 
 
 export default class Dash extends React.Component {
@@ -53,9 +26,10 @@ export default class Dash extends React.Component {
 
     //INITIAL RENDER--------------------------------------------------------------------------
     componentDidMount() {
-        this.getTaskOrder()
+        console.log(this.state.projects)
         this.getProjects()
-        this.getTasks()
+        // this.getTaskOrder()
+        // this.getTasks()
     }
 
     getTasks() {
@@ -79,6 +53,7 @@ export default class Dash extends React.Component {
 
         })
     }
+    ///need to update
     getProjects() {
         axios.get('/api/projects')
             .then(res => {
@@ -171,15 +146,6 @@ export default class Dash extends React.Component {
                 tasks: res.data
             })
 
-            // const newTasks = Array.from(this.state.tasks)
-            // for (let i = 0; i < this.state.taskOrder.length; i++) {
-            //     newTasks[i].droppable_id = this.state.taskOrder[i]
-            // }
-
-            // this.setState({
-            //     tasks: newTasks
-            // })
-
 
             this.getTasks()
             this.getTaskOrder()
@@ -212,19 +178,6 @@ export default class Dash extends React.Component {
                                     getTasks={this.getTasks}
                                 />
                             })}
-
-
-                            {/* <div className="test">
-
-                            <Buttons>
-                                <Add
-                                onClick={()=> this.addButton()}
-                                >+</Add>
-                            </Buttons>
-                           
-
-                                <TrashCan />
-                            </div> */}
 
 
 

@@ -65,7 +65,8 @@ class Project extends React.Component {
                 {(provided, snapshot) => (
                     <Container>
 
-                        <Content>{this.props.username}</Content>
+                        <Content>{this.props.project.project_id}</Content>
+                        {/* Change title to reflect user_id??? */}
                         <Title>{this.props.project.title}</Title>
 
                         <TaskList

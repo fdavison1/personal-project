@@ -22,6 +22,10 @@ module.exports = {
         const hash = bcrypt.hashSync(password, salt)
         db.insert_hash({user_id: user.id, hash})
 
+        //generate new project
+        db.create_project({user_id: user.id})
+
+
         //assign user to session
         req.session.user = {username: user.username}
         res.status(201).send({message: 'logged in', user: req.session.user})

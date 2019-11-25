@@ -8,7 +8,7 @@ module.exports = {
     },
     getProjects: (req, res) => {
         const db = req.app.get('db')
-        db.get_projects()
+        db.get_projects(1)
             .then(result => {
                 res.status(200).send(result)
             })

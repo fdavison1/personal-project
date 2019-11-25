@@ -13,19 +13,20 @@ CREATE TABLE tasks (
 CREATE TABLE projects (
     project_id SERIAL PRIMARY KEY, 
     title VARCHAR(30),
-    droppable_id VARCHAR(5)
+    droppable_id VARCHAR(5),
+    user_id INT REFERENCES users
 );
 
 --dummy data
 
-INSERT INTO tasks (content, droppable_id)
-VALUES 
-('take out the trash', '1'),
-('walk the cat', '2'), 
-('charge phone', '3'),
-('cook dinner', '4'), 
-('wash the dishes', '5'),
-('do laundry','6');
+-- INSERT INTO tasks (content, droppable_id)
+-- VALUES 
+-- ('take out the trash', '1'),
+-- ('walk the cat', '2'), 
+-- ('charge phone', '3'),
+-- ('cook dinner', '4'), 
+-- ('wash the dishes', '5'),
+-- ('do laundry','6');
 
 SELECT * FROM tasks;
 
