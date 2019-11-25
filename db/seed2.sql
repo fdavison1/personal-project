@@ -6,8 +6,7 @@ DROP TABLE IF EXISTS hash;
 CREATE TABLE users
 (
   id SERIAL PRIMARY KEY,
-  username VARCHAR(20),
-  project_id INT REFERENCES projects(project_id)
+  username VARCHAR(20)
 );
 
 --dummy data

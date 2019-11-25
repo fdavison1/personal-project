@@ -17,14 +17,13 @@ module.exports = {
         const registeredUser = await db.register_user(username)
         const user = registeredUser[0]
 
-        console.log(user)
-
         //generate hash for new user
         const salt = bcrypt.genSaltSync(10)
         const hash = bcrypt.hashSync(password, salt)
-
-        console.log(user.id)
-
         db.insert_hash({user_id: user.id, hash})
+
+        //assign user to session
+        req.session.user = {username: user.username}
+        res.status(201).send({message: 'logged in', user: req.session.user})
     }
 }

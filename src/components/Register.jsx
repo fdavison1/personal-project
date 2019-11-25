@@ -1,5 +1,7 @@
 import React from 'react'
 import axios from 'axios'
+import { connect } from 'react-redux'
+import { updateUsername } from '../dux/reducer'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { Div, Title } from '../css/styledComponents'
@@ -46,7 +48,7 @@ class Register extends React.Component {
         const { username, password1:password } = this.state
         console.log(password)
         axios.post('/auth/register', { username, password })
-        .then(res => this.props.updateUser(res.data.username))
+        .then(res => this.props.updateUsername(res.data.username))
     }
 
     render() {
@@ -101,4 +103,8 @@ class Register extends React.Component {
     }
 }
 
-export default Register
+function mapStateToProps(reduxState){
+    return reduxState
+}
+
+export default connect(mapStateToProps, {updateUsername})(Register)
