@@ -46,7 +46,9 @@ margin: 8px
 width: 40%`
 const Content = styled.div`
 font-size: 1.5rem
-margin-top: 25px`
+margin-top: 25px
+color: darkgray
+font-style: italic`
 
 
 export default class Project extends React.Component {

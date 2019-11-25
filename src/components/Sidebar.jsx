@@ -1,4 +1,5 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { Content } from '../css/styledComponents'
@@ -20,13 +21,14 @@ const StyledLink = styled(Link)`
     }
 `
 
-export default function Sidebar() {
+function Sidebar(props) {
     return (
         <SideBar>
 
             <div>
 
-            <Content>---username---</Content>
+            {/* <Content>---username---</Content> */}
+            <Content>{props.username}</Content>
 
             <Content>all lists</Content>
             <StyledLink to='/'>
@@ -43,3 +45,9 @@ export default function Sidebar() {
         </SideBar>
     )
 }
+
+function mapStateToProps(reduxState){
+    return reduxState
+}
+
+export default connect(mapStateToProps)(Sidebar)
