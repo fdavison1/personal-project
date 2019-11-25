@@ -1,4 +1,5 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import styled from 'styled-components'
 import { Droppable } from 'react-beautiful-dnd'
 import Task from './Task'
@@ -46,14 +47,12 @@ margin: 8px
 width: 40%`
 const Content = styled.div`
 font-size: 1.5rem
-margin-top: 25px
-color: darkgray
-font-style: italic`
+margin-top: 25px`
 
 
-export default class Project extends React.Component {
-    constructor() {
-        super()
+class Project extends React.Component {
+    constructor(props) {
+        super(props)
 
         this.state = {
         }
@@ -66,11 +65,8 @@ export default class Project extends React.Component {
                 {(provided, snapshot) => (
                     <Container>
 
-
-                        <Content>---username---</Content>
+                        <Content>{this.props.username}</Content>
                         <Title>{this.props.project.title}</Title>
-
-
 
                         <TaskList
                             ref={provided.innerRef}
@@ -103,3 +99,9 @@ export default class Project extends React.Component {
         )
     }
 }
+
+function mapStateToProps(reduxState){
+    return reduxState
+}
+
+export default connect(mapStateToProps)(Project)

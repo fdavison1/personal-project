@@ -18,7 +18,7 @@ app.use(
 )
 
 //AUTH CONTROLLER ENDPOINTS--------------------------------------------------------------------------
-// app.post('/auth/register', a.register)
+app.post('/auth/register', a.register)
 
 //TASK CONTROLLER ENDPOINTS--------------------------------------------------------------------------
 app.get('/api/tasks', c.getTasks)
