@@ -1,4 +1,5 @@
 import React from 'react'
+import axios from 'axios'
 import { connect } from 'react-redux'
 import { updateUsername } from '../dux/reducer'
 import { Link } from 'react-router-dom'
@@ -23,6 +24,12 @@ const StyledLink = styled(Link)`
 `
 
 function Sidebar(props) {
+    const logout = () => {
+        axios.delete('/auth/logout').then(res => {
+            console.log('fred')
+            props.updateUsername('')
+        })
+    }
     // console.log(props.username)
     return (
         <SideBar>
@@ -33,7 +40,9 @@ function Sidebar(props) {
 
             <Content>all lists</Content>
             <StyledLink to='/'>
-            <Content>log out</Content>
+            <Content
+            onClick={()=> logout()}
+            >log out</Content>
             </StyledLink>
             </div>
 

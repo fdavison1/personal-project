@@ -44,7 +44,6 @@ class Register extends React.Component {
         pasword2: ''
     }
 
-
     handleChange = (key, value) => {
         // console.log(key, value)
         this.setState({
@@ -65,6 +64,13 @@ class Register extends React.Component {
         .then(res => {
             this.props.updateUsername(res.data.user.username)
             })
+    }
+
+    logout(){
+        axios.delete('/auth/logout').then(res => {
+            console.log('fred')
+            this.props.updateUsername('')
+        })
     }
 
     render() {
@@ -121,7 +127,11 @@ class Register extends React.Component {
                     <StyledLink to='/dash'>
                         <Title2>Login as {this.props.username}</Title2>
                     </StyledLink>
-                    <button>cancel</button>
+                    
+                    
+                    <button
+                    onClick={() => this.logout()}
+                    >cancel</button>
                     </div>
                     }
 

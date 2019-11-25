@@ -25,5 +25,9 @@ module.exports = {
         //assign user to session
         req.session.user = {username: user.username}
         res.status(201).send({message: 'logged in', user: req.session.user})
+    },
+    logout: (req, res) => {
+        req.session.destroy()
+        res.sendStatus(200)
     }
 }
