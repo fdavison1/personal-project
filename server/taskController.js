@@ -1,17 +1,41 @@
 module.exports = {
     getTasks: (req, res) => {
         const db = req.app.get('db')
-        db.get_tasks()
+        const userID = req.params.id
+        db.get_tasks(userID)
             .then(result => {
                 res.status(200).send(result)
             })
     },
+    getAllProjects: (req, res)=> {
+        // console.log('get all projects')
+        const db = req.app.get('db')
+        db.get_all_projects()
+        .then(result => {
+            res.status(200).send(result)
+        })
+    },
     getProjects: (req, res) => {
         const db = req.app.get('db')
-        db.get_projects()
+        // console.log(req.params)
+        const id = req.params.id
+        // console.log(id)
+
+        db.get_projects(id)
             .then(result => {
                 res.status(200).send(result)
             })
+    },
+    getProjectUser: (req, res) => {
+        // console.log(req.params)
+        const db = req.app.get('db')
+        const user = req.params.user
+        // console.log(user)
+        db.get_project_user(user)
+        .then(result => {
+            // console.log(result)
+            res.status(200).send(result)
+        })
     },
     getTaskOrder: (req, res) => {
         const db = req.app.get('db')

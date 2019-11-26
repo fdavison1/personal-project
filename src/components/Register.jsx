@@ -58,10 +58,13 @@ class Register extends React.Component {
         }
 
         const { username, password1:password } = this.state
+        localStorage.setItem('username', username)
         axios.post('/auth/register', { username, password })
         .then(res => {
             this.props.updateUsername(res.data.user.username)
+            localStorage.setItem('userID', res.data.user.userID)
             })
+            console.log(localStorage.getItem('userID'))
     }
 
     logout(){

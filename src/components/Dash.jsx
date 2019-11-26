@@ -1,40 +1,23 @@
 import React from 'react'
 import axios from 'axios'
 import styled from 'styled-components'
-import { DragDropContext } from 'react-beautiful-dnd'
+// import { DragDropContext } from 'react-beautiful-dnd'
 import Project from './Project'
 import Sidebar from './Sidebar'
-// import TrashCan from './TrashCan'
 
 const Container = styled.div`
 display: flex
 background: white`
 
-// const Add = styled.div`
-// height: 90px
-// width: 90px
-// background: black
-// border-radius: 50%
-// color: white
-// display: flex
-// align-items: center
-// justify-content: center
-// font-size: 5.5rem
-// font-weight: 200
-// padding-bottom: 20px
-// box-sizing: border-box
-// &:hover {
-//     height: 135px
-//     width: 135px
-//     font-size: 7rem
-// }`
-
-// const Buttons = styled.div`
-// display: flex
-// justify-content: space-evenly
-// align-items: center
-// margin: 8px
-// width: 40%`
+const SideBar2 = styled.div`
+min-height: 100vh
+height: auto
+background: lightgray
+width: 300px
+display: flex
+flex-direction: column
+align-items: center
+justify-content: space-between`
 
 
 export default class Dash extends React.Component {
@@ -44,23 +27,29 @@ export default class Dash extends React.Component {
             tasks: [],
             taskOrder: [],
             projects: [],
-            drop_id: 7
+            allLists: false
         }
-        this.addButton = this.addButton.bind(this)
+        // this.addButton = this.addButton.bind(this)
         this.getTasks = this.getTasks.bind(this)
+        this.allListsTrue = this.allListsTrue.bind(this)
+        this.allListsFalse = this.allListsFalse.bind(this)
+        this.getProjects = this.getProjects.bind(this)
     }
 
 
     //INITIAL RENDER--------------------------------------------------------------------------
     componentDidMount() {
-        this.getTaskOrder()
-        this.getProjects()
-        this.getTasks()
+        const userID = localStorage.getItem('userID')
+        this.getProjects(userID)
+        this.getTasks(userID)
+        // this.getTaskOrder()
     }
 
-    getTasks() {
-        axios.get('/api/tasks')
+    getTasks(userID) {
+        // console.log(userID)
+        axios.get(`/api/tasks/${userID}`)
             .then(res => {
+                // console.log(res.data)
                 this.setState({
                     tasks: res.data
                 })
@@ -79,14 +68,37 @@ export default class Dash extends React.Component {
 
         })
     }
+    ///need to update
     getProjects() {
-        axios.get('/api/projects')
+
+        if (!this.state.allLists){
+        const id = localStorage.getItem('userID')
+        axios.get(`/api/projects/${id}`)
             .then(res => {
+                // console.log(res)
+                this.setState({
+                    projects: res.data
+                })
+            })}
+        if (this.state.allLists){
+            axios.get('/api/projects').then(res => {
                 this.setState({
                     projects: res.data
                 })
             })
+        }
     }
+    allListsTrue(){
+        this.setState({
+            allLists: true
+        })
+    }
+    allListsFalse(){
+        this.setState({
+            allLists: false
+        })
+    }
+
     //ON DRAG END--------------------------------------------------------------------------
     onDragEnd = async result => {
         const { destination, source } = result
@@ -101,101 +113,93 @@ export default class Dash extends React.Component {
             return
         }
 
-        ////TRASH CAN: AXIOS DELETE
+    //     ////TRASH CAN: AXIOS DELETE
         if (
             destination.droppableId === 'trash-can'
         ) {
             // console.log(this.state.tasks)
-            const id = this.state.tasks[source.index].droppable_id
+            const id = this.state.tasks[source.index].task_id
             // console.log(id)
             // console.log(this.state.tasks[source.index])
-            axios.delete(`/api/task/${id}`, this.state.tasks[destination.index].task_id).then(res => {
+            axios.delete(`/api/task/${id}`).then(res => {
                 // console.log('fred')
                 
                 
                 
-                this.getTaskOrder()
-                this.getTasks()
+                // this.getTaskOrder()
+
+                const userID = localStorage.getItem('userID')
+                this.getTasks(userID)
                 
-                const newTasks = Array.from(this.state.tasks)
+                // const newTasks = Array.from(this.state.tasks)
 
 
-        for (let i = 0; i < this.state.taskOrder.length; i++) {
-            newTasks[i].droppable_id = this.state.taskOrder[i]
-        }
+        // for (let i = 0; i < this.state.taskOrder.length; i++) {
+        //     newTasks[i].droppable_id = this.state.taskOrder[i]
+        // }
                 
-                
-                
-                
-                
-                
-                return
+        //         return
 
             })
         }
 
 
 
-        const newTaskOrder = Array.from(this.state.taskOrder)
-        const sourceValue = newTaskOrder.splice(source.index, 1)
-        newTaskOrder.splice(destination.index, 0, sourceValue[0])
+    //     const newTaskOrder = Array.from(this.state.taskOrder)
+    //     const sourceValue = newTaskOrder.splice(source.index, 1)
+    //     newTaskOrder.splice(destination.index, 0, sourceValue[0])
 
-        ///need to fix (mutating state)?
-        this.state.taskOrder = newTaskOrder
+    //     ///need to fix (mutating state)?
+    //     this.state.taskOrder = newTaskOrder
 
-        // this.setState({
-        //     taskOrder : newTaskOrder
-        // })
+    //     // this.setState({
+    //     //     taskOrder : newTaskOrder
+    //     // })
 
-        const newTasks = Array.from(this.state.tasks)
+    //     const newTasks = Array.from(this.state.tasks)
 
 
-        for (let i = 0; i < this.state.taskOrder.length; i++) {
-            newTasks[i].droppable_id = this.state.taskOrder[i]
-        }
+    //     for (let i = 0; i < this.state.taskOrder.length; i++) {
+    //         newTasks[i].droppable_id = this.state.taskOrder[i]
+    //     }
     }
 
     //ADD BUTTON METHOD--------------------------------------------------------------------------
-    addButton() {
+    // addButton() {
 
-        this.setState({
-            drop_id: this.state.drop_id + 1
-        })
+    //     this.setState({
+    //         drop_id: this.state.drop_id + 1
+    //     })
 
-        // console.log(this.state.drop_id)
+    //     // console.log(this.state.drop_id)
 
-        axios.post('/api/tasks', [this.state.drop_id.toString()]).then(res => {
-            // console.log(res.data)
-            this.setState({
+    //     axios.post('/api/tasks', ['1']).then(res => {
+    //         // console.log(res.data)
+    //         this.setState({
 
-                tasks: res.data
-            })
-
-            // const newTasks = Array.from(this.state.tasks)
-            // for (let i = 0; i < this.state.taskOrder.length; i++) {
-            //     newTasks[i].droppable_id = this.state.taskOrder[i]
-            // }
-
-            // this.setState({
-            //     tasks: newTasks
-            // })
+    //             tasks: res.data
+    //         })
 
 
-            this.getTasks()
-            this.getTaskOrder()
-        })
-    }
+    //         this.getTasks()
+    //         this.getTaskOrder()
+    //     })
+    // }
 
 
     render() {
         return (
             <Container>
-                <Sidebar />
+                <Sidebar 
+                allListsTrue={this.allListsTrue}
+                allListsFalse={this.allListsFalse}
+                getProjects={this.getProjects}
+                />
 
+                <SideBar2/>
 
-
-                <DragDropContext
-                    onDragEnd={this.onDragEnd}>
+                {/* <DragDropContext */}
+                    {/* onDragEnd={this.onDragEnd}> */}
 
                     {(this.state.projects.length > 0) &&
 
@@ -214,23 +218,10 @@ export default class Dash extends React.Component {
                             })}
 
 
-                            {/* <div className="test">
-
-                            <Buttons>
-                                <Add
-                                onClick={()=> this.addButton()}
-                                >+</Add>
-                            </Buttons>
-                           
-
-                                <TrashCan />
-                            </div> */}
-
-
 
 
                         </div>}
-                </DragDropContext>
+                {/* </DragDropContext> */}
 
 
 

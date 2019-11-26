@@ -8,13 +8,14 @@ import Swal from 'sweetalert2'
 import { Content } from '../css/styledComponents'
 
 const SideBar = styled.div`
-height: 100vh
-background: lightgray
 width: 300px
 display: flex
+position: fixed
+top: 80px
 flex-direction: column
 align-items: center
-justify-content: space-between`
+justify-content: space-between
+z-index: 10`
 
 const StyledLink = styled(Link)`
     text-decoration: none;
@@ -33,16 +34,35 @@ function Sidebar(props) {
                 'success')
             props.updateUsername('')
         })
+        localStorage.clear()
     }
-    // console.log(props.username)
+    ///////
+const myList = async () => {
+    await props.allListsFalse()
+    props.getProjects()
+}
+
+    const allLists = async ()=> {
+        // console.log('all lists')
+       await props.allListsTrue()
+       props.getProjects()
+    }
     return (
         <SideBar>
 
             <div>
 
-            <Content>{props.username}</Content>
+            <Content
+            onClick={()=> myList()}
+            >{localStorage.getItem('username')}</Content>
 
-            <Content>all lists</Content>
+
+            <Content
+            onClick={()=>allLists()}
+            >all lists</Content>
+
+
+
             <StyledLink to='/'>
             <Content
             onClick={()=> logout()}
@@ -51,9 +71,8 @@ function Sidebar(props) {
             </div>
 
 
-
             
-
+        userID: {localStorage.getItem('userID')}
            
 
         </SideBar>

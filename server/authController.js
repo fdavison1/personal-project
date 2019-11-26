@@ -22,8 +22,12 @@ module.exports = {
         const hash = bcrypt.hashSync(password, salt)
         db.insert_hash({user_id: user.id, hash})
 
+        //generate new project
+        db.create_project({user_id: user.id})
+
+
         //assign user to session
-        req.session.user = {username: user.username}
+        req.session.user = {username: user.username, userID: user.id}
         res.status(201).send({message: 'logged in', user: req.session.user})
     },
     login: async (req, res) => {
@@ -42,7 +46,7 @@ module.exports = {
         if (!goodPassword){
             return res.status(403).send({message: 'incorrect password'})
         }
-        req.session.user = {username: user.username}
+        req.session.user = {username: user.username, userID: user.id}
         res.status(200).send({message: 'hooray!', user: req.session.user})
 
     },
