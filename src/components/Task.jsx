@@ -44,17 +44,12 @@ export default class Task extends React.Component {
             }
             // console.log('fred')
             const id = this.props.task.task_id
-            // console.log(id)
+            console.log(id)
 
             axios.put(`/api/task/${id}`, [this.state.localContent]).then(res => {
                 // console.log('fred')
-
-
-
-
-
-
-                this.props.getTasks()
+                const userID = localStorage.getItem('userID')
+                this.props.getTasks(userID)
             })
             this.setState({
                 editField: false
@@ -95,7 +90,11 @@ export default class Task extends React.Component {
 
 
                         // <span>{content.content}</span>
-                                content ? <span>{content.content}</span> : <span>new task</span>
+                                // content ? <span>{content.content}</span> : <span>new task</span>
+                            <span>{this.props.task.content}</span>
+
+
+
                             // this.props.task.task_id <= 6 ? <span>{content.content}</span> 
                             // : this.state.localContent ? <span>{this.state.localContent}</span> :
                             // <span>new task</span>
@@ -105,7 +104,7 @@ export default class Task extends React.Component {
 
                             <input
                                 onChange={(e) => this.contentChange(e)}
-                                placeholder={content ? content.content : 'new task'}
+                                placeholder={this.props.task.content}
                                 type="text"
                                 onKeyPress={(e) => this.submit(e)}
                             />
@@ -113,7 +112,7 @@ export default class Task extends React.Component {
                         }
 
                         {/* *****FOR TESTING PURPOSES***** */}
-                        {this.props.task.content}
+                        {/* {this.props.task.content} */}
                         {/* {this.state.localContent} */}
                         <br />
                         <span>task_id:</span>{this.props.task.task_id}

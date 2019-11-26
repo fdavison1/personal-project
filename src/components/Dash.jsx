@@ -118,25 +118,28 @@ export default class Dash extends React.Component {
             destination.droppableId === 'trash-can'
         ) {
             // console.log(this.state.tasks)
-            const id = this.state.tasks[source.index].droppable_id
+            const id = this.state.tasks[source.index].task_id
             // console.log(id)
             // console.log(this.state.tasks[source.index])
-            axios.delete(`/api/task/${id}`, this.state.tasks[destination.index].task_id).then(res => {
+            axios.delete(`/api/task/${id}`).then(res => {
                 // console.log('fred')
                 
                 
                 
-                this.getTaskOrder()
-                this.getTasks()
+                // this.getTaskOrder()
+
+
+                const userID = localStorage.getItem('userID')
+                this.getTasks(userID)
                 
                 const newTasks = Array.from(this.state.tasks)
 
 
-        for (let i = 0; i < this.state.taskOrder.length; i++) {
-            newTasks[i].droppable_id = this.state.taskOrder[i]
-        }
+        // for (let i = 0; i < this.state.taskOrder.length; i++) {
+        //     newTasks[i].droppable_id = this.state.taskOrder[i]
+        // }
                 
-                return
+        //         return
 
             })
         }
