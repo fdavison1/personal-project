@@ -20,9 +20,19 @@ export default class Task extends React.Component {
   
 
     editTask() {
-        this.setState({
+
+        //if sessionUser = projectUser...
+        const sessionUser = localStorage.getItem('username')
+        const { projectUser } = this.props
+
+        if (sessionUser === projectUser)
+
+
+        {this.setState({
             editField: !this.state.editField
-        })
+        })}
+
+        return
     }
 
     contentChange(e) {

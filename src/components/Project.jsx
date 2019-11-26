@@ -177,7 +177,8 @@ class Project extends React.Component {
                             >
 
                             {tasks.map((task, index) => <Task key={task.task_id}
-                                task={task} index={index} tasks={tasks} getTasks={this.getTasks} />)}
+                                task={task} index={index} tasks={tasks} getTasks={this.getTasks}
+                                projectUser={this.state.projectUser} />)}
                             {provided.placeholder}
                         </TaskList>
 
