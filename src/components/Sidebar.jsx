@@ -33,6 +33,7 @@ function Sidebar(props) {
                 'success')
             props.updateUsername('')
         })
+        localStorage.clear()
     }
     // console.log(props.username)
     return (
@@ -40,7 +41,7 @@ function Sidebar(props) {
 
             <div>
 
-            <Content>{props.username}</Content>
+            <Content>{localStorage.getItem('username')}</Content>
 
             <Content>all lists</Content>
             <StyledLink to='/'>
@@ -49,7 +50,6 @@ function Sidebar(props) {
             >log out</Content>
             </StyledLink>
             </div>
-
 
 
             

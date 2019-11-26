@@ -18,7 +18,7 @@ export default class Dash extends React.Component {
             taskOrder: [],
             projects: []
         }
-        this.addButton = this.addButton.bind(this)
+        // this.addButton = this.addButton.bind(this)
         this.getTasks = this.getTasks.bind(this)
     }
 
@@ -27,6 +27,7 @@ export default class Dash extends React.Component {
     componentDidMount() {
         // console.log(this.state.projects)
         this.getProjects()
+        console.log(this.state.projects)
         // this.getTaskOrder()
         this.getTasks()
     }
@@ -54,8 +55,10 @@ export default class Dash extends React.Component {
     }
     ///need to update
     getProjects() {
-        axios.get('/api/projects')
+        // const id = ...........................................
+        axios.get(`/api/projects/2`)
             .then(res => {
+                console.log(res)
                 this.setState({
                     projects: res.data
                 })
@@ -125,26 +128,26 @@ export default class Dash extends React.Component {
     }
 
     //ADD BUTTON METHOD--------------------------------------------------------------------------
-    addButton() {
+    // addButton() {
 
-        this.setState({
-            drop_id: this.state.drop_id + 1
-        })
+    //     this.setState({
+    //         drop_id: this.state.drop_id + 1
+    //     })
 
-        // console.log(this.state.drop_id)
+    //     // console.log(this.state.drop_id)
 
-        axios.post('/api/tasks', ['1']).then(res => {
-            // console.log(res.data)
-            this.setState({
+    //     axios.post('/api/tasks', ['1']).then(res => {
+    //         // console.log(res.data)
+    //         this.setState({
 
-                tasks: res.data
-            })
+    //             tasks: res.data
+    //         })
 
 
-            this.getTasks()
-            this.getTaskOrder()
-        })
-    }
+    //         this.getTasks()
+    //         this.getTaskOrder()
+    //     })
+    // }
 
 
     render() {

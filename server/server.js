@@ -30,7 +30,7 @@ app.delete('/api/task/:id', c.deleteTask)
 
 app.get('/api/taskOrder', c.getTaskOrder)
 
-app.get('/api/projects', c.getProjects)
+app.get('/api/projects/:id', c.getProjects)
 app.get('/api/project/:user', c.getProjectUser)
 
 

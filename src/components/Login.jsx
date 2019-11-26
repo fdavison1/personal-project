@@ -38,6 +38,7 @@ class Login extends React.Component {
 
     login() {
         const { username, password } = this.state
+        localStorage.setItem('username', username)
         axios.post('/auth/login', { username, password })
             .then(res => {
                 this.props.updateUsername(res.data.user.username)

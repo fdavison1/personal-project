@@ -8,7 +8,9 @@ module.exports = {
     },
     getProjects: (req, res) => {
         const db = req.app.get('db')
-        db.get_projects(1)
+        // console.log(req.params)
+        const id = req.params.id
+        db.get_projects(id)
             .then(result => {
                 res.status(200).send(result)
             })
@@ -16,11 +18,11 @@ module.exports = {
     getProjectUser: (req, res) => {
         // console.log(req.params)
         const db = req.app.get('db')
-        // const user = req.params.user
+        const user = req.params.user
         // console.log(user)
-        db.get_project_user(1)
+        db.get_project_user(user)
         .then(result => {
-            console.log(result)
+            // console.log(result)
             res.status(200).send(result)
         })
     },

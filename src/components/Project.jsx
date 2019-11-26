@@ -62,15 +62,38 @@ class Project extends React.Component {
 
     componentDidMount(){
         this.getProjectUser()
+        console.log(this.props.project.project_id)
     }
 
     getProjectUser(){
         axios.get(`/api/project/${this.props.project.project_id}`)
         .then(res => {
-            console.log(res)
+            // console.log(res)
             this.setState({
                 projectUser: res.data[0].username
             })
+        })
+    }
+
+    //ADD BUTTON METHOD--------------------------------------------------------------------------
+    addButton() {
+
+        // this.setState({
+        //     drop_id: this.state.drop_id + 1
+        // })
+        // console.log(this.state.drop_id)
+        const id = this.props.project.project_id
+
+        axios.post('/api/tasks', [id]).then(res => {
+            // console.log(res.data)
+            this.setState({
+
+                tasks: res.data
+            })
+
+
+            this.props.getTasks()
+            // this.getTaskOrder()
         })
     }
 
@@ -103,7 +126,7 @@ class Project extends React.Component {
 
                             <Buttons>
                                 <Add
-                                    onClick={() => this.props.addButton()}
+                                    onClick={() => this.addButton()}
                                 >+</Add>
                             </Buttons>
 
