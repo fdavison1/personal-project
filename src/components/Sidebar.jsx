@@ -8,13 +8,14 @@ import Swal from 'sweetalert2'
 import { Content } from '../css/styledComponents'
 
 const SideBar = styled.div`
-height: 100vh
-background: lightgray
 width: 300px
 display: flex
+position: fixed
+top: 80px
 flex-direction: column
 align-items: center
-justify-content: space-between`
+justify-content: space-between
+z-index: 10`
 
 const StyledLink = styled(Link)`
     text-decoration: none;

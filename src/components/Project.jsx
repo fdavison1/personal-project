@@ -13,7 +13,7 @@ border-radius: 5px
 margin: 75px
 min-width: 500px
 max-width: 100px
-background: white`
+background: ${props => ((props.sessionUser === props.projectUser) ? 'white' : 'lightgray')}`
 const Title = styled.h3`
 font-family: sans-serif
 margin: 3px
@@ -21,7 +21,7 @@ font-size: 3rem
 font-weight: 200`
 const TaskList = styled.div`
 font-weight: 200
-background: white`
+background: ${props => ((props.sessionUser === props.projectUser) ? 'white' : 'lightgray')}`
 const Add = styled.div`
 height: 90px
 width: 90px
@@ -60,19 +60,19 @@ class Project extends React.Component {
         }
     }
 
-    componentDidMount(){
+    componentDidMount() {
         this.getProjectUser()
         // console.log(this.props.project.project_id)
     }
 
-    getProjectUser(){
+    getProjectUser() {
         axios.get(`/api/project/${this.props.project.project_id}`)
-        .then(res => {
-            // console.log(res)
-            this.setState({
-                projectUser: res.data[0].username
+            .then(res => {
+                // console.log(res)
+                this.setState({
+                    projectUser: res.data[0].username
+                })
             })
-        })
     }
 
     //ADD BUTTON METHOD--------------------------------------------------------------------------
@@ -104,7 +104,10 @@ class Project extends React.Component {
 
             <Droppable droppableId={this.props.project.droppable_id}>
                 {(provided, snapshot) => (
-                    <Container>
+                    <Container
+                        sessionUser={localStorage.getItem('username')}
+                        projectUser={this.state.projectUser}
+                    >
 
                         {/* <Content>{this.props.project.project_id}</Content> */}
                         <Content>{this.state.projectUser}</Content>
@@ -112,6 +115,8 @@ class Project extends React.Component {
                         <Title>{this.props.project.title}</Title>
 
                         <TaskList
+                            sessionUser={localStorage.getItem('username')}
+                            projectUser={this.state.projectUser}
                             ref={provided.innerRef}
                             {...provided.droppableProps}
                             isDraggingOver={snapshot.isDraggingOver}
@@ -123,17 +128,18 @@ class Project extends React.Component {
                         </TaskList>
 
 
-                        <div className="test">
+                        {(localStorage.getItem('username') === this.state.projectUser) &&
+                            <div className="test">
+                                <Buttons>
+                                    <Add
+                                        onClick={() => this.addButton()}
+                                    >+</Add>
+                                </Buttons>
 
-                            <Buttons>
-                                <Add
-                                    onClick={() => this.addButton()}
-                                >+</Add>
-                            </Buttons>
 
+                                <TrashCan />
+                            </div>}
 
-                            <TrashCan />
-                        </div>
 
 
                     </Container>
@@ -143,7 +149,7 @@ class Project extends React.Component {
     }
 }
 
-function mapStateToProps(reduxState){
+function mapStateToProps(reduxState) {
     return reduxState
 }
 

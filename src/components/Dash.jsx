@@ -9,6 +9,16 @@ const Container = styled.div`
 display: flex
 background: white`
 
+const SideBar2 = styled.div`
+min-height: 100vh
+height: auto
+background: lightgray
+width: 300px
+display: flex
+flex-direction: column
+align-items: center
+justify-content: space-between`
+
 
 export default class Dash extends React.Component {
     constructor() {
@@ -185,7 +195,7 @@ export default class Dash extends React.Component {
                 getProjects={this.getProjects}
                 />
 
-
+                <SideBar2/>
 
                 <DragDropContext
                     onDragEnd={this.onDragEnd}>
