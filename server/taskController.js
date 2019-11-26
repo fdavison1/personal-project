@@ -10,6 +10,7 @@ module.exports = {
         const db = req.app.get('db')
         // console.log(req.params)
         const id = req.params.id
+        console.log(id)
         db.get_projects(id)
             .then(result => {
                 res.status(200).send(result)

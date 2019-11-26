@@ -46,7 +46,7 @@ module.exports = {
         if (!goodPassword){
             return res.status(403).send({message: 'incorrect password'})
         }
-        req.session.user = {username: user.username}
+        req.session.user = {username: user.username, userID: user.id}
         res.status(200).send({message: 'hooray!', user: req.session.user})
 
     },

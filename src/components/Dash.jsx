@@ -55,8 +55,10 @@ export default class Dash extends React.Component {
     }
     ///need to update
     getProjects() {
-        // const id = ...........................................
-        axios.get(`/api/projects/2`)
+        // console.log(localStorage.getItem('username'))
+        const id = localStorage.getItem('userID')
+        console.log(id)
+        axios.get(`/api/projects/${id}`)
             .then(res => {
                 console.log(res)
                 this.setState({
