@@ -27,7 +27,7 @@ module.exports = {
 
 
         //assign user to session
-        req.session.user = {username: user.username}
+        req.session.user = {username: user.username, userID: user.id}
         res.status(201).send({message: 'logged in', user: req.session.user})
     },
     login: async (req, res) => {

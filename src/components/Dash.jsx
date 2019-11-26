@@ -39,11 +39,10 @@ export default class Dash extends React.Component {
 
     //INITIAL RENDER--------------------------------------------------------------------------
     componentDidMount() {
-        // console.log(this.state.projects)
-        this.getProjects()
-        // this.getTaskOrder()
         const userID = localStorage.getItem('userID')
+        this.getProjects(userID)
         this.getTasks(userID)
+        // this.getTaskOrder()
     }
 
     getTasks(userID) {

@@ -83,7 +83,7 @@ class Project extends React.Component {
         // })
         // console.log(this.state.drop_id)
         const id = localStorage.getItem('userID')
-        console.log(id)
+        // console.log(id)
 
         axios.post('/api/tasks', [id]).then(res => {
             // console.log(res.data)
