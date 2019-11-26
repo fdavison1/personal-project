@@ -59,6 +59,7 @@ class Project extends React.Component {
             projectUser: '',
             tasks: []
         }
+        this.getTasks = this.getTasks.bind(this)
     }
 
     componentDidMount() {
@@ -78,7 +79,7 @@ class Project extends React.Component {
     }
     getTasks() {
         const userID = this.props.project.project_id
-        console.log(userID)
+        // console.log(userID)
         axios.get(`/api/tasks/${userID}`)
             .then(res => {
                 // console.log(res.data)
@@ -106,7 +107,7 @@ class Project extends React.Component {
             destination.droppableId === 'trash-can'
         ) {
             // console.log(this.state.tasks)
-            const id = this.props.tasks[source.index].task_id
+            const id = this.state.tasks[source.index].task_id
             // console.log(id)
             // console.log(this.state.tasks[source.index])
             axios.delete(`/api/task/${id}`).then(res => {
@@ -116,8 +117,8 @@ class Project extends React.Component {
                 
                 // this.getTaskOrder()
 
-                const userID = localStorage.getItem('userID')
-                this.props.getTasks(userID)
+                // const userID = localStorage.getItem('userID')
+                this.getTasks()
     })}}
 
 
@@ -143,7 +144,7 @@ class Project extends React.Component {
             })
 
 
-            this.props.getTasks(id)
+            this.getTasks()
             // this.getTaskOrder()
         })
     }
@@ -176,7 +177,7 @@ class Project extends React.Component {
                             >
 
                             {tasks.map((task, index) => <Task key={task.task_id}
-                                task={task} index={index} tasks={tasks} getTasks={this.props.getTasks} />)}
+                                task={task} index={index} tasks={tasks} getTasks={this.getTasks} />)}
                             {provided.placeholder}
                         </TaskList>
 

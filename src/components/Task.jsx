@@ -48,8 +48,8 @@ export default class Task extends React.Component {
 
             axios.put(`/api/task/${id}`, [this.state.localContent]).then(res => {
                 // console.log('fred')
-                const userID = localStorage.getItem('userID')
-                this.props.getTasks(userID)
+                // const userID = localStorage.getItem('userID')
+                this.props.getTasks()
             })
             this.setState({
                 editField: false
