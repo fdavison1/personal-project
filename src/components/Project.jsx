@@ -74,10 +74,45 @@ class Project extends React.Component {
                 })
             })
     }
+    //ON DRAG END--------------------------------------------------------------------------
+    onDragEnd = result => {
+        const { destination, source } = result
+          //NO ACTION REQUIRED: no destination or dropped in same location
+          if (!destination) {
+            return
+        }
+        if (
+            destination.droppableId === source.droppableId &&
+            destination.index === source.index
+        ) {
+            return
+        }
+        ////TRASH CAN: AXIOS DELETE
+        if (
+            destination.droppableId === 'trash-can'
+        ) {
+            // console.log(this.state.tasks)
+            const id = this.props.tasks[source.index].task_id
+            // console.log(id)
+            // console.log(this.state.tasks[source.index])
+            axios.delete(`/api/task/${id}`).then(res => {
+                // console.log('fred')
+                
+                
+                
+                // this.getTaskOrder()
+
+                const userID = localStorage.getItem('userID')
+                this.props.getTasks(userID)
+    })}}
+
+
+
+
 
     //ADD BUTTON METHOD--------------------------------------------------------------------------
     addButton() {
-        console.log(this.props.tasks)
+        // console.log(this.props.tasks)
 
         // this.setState({
         //     drop_id: this.state.drop_id + 1
@@ -102,7 +137,9 @@ class Project extends React.Component {
     render() {
         const { tasks } = this.props
         return (
-            <DragDropContext>
+            <DragDropContext
+            onDragEnd={this.onDragEnd}
+            >
 
             <Droppable droppableId={this.props.project.droppable_id}>
                 {(provided, snapshot) => (
@@ -111,9 +148,9 @@ class Project extends React.Component {
                     projectUser={this.state.projectUser}
                     >
 
-                        {/* <Content>{this.props.project.project_id}</Content> */}
+
                         <Content>{this.state.projectUser}</Content>
-                        {/* <Content>{this.props.username}</Content> */}
+
                         <Title>{this.props.project.title}</Title>
 
                         <TaskList

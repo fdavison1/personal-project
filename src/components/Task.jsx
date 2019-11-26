@@ -67,8 +67,6 @@ export default class Task extends React.Component {
 
     render() {
         // console.log(this.props.task.task_id, this.props.task.content, this.props.task.droppable_id)
-        const content =
-            this.props.tasks.find(el => el.task_id === +this.props.task.droppable_id)
 
         // const content = content.content
         // const test = this.props.tasks.find(el => console.log(el))
