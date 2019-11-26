@@ -2,7 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
-import { Droppable } from 'react-beautiful-dnd'
+import { DragDropContext, Droppable } from 'react-beautiful-dnd'
 import Task from './Task'
 import TrashCan from './TrashCan'
 
@@ -77,6 +77,7 @@ class Project extends React.Component {
 
     //ADD BUTTON METHOD--------------------------------------------------------------------------
     addButton() {
+        console.log(this.props.tasks)
 
         // this.setState({
         //     drop_id: this.state.drop_id + 1
@@ -101,12 +102,13 @@ class Project extends React.Component {
     render() {
         const { tasks } = this.props
         return (
+            <DragDropContext>
 
             <Droppable droppableId={this.props.project.droppable_id}>
                 {(provided, snapshot) => (
                     <Container
-                        sessionUser={localStorage.getItem('username')}
-                        projectUser={this.state.projectUser}
+                    sessionUser={localStorage.getItem('username')}
+                    projectUser={this.state.projectUser}
                     >
 
                         {/* <Content>{this.props.project.project_id}</Content> */}
@@ -120,7 +122,7 @@ class Project extends React.Component {
                             ref={provided.innerRef}
                             {...provided.droppableProps}
                             isDraggingOver={snapshot.isDraggingOver}
-                        >
+                            >
 
                             {tasks.map((task, index) => <Task key={task.task_id}
                                 task={task} index={index} tasks={tasks} getTasks={this.props.getTasks} />)}
@@ -133,7 +135,7 @@ class Project extends React.Component {
                                 <Buttons>
                                     <Add
                                         onClick={() => this.addButton()}
-                                    >+</Add>
+                                        >+</Add>
                                 </Buttons>
 
 
@@ -145,6 +147,7 @@ class Project extends React.Component {
                     </Container>
                 )}
             </Droppable>
+            </DragDropContext>
         )
     }
 }

@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import styled from 'styled-components'
-import { DragDropContext } from 'react-beautiful-dnd'
+// import { DragDropContext } from 'react-beautiful-dnd'
 import Project from './Project'
 import Sidebar from './Sidebar'
 
@@ -128,11 +128,10 @@ export default class Dash extends React.Component {
                 
                 // this.getTaskOrder()
 
-
                 const userID = localStorage.getItem('userID')
                 this.getTasks(userID)
                 
-                const newTasks = Array.from(this.state.tasks)
+                // const newTasks = Array.from(this.state.tasks)
 
 
         // for (let i = 0; i < this.state.taskOrder.length; i++) {
@@ -199,8 +198,8 @@ export default class Dash extends React.Component {
 
                 <SideBar2/>
 
-                <DragDropContext
-                    onDragEnd={this.onDragEnd}>
+                {/* <DragDropContext */}
+                    {/* onDragEnd={this.onDragEnd}> */}
 
                     {(this.state.projects.length > 0) &&
 
@@ -222,7 +221,7 @@ export default class Dash extends React.Component {
 
 
                         </div>}
-                </DragDropContext>
+                {/* </DragDropContext> */}
 
 
 
