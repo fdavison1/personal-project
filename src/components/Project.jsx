@@ -14,14 +14,17 @@ margin: 75px
 min-width: 500px
 max-width: 100px
 background: ${props => ((props.sessionUser === props.projectUser) ? 'white' : 'lightgray')}`
+
 const Title = styled.h3`
 font-family: sans-serif
 margin: 3px
 font-size: 3rem
 font-weight: 200`
+
 const TaskList = styled.div`
 font-weight: 200
 background: ${props => ((props.sessionUser === props.projectUser) ? 'white' : 'lightgray')}`
+
 const Add = styled.div`
 height: 90px
 width: 90px
@@ -40,12 +43,14 @@ box-sizing: border-box
     width: 135px
     font-size: 7rem
 }`
+
 const Buttons = styled.div`
 display: flex
 justify-content: space-evenly
 align-items: center
 margin: 8px
 width: 40%`
+
 const Content = styled.div`
 font-size: 1.5rem
 margin-top: 25px`
@@ -64,14 +69,12 @@ class Project extends React.Component {
 
     componentDidMount() {
         this.getProjectUser()
-        // console.log(this.props.project.project_id)
         this.getTasks()
     }
 
     getProjectUser() {
         axios.get(`/api/project/${this.props.project.project_id}`)
             .then(res => {
-                // console.log(res)
                 this.setState({
                     projectUser: res.data[0].username
                 })
@@ -79,21 +82,19 @@ class Project extends React.Component {
     }
     getTasks() {
         const userID = this.props.project.project_id
-        // console.log(userID)
         axios.get(`/api/tasks/${userID}`)
             .then(res => {
-                // console.log(res.data)
                 this.setState({
                     tasks: res.data
                 })
             })
-        }
+    }
 
     //ON DRAG END--------------------------------------------------------------------------
     onDragEnd = result => {
         const { destination, source } = result
-          //NO ACTION REQUIRED: no destination or dropped in same location
-          if (!destination) {
+        //NO ACTION REQUIRED: no destination or dropped in same location
+        if (!destination) {
             return
         }
         if (
@@ -106,20 +107,13 @@ class Project extends React.Component {
         if (
             destination.droppableId === 'trash-can'
         ) {
-            // console.log(this.state.tasks)
             const id = this.state.tasks[source.index].task_id
-            // console.log(id)
-            // console.log(this.state.tasks[source.index])
             axios.delete(`/api/task/${id}`).then(res => {
-                // console.log('fred')
-                
-                
-                
-                // this.getTaskOrder()
 
-                // const userID = localStorage.getItem('userID')
                 this.getTasks()
-    })}}
+            })
+        }
+    }
 
 
 
@@ -127,25 +121,13 @@ class Project extends React.Component {
 
     //ADD BUTTON METHOD--------------------------------------------------------------------------
     addButton() {
-        // console.log(this.props.tasks)
-
-        // this.setState({
-        //     drop_id: this.state.drop_id + 1
-        // })
-        // console.log(this.state.drop_id)
         const id = localStorage.getItem('userID')
-        // console.log(id)
 
         axios.post('/api/tasks', [id]).then(res => {
-            // console.log(res.data)
             this.setState({
-
                 tasks: res.data
             })
-
-
             this.getTasks()
-            // this.getTaskOrder()
         })
     }
 
@@ -153,53 +135,53 @@ class Project extends React.Component {
         const { tasks } = this.state
         return (
             <DragDropContext
-            onDragEnd={this.onDragEnd}
+                onDragEnd={this.onDragEnd}
             >
 
-            <Droppable droppableId={this.props.project.droppable_id}>
-                {(provided, snapshot) => (
-                    <Container
-                    sessionUser={localStorage.getItem('username')}
-                    projectUser={this.state.projectUser}
-                    >
-
-
-                        <Content>{this.state.projectUser}</Content>
-
-                        <Title>{this.props.project.title}</Title>
-
-                        <TaskList
+                <Droppable droppableId={this.props.project.droppable_id}>
+                    {(provided, snapshot) => (
+                        <Container
                             sessionUser={localStorage.getItem('username')}
                             projectUser={this.state.projectUser}
-                            ref={provided.innerRef}
-                            {...provided.droppableProps}
-                            isDraggingOver={snapshot.isDraggingOver}
+                        >
+
+
+                            <Content>{this.state.projectUser}</Content>
+
+                            <Title>{this.props.project.title}</Title>
+
+                            <TaskList
+                                sessionUser={localStorage.getItem('username')}
+                                projectUser={this.state.projectUser}
+                                ref={provided.innerRef}
+                                {...provided.droppableProps}
+                                isDraggingOver={snapshot.isDraggingOver}
                             >
 
-                            {tasks.map((task, index) => <Task key={task.task_id}
-                                task={task} index={index} tasks={tasks} getTasks={this.getTasks}
-                                projectUser={this.state.projectUser} />)}
-                            {provided.placeholder}
-                        </TaskList>
+                                {tasks.map((task, index) => <Task key={task.task_id}
+                                    task={task} index={index} tasks={tasks} getTasks={this.getTasks}
+                                    projectUser={this.state.projectUser} />)}
+                                {provided.placeholder}
+                            </TaskList>
 
 
-                        {(localStorage.getItem('username') === this.state.projectUser) &&
-                            <div className="test">
-                                <Buttons>
-                                    <Add
-                                        onClick={() => this.addButton()}
+                            {(localStorage.getItem('username') === this.state.projectUser) &&
+                                <div className="test">
+                                    <Buttons>
+                                        <Add
+                                            onClick={() => this.addButton()}
                                         >+</Add>
-                                </Buttons>
+                                    </Buttons>
 
 
-                                <TrashCan />
-                            </div>}
+                                    <TrashCan />
+                                </div>}
 
 
 
-                    </Container>
-                )}
-            </Droppable>
+                        </Container>
+                    )}
+                </Droppable>
             </DragDropContext>
         )
     }

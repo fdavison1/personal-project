@@ -43,8 +43,6 @@ class Login extends React.Component {
             .then(res => {
                 this.props.updateUsername(res.data.user.username)
                 localStorage.setItem('userID', res.data.user.userID)
-                // console.log(res.data)
-                // console.log(localStorage.getItem('userID'))
                 //sweetalert
                 Swal.fire(
                     res.data.message,
@@ -53,7 +51,6 @@ class Login extends React.Component {
                 //link to dash....
                 this.props.history.push('/dash')
             }).catch(err => {
-                // return console.log(err.response.data)
                 Swal.fire(
                     err.response.data.message,
                     err.message,

@@ -1,7 +1,6 @@
 import React from 'react'
 import axios from 'axios'
 import styled from 'styled-components'
-// import { DragDropContext } from 'react-beautiful-dnd'
 import Project from './Project'
 import Sidebar from './Sidebar'
 
@@ -25,11 +24,9 @@ export default class Dash extends React.Component {
         super()
         this.state = {
             tasks: [],
-            taskOrder: [],
             projects: [],
             allLists: false
         }
-        // this.addButton = this.addButton.bind(this)
         this.getTasks = this.getTasks.bind(this)
         this.allListsTrue = this.allListsTrue.bind(this)
         this.allListsFalse = this.allListsFalse.bind(this)
@@ -42,39 +39,23 @@ export default class Dash extends React.Component {
         const userID = localStorage.getItem('userID')
         this.getProjects(userID)
         this.getTasks(userID)
-        // this.getTaskOrder()
     }
 
     getTasks(userID) {
-        // console.log(userID)
         axios.get(`/api/tasks/${userID}`)
             .then(res => {
-                // console.log(res.data)
                 this.setState({
                     tasks: res.data
                 })
             })
     }
-    // getTaskOrder() {
-    //     axios.get('/api/taskOrder').then(res => {
 
-    //         const newTaskOrder = []
-    //         for (let i = 0; i < res.data.length; i++) {
-    //             newTaskOrder.push(res.data[i].task_id)
-    //         }
-    //         this.setState({
-    //             taskOrder: newTaskOrder
-    //         })
-
-    //     })
-    // }
     getProjects() {
 
         if (!this.state.allLists){
         const id = localStorage.getItem('userID')
         axios.get(`/api/projects/${id}`)
             .then(res => {
-                // console.log(res)
                 this.setState({
                     projects: res.data
                 })
@@ -197,8 +178,6 @@ export default class Dash extends React.Component {
 
                 <SideBar2/>
 
-                {/* <DragDropContext */}
-                    {/* onDragEnd={this.onDragEnd}> */}
 
                     {(this.state.projects.length > 0) &&
 
@@ -216,19 +195,9 @@ export default class Dash extends React.Component {
                                 />
                             })}
 
-
-
-
                         </div>}
-                {/* </DragDropContext> */}
-
-
-
 
             </Container>
-
-
-
 
         )
     }

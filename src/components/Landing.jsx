@@ -47,38 +47,36 @@ const StyledLink = styled(Link)`
 export default function Landing() {
     return (
         <Div>
-            <Header/>
-            {/* <Title>Landing.jsx</Title> */}
-
+            <Header />
 
             <Container>
-                
-            <StyledLink to='/register'>
-                <Section>
-                    <Title>Register</Title>
-                </Section>
-            </StyledLink>
+
+                <StyledLink to='/register'>
+                    <Section>
+                        <Title>Register</Title>
+                    </Section>
+                </StyledLink>
 
 
                 <StyledLink to='/login'>
-                <Section>
-                    <Title>Login</Title>
-                </Section>
-            </StyledLink>
+                    <Section>
+                        <Title>Login</Title>
+                    </Section>
+                </StyledLink>
             </Container>
 
 
-        <Stripe>
+            <Stripe>
 
-            <Title>Some info</Title>
-        </Stripe>
+                <Title>Some info</Title>
+            </Stripe>
 
-        <Container>
-            <Title>Some info</Title>
-        </Container>
-        <Stripe>
-            <Title>Some info</Title>
-        </Stripe>
+            <Container>
+                <Title>Some info</Title>
+            </Container>
+            <Stripe>
+                <Title>Some info</Title>
+            </Stripe>
 
         </Div>
     )

@@ -22,12 +22,12 @@ const StyledLink = styled(Link)`
     color: black
     &:focus, &:hover, &:visited, &:link, &:active {
         text-decoration: none;
-    }
-`
-
+    }`
+    
 export const Content2 = styled.h1`
 font-size: 1.5rem
-margin-top: 25px`
+margin-top: 25px
+font-weight: 600`
 
 function Sidebar(props) {
     const logout = () => {
@@ -64,12 +64,9 @@ function Sidebar(props) {
                     onClick={() => myList()}
                 >my list</Content>
 
-
                 <Content
                     onClick={() => allLists()}
                 >all lists</Content>
-
-
 
                 <StyledLink to='/'>
                     <Content
@@ -77,10 +74,6 @@ function Sidebar(props) {
                     >log out</Content>
                 </StyledLink>
             </div>
-
-
-
-
 
         </SideBar>
     )

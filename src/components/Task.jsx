@@ -20,7 +20,6 @@ export default class Task extends React.Component {
   
 
     editTask() {
-
         //if sessionUser = projectUser...
         const sessionUser = localStorage.getItem('username')
         const { projectUser } = this.props
@@ -52,13 +51,10 @@ export default class Task extends React.Component {
                 })
                 return
             }
-            // console.log('fred')
             const id = this.props.task.task_id
             console.log(id)
 
             axios.put(`/api/task/${id}`, [this.state.localContent]).then(res => {
-                // console.log('fred')
-                // const userID = localStorage.getItem('userID')
                 this.props.getTasks()
             })
             this.setState({
@@ -76,11 +72,7 @@ export default class Task extends React.Component {
 
 
     render() {
-        // console.log(this.props.task.task_id, this.props.task.content, this.props.task.droppable_id)
 
-        // const content = content.content
-        // const test = this.props.tasks.find(el => console.log(el))
-        // console.log(test)
         return (
 
             <Draggable draggableId={this.props.task.task_id.toString()} index={this.props.index}>
@@ -97,16 +89,7 @@ export default class Task extends React.Component {
                         {!this.state.editField ?
 
 
-                        // <span>{content.content}</span>
-                                // content ? <span>{content.content}</span> : <span>new task</span>
                             <span>{this.props.task.content}</span>
-
-
-
-                            // this.props.task.task_id <= 6 ? <span>{content.content}</span> 
-                            // : this.state.localContent ? <span>{this.state.localContent}</span> :
-                            // <span>new task</span>
-                            //  && <span>{this.state.localContent}</span>
 
                             :
 
@@ -122,12 +105,12 @@ export default class Task extends React.Component {
                         {/* *****FOR TESTING PURPOSES***** */}
                         {/* {this.props.task.content} */}
                         {/* {this.state.localContent} */}
-                        <br />
-                        <span>task_id:</span>{this.props.task.task_id}
-                        <br />
-                        <span>drop_id:</span>{this.props.task.droppable_id}
-                        <br/>
-                        <span>user_id:</span>{this.props.task.user_id}
+                        {/* <br /> */}
+                        {/* <span>task_id:</span>{this.props.task.task_id} */}
+                        {/* <br /> */}
+                        {/* <span>drop_id:</span>{this.props.task.droppable_id} */}
+                        {/* <br/> */}
+                        {/* <span>user_id:</span>{this.props.task.user_id} */}
 
                     </Container>
                 )}

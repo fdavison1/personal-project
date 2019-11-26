@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 import { Droppable } from 'react-beautiful-dnd'
 
-
 const Trash = styled.div`
 display: flex
 margin: 8px
@@ -14,11 +13,7 @@ background-repeat: no-repeat
 border-radius: 5px
 width: 40%`
 
-
-
-
 export default class extends React.Component {
-
 
     render() {
         return (
@@ -31,19 +26,11 @@ export default class extends React.Component {
                     {...provided.droppableProps}
                     isDraggingOver={snapshot.isDraggingOver}>
 
-
-
-                    {provided.placeholder}
-
-                    
+                    {provided.placeholder}     
                   
             </Trash>
                     )}
             </Droppable>
-
-
-
-
         )
     }
 }
