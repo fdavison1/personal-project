@@ -5,8 +5,9 @@ import Project from './Project'
 import Sidebar from './Sidebar'
 
 const Container = styled.div`
+background: white
 display: flex
-background: white`
+flex-wrap: wrap`
 
 const SideBar2 = styled.div`
 min-height: 100vh
@@ -52,15 +53,16 @@ export default class Dash extends React.Component {
 
     getProjects() {
 
-        if (!this.state.allLists){
-        const id = localStorage.getItem('userID')
-        axios.get(`/api/projects/${id}`)
-            .then(res => {
-                this.setState({
-                    projects: res.data
+        if (!this.state.allLists) {
+            const id = localStorage.getItem('userID')
+            axios.get(`/api/projects/${id}`)
+                .then(res => {
+                    this.setState({
+                        projects: res.data
+                    })
                 })
-            })}
-        if (this.state.allLists){
+        }
+        if (this.state.allLists) {
             axios.get('/api/projects').then(res => {
                 this.setState({
                     projects: res.data
@@ -68,134 +70,47 @@ export default class Dash extends React.Component {
             })
         }
     }
-    allListsTrue(){
+    allListsTrue() {
         this.setState({
             allLists: true
         })
     }
-    allListsFalse(){
+    allListsFalse() {
         this.setState({
             allLists: false
         })
     }
 
-    // //ON DRAG END--------------------------------------------------------------------------
-    // onDragEnd = async result => {
-    //     const { destination, source } = result
-    //     //NO ACTION REQUIRED: no destination or dropped in same location
-    //     if (!destination) {
-    //         return
-    //     }
-    //     if (
-    //         destination.droppableId === source.droppableId &&
-    //         destination.index === source.index
-    //     ) {
-    //         return
-    //     }
-
-    // //     ////TRASH CAN: AXIOS DELETE
-    //     if (
-    //         destination.droppableId === 'trash-can'
-    //     ) {
-    //         // console.log(this.state.tasks)
-    //         const id = this.state.tasks[source.index].task_id
-    //         // console.log(id)
-    //         // console.log(this.state.tasks[source.index])
-    //         axios.delete(`/api/task/${id}`).then(res => {
-    //             // console.log('fred')
-                
-                
-                
-    //             // this.getTaskOrder()
-
-    //             const userID = localStorage.getItem('userID')
-    //             this.getTasks(userID)
-                
-    //             // const newTasks = Array.from(this.state.tasks)
-
-
-    //     // for (let i = 0; i < this.state.taskOrder.length; i++) {
-    //     //     newTasks[i].droppable_id = this.state.taskOrder[i]
-    //     // }
-                
-    //     //         return
-
-    //         })
-    //     }
-
-
-
-    //     const newTaskOrder = Array.from(this.state.taskOrder)
-    //     const sourceValue = newTaskOrder.splice(source.index, 1)
-    //     newTaskOrder.splice(destination.index, 0, sourceValue[0])
-
-    //     ///need to fix (mutating state)?
-    //     this.state.taskOrder = newTaskOrder
-
-    //     // this.setState({
-    //     //     taskOrder : newTaskOrder
-    //     // })
-
-    //     const newTasks = Array.from(this.state.tasks)
-
-
-    //     for (let i = 0; i < this.state.taskOrder.length; i++) {
-    //         newTasks[i].droppable_id = this.state.taskOrder[i]
-    //     }
-    // }
-
-    //ADD BUTTON METHOD--------------------------------------------------------------------------
-    // addButton() {
-
-    //     this.setState({
-    //         drop_id: this.state.drop_id + 1
-    //     })
-
-    //     // console.log(this.state.drop_id)
-
-    //     axios.post('/api/tasks', ['1']).then(res => {
-    //         // console.log(res.data)
-    //         this.setState({
-
-    //             tasks: res.data
-    //         })
-
-
-    //         this.getTasks()
-    //         this.getTaskOrder()
-    //     })
-    // }
 
 
     render() {
         return (
             <Container>
-                <Sidebar 
-                allListsTrue={this.allListsTrue}
-                allListsFalse={this.allListsFalse}
-                getProjects={this.getProjects}
+                <Sidebar
+                    allListsTrue={this.allListsTrue}
+                    allListsFalse={this.allListsFalse}
+                    getProjects={this.getProjects}
                 />
 
-                <SideBar2/>
+                <SideBar2 />
+
+                {(this.state.projects.length > 0) &&
+                    <div>
 
 
-                    {(this.state.projects.length > 0) &&
+                        {this.state.projects.map((projectID, index) => {
+                            const project = this.state.projects[index]
 
-                        <div className='test1'>
+                            const tasks = this.state.tasks.map((taskId, index) => this.state.tasks[index])
+                            return <Project key={project.project_id}
+                                project={project}
+                                tasks={tasks}
+                                addButton={this.addButton}
+                                getTasks={this.getTasks}
+                            />
+                        })}
 
-                            {this.state.projects.map((projectID, index) => {
-                                const project = this.state.projects[index]
-
-                                const tasks = this.state.tasks.map((taskId, index) => this.state.tasks[index])
-                                return <Project key={project.project_id}
-                                    project={project}
-                                    tasks={tasks}
-                                    addButton={this.addButton}
-                                    getTasks={this.getTasks}
-                                />
-                            })}
-
-                        </div>}
+                    </div>}
 
             </Container>
 

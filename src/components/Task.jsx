@@ -52,7 +52,6 @@ export default class Task extends React.Component {
                 return
             }
             const id = this.props.task.task_id
-            console.log(id)
 
             axios.put(`/api/task/${id}`, [this.state.localContent]).then(res => {
                 this.props.getTasks()
@@ -107,8 +106,8 @@ export default class Task extends React.Component {
                         {/* {this.state.localContent} */}
                         {/* <br /> */}
                         {/* <span>task_id:</span>{this.props.task.task_id} */}
-                        {/* <br /> */}
-                        {/* <span>drop_id:</span>{this.props.task.droppable_id} */}
+                        <br />
+                        <span>drop_id:</span>{this.props.task.droppable_id}
                         {/* <br/> */}
                         {/* <span>user_id:</span>{this.props.task.user_id} */}
 

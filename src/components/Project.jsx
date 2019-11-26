@@ -5,14 +5,13 @@ import styled from 'styled-components'
 import { DragDropContext, Droppable } from 'react-beautiful-dnd'
 import Task from './Task'
 import TrashCan from './TrashCan'
-
+import ToggleSwitch from './ToggleSwitch'
 
 const Container = styled.div`
 border: 1px solid lightgray
 border-radius: 5px
-margin: 75px
-min-width: 500px
-max-width: 100px
+margin: 50px
+width: 500px
 background: ${props => ((props.sessionUser === props.projectUser) ? 'white' : 'lightgray')}`
 
 const Title = styled.h3`
@@ -113,11 +112,25 @@ class Project extends React.Component {
                 this.getTasks()
             })
         }
+        //     const newTaskOrder = Array.from(this.state.taskOrder)
+        //     const sourceValue = newTaskOrder.splice(source.index, 1)
+        //     newTaskOrder.splice(destination.index, 0, sourceValue[0])
+
+        //     ///need to fix (mutating state)?
+        //     this.state.taskOrder = newTaskOrder
+
+        //     // this.setState({
+        //     //     taskOrder : newTaskOrder
+        //     // })
+
+        //     const newTasks = Array.from(this.state.tasks)
+
+
+        //     for (let i = 0; i < this.state.taskOrder.length; i++) {
+        //         newTasks[i].droppable_id = this.state.taskOrder[i]
+        //     }
+        // }
     }
-
-
-
-
 
     //ADD BUTTON METHOD--------------------------------------------------------------------------
     addButton() {
@@ -145,6 +158,9 @@ class Project extends React.Component {
                             projectUser={this.state.projectUser}
                         >
 
+                            {(localStorage.getItem('username') === this.state.projectUser) &&
+                                <ToggleSwitch />}
+
 
                             <Content>{this.state.projectUser}</Content>
 
@@ -164,7 +180,6 @@ class Project extends React.Component {
                                 {provided.placeholder}
                             </TaskList>
 
-
                             {(localStorage.getItem('username') === this.state.projectUser) &&
                                 <div className="test">
                                     <Buttons>
@@ -173,11 +188,8 @@ class Project extends React.Component {
                                         >+</Add>
                                     </Buttons>
 
-
                                     <TrashCan />
                                 </div>}
-
-
 
                         </Container>
                     )}

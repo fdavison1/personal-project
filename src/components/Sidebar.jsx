@@ -23,7 +23,7 @@ const StyledLink = styled(Link)`
     &:focus, &:hover, &:visited, &:link, &:active {
         text-decoration: none;
     }`
-    
+
 export const Content2 = styled.h1`
 font-size: 1.5rem
 margin-top: 25px

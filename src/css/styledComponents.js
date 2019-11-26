@@ -55,7 +55,7 @@ font-size: 1.5rem
 &:hover {
   font-weight: 600
 }
-margin-top: 25px`
+margin-top: 10px`
 
 //New task button
 export const TaskButton = styled.div`
