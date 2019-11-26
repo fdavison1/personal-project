@@ -62,7 +62,7 @@ class Project extends React.Component {
 
     componentDidMount(){
         this.getProjectUser()
-        console.log(this.props.project.project_id)
+        // console.log(this.props.project.project_id)
     }
 
     getProjectUser(){

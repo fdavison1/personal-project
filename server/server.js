@@ -23,7 +23,7 @@ app.post('/auth/login', a.login)
 app.delete('/auth/logout', a.logout)
 
 //TASK CONTROLLER ENDPOINTS--------------------------------------------------------------------------
-app.get('/api/tasks', c.getTasks)
+app.get('/api/tasks/:id', c.getTasks)
 app.post('/api/tasks', c.addTask)
 app.put('/api/task/:id', c.updateTask)
 app.delete('/api/task/:id', c.deleteTask)

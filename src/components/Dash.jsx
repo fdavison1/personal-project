@@ -27,14 +27,18 @@ export default class Dash extends React.Component {
     componentDidMount() {
         // console.log(this.state.projects)
         this.getProjects()
-        console.log(this.state.projects)
+        // console.log(this.state.projects)
         // this.getTaskOrder()
-        this.getTasks()
+        // console.log(localStorage.getItem('userID'))
+        const userID = localStorage.getItem('userID')
+        this.getTasks(userID)
     }
 
-    getTasks() {
-        axios.get('/api/tasks')
+    getTasks(userID) {
+        // console.log(userID)
+        axios.get(`/api/tasks/${userID}`)
             .then(res => {
+                console.log(res.data)
                 this.setState({
                     tasks: res.data
                 })
@@ -57,10 +61,10 @@ export default class Dash extends React.Component {
     getProjects() {
         // console.log(localStorage.getItem('username'))
         const id = localStorage.getItem('userID')
-        console.log(id)
+        // console.log(id)
         axios.get(`/api/projects/${id}`)
             .then(res => {
-                console.log(res)
+                // console.log(res)
                 this.setState({
                     projects: res.data
                 })

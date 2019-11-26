@@ -43,8 +43,8 @@ class Login extends React.Component {
             .then(res => {
                 this.props.updateUsername(res.data.user.username)
                 localStorage.setItem('userID', res.data.user.userID)
-                console.log(res.data)
-                console.log(localStorage.getItem('userID'))
+                // console.log(res.data)
+                // console.log(localStorage.getItem('userID'))
                 //sweetalert
                 Swal.fire(
                     res.data.message,
