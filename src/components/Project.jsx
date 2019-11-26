@@ -56,13 +56,15 @@ class Project extends React.Component {
         super(props)
 
         this.state = {
-            projectUser: ''
+            projectUser: '',
+            tasks: []
         }
     }
 
     componentDidMount() {
         this.getProjectUser()
         // console.log(this.props.project.project_id)
+        this.getTasks()
     }
 
     getProjectUser() {
@@ -74,6 +76,18 @@ class Project extends React.Component {
                 })
             })
     }
+    getTasks() {
+        const userID = this.props.project.project_id
+        console.log(userID)
+        axios.get(`/api/tasks/${userID}`)
+            .then(res => {
+                // console.log(res.data)
+                this.setState({
+                    tasks: res.data
+                })
+            })
+        }
+
     //ON DRAG END--------------------------------------------------------------------------
     onDragEnd = result => {
         const { destination, source } = result
@@ -135,7 +149,7 @@ class Project extends React.Component {
     }
 
     render() {
-        const { tasks } = this.props
+        const { tasks } = this.state
         return (
             <DragDropContext
             onDragEnd={this.onDragEnd}

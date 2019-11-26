@@ -55,20 +55,19 @@ export default class Dash extends React.Component {
                 })
             })
     }
-    getTaskOrder() {
-        axios.get('/api/taskOrder').then(res => {
+    // getTaskOrder() {
+    //     axios.get('/api/taskOrder').then(res => {
 
-            const newTaskOrder = []
-            for (let i = 0; i < res.data.length; i++) {
-                newTaskOrder.push(res.data[i].task_id)
-            }
-            this.setState({
-                taskOrder: newTaskOrder
-            })
+    //         const newTaskOrder = []
+    //         for (let i = 0; i < res.data.length; i++) {
+    //             newTaskOrder.push(res.data[i].task_id)
+    //         }
+    //         this.setState({
+    //             taskOrder: newTaskOrder
+    //         })
 
-        })
-    }
-    ///need to update
+    //     })
+    // }
     getProjects() {
 
         if (!this.state.allLists){
@@ -99,49 +98,49 @@ export default class Dash extends React.Component {
         })
     }
 
-    //ON DRAG END--------------------------------------------------------------------------
-    onDragEnd = async result => {
-        const { destination, source } = result
-        //NO ACTION REQUIRED: no destination or dropped in same location
-        if (!destination) {
-            return
-        }
-        if (
-            destination.droppableId === source.droppableId &&
-            destination.index === source.index
-        ) {
-            return
-        }
+    // //ON DRAG END--------------------------------------------------------------------------
+    // onDragEnd = async result => {
+    //     const { destination, source } = result
+    //     //NO ACTION REQUIRED: no destination or dropped in same location
+    //     if (!destination) {
+    //         return
+    //     }
+    //     if (
+    //         destination.droppableId === source.droppableId &&
+    //         destination.index === source.index
+    //     ) {
+    //         return
+    //     }
 
-    //     ////TRASH CAN: AXIOS DELETE
-        if (
-            destination.droppableId === 'trash-can'
-        ) {
-            // console.log(this.state.tasks)
-            const id = this.state.tasks[source.index].task_id
-            // console.log(id)
-            // console.log(this.state.tasks[source.index])
-            axios.delete(`/api/task/${id}`).then(res => {
-                // console.log('fred')
+    // //     ////TRASH CAN: AXIOS DELETE
+    //     if (
+    //         destination.droppableId === 'trash-can'
+    //     ) {
+    //         // console.log(this.state.tasks)
+    //         const id = this.state.tasks[source.index].task_id
+    //         // console.log(id)
+    //         // console.log(this.state.tasks[source.index])
+    //         axios.delete(`/api/task/${id}`).then(res => {
+    //             // console.log('fred')
                 
                 
                 
-                // this.getTaskOrder()
+    //             // this.getTaskOrder()
 
-                const userID = localStorage.getItem('userID')
-                this.getTasks(userID)
+    //             const userID = localStorage.getItem('userID')
+    //             this.getTasks(userID)
                 
-                // const newTasks = Array.from(this.state.tasks)
+    //             // const newTasks = Array.from(this.state.tasks)
 
 
-        // for (let i = 0; i < this.state.taskOrder.length; i++) {
-        //     newTasks[i].droppable_id = this.state.taskOrder[i]
-        // }
+    //     // for (let i = 0; i < this.state.taskOrder.length; i++) {
+    //     //     newTasks[i].droppable_id = this.state.taskOrder[i]
+    //     // }
                 
-        //         return
+    //     //         return
 
-            })
-        }
+    //         })
+    //     }
 
 
 
@@ -162,7 +161,7 @@ export default class Dash extends React.Component {
     //     for (let i = 0; i < this.state.taskOrder.length; i++) {
     //         newTasks[i].droppable_id = this.state.taskOrder[i]
     //     }
-    }
+    // }
 
     //ADD BUTTON METHOD--------------------------------------------------------------------------
     // addButton() {
