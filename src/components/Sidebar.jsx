@@ -35,15 +35,29 @@ function Sidebar(props) {
         })
         localStorage.clear()
     }
-    // console.log(props.username)
+    ///////
+    const allLists =()=> {
+        // console.log('all lists')
+        axios.get('/api/projects').then(res => {
+            console.log(res.data)
+        })
+    }
     return (
         <SideBar>
 
             <div>
 
-            <Content>{localStorage.getItem('username')}</Content>
+            <Content
+            
+            >{localStorage.getItem('username')}</Content>
 
-            <Content>all lists</Content>
+
+            <Content
+            onClick={()=>allLists()}
+            >all lists</Content>
+
+
+
             <StyledLink to='/'>
             <Content
             onClick={()=> logout()}

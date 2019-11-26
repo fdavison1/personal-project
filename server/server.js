@@ -24,12 +24,13 @@ app.delete('/auth/logout', a.logout)
 
 //TASK CONTROLLER ENDPOINTS--------------------------------------------------------------------------
 app.get('/api/tasks/:id', c.getTasks)
-app.post('/api/tasks', c.addTask)
+app.post('/api/tasks/', c.addTask)
 app.put('/api/task/:id', c.updateTask)
 app.delete('/api/task/:id', c.deleteTask)
 
 app.get('/api/taskOrder', c.getTaskOrder)
 
+app.get('/api/projects', c.getAllProjects)
 app.get('/api/projects/:id', c.getProjects)
 app.get('/api/project/:user', c.getProjectUser)
 

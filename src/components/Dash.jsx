@@ -16,7 +16,8 @@ export default class Dash extends React.Component {
         this.state = {
             tasks: [],
             taskOrder: [],
-            projects: []
+            projects: [],
+            allLists: false
         }
         // this.addButton = this.addButton.bind(this)
         this.getTasks = this.getTasks.bind(this)
@@ -27,9 +28,7 @@ export default class Dash extends React.Component {
     componentDidMount() {
         // console.log(this.state.projects)
         this.getProjects()
-        // console.log(this.state.projects)
         // this.getTaskOrder()
-        // console.log(localStorage.getItem('userID'))
         const userID = localStorage.getItem('userID')
         this.getTasks(userID)
     }
@@ -59,17 +58,33 @@ export default class Dash extends React.Component {
     }
     ///need to update
     getProjects() {
-        // console.log(localStorage.getItem('username'))
+
+        if (!this.state.allLists){
         const id = localStorage.getItem('userID')
-        // console.log(id)
         axios.get(`/api/projects/${id}`)
             .then(res => {
                 // console.log(res)
                 this.setState({
                     projects: res.data
                 })
+            })}
+        if (this.state.allLists){
+            axios.get('/api/projects').then(res => {
+                console.log(res.data)
             })
+        }
     }
+    allListsTrue(){
+        this.setState({
+            allLists: true
+        })
+    }
+    allListsFalse(){
+        this.setState({
+            allLists: false
+        })
+    }
+
     //ON DRAG END--------------------------------------------------------------------------
     onDragEnd = async result => {
         const { destination, source } = result

@@ -7,6 +7,14 @@ module.exports = {
                 res.status(200).send(result)
             })
     },
+    getAllProjects: (req, res)=> {
+        console.log('get all projects')
+        const db = req.app.get('db')
+        db.get_all_projects()
+        .then(result => {
+            res.status(200).send(result)
+        })
+    },
     getProjects: (req, res) => {
         const db = req.app.get('db')
         // console.log(req.params)
