@@ -13,6 +13,17 @@ module.exports = {
                 res.status(200).send(result)
             })
     },
+    getProjectUser: (req, res) => {
+        // console.log(req.params)
+        const db = req.app.get('db')
+        // const user = req.params.user
+        // console.log(user)
+        db.get_project_user(1)
+        .then(result => {
+            console.log(result)
+            res.status(200).send(result)
+        })
+    },
     getTaskOrder: (req, res) => {
         const db = req.app.get('db')
         db.get_taskorder()

@@ -17,6 +17,8 @@ export default class Task extends React.Component {
         localContent: ''
     }
 
+  
+
     editTask() {
         this.setState({
             editField: !this.state.editField
@@ -111,12 +113,14 @@ export default class Task extends React.Component {
                         }
 
                         {/* *****FOR TESTING PURPOSES***** */}
-                        {/* {this.props.task.content} */}
+                        {this.props.task.content}
                         {/* {this.state.localContent} */}
-                        {/* <br />
+                        <br />
                         <span>task_id:</span>{this.props.task.task_id}
                         <br />
-                        <span>drop_id</span>{this.props.task.droppable_id} */}
+                        <span>drop_id:</span>{this.props.task.droppable_id}
+                        <br/>
+                        <span>user_id:</span>{this.props.task.user_id}
 
                     </Container>
                 )}

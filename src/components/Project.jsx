@@ -1,4 +1,5 @@
 import React from 'react'
+import axios from 'axios'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
 import { Droppable } from 'react-beautiful-dnd'
@@ -55,8 +56,24 @@ class Project extends React.Component {
         super(props)
 
         this.state = {
+            projectUser: ''
         }
     }
+
+    componentDidMount(){
+        this.getProjectUser()
+    }
+
+    getProjectUser(){
+        axios.get(`/api/project/${this.props.project.project_id}`)
+        .then(res => {
+            console.log(res)
+            this.setState({
+                projectUser: res.data[0].username
+            })
+        })
+    }
+
     render() {
         const { tasks } = this.props
         return (
@@ -65,8 +82,9 @@ class Project extends React.Component {
                 {(provided, snapshot) => (
                     <Container>
 
-                        <Content>{this.props.project.project_id}</Content>
-                        {/* Change title to reflect user_id??? */}
+                        {/* <Content>{this.props.project.project_id}</Content> */}
+                        <Content>{this.state.projectUser}</Content>
+                        {/* <Content>{this.props.username}</Content> */}
                         <Title>{this.props.project.title}</Title>
 
                         <TaskList

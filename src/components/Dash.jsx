@@ -16,8 +16,7 @@ export default class Dash extends React.Component {
         this.state = {
             tasks: [],
             taskOrder: [],
-            projects: [],
-            drop_id: 7
+            projects: []
         }
         this.addButton = this.addButton.bind(this)
         this.getTasks = this.getTasks.bind(this)
@@ -26,10 +25,10 @@ export default class Dash extends React.Component {
 
     //INITIAL RENDER--------------------------------------------------------------------------
     componentDidMount() {
-        console.log(this.state.projects)
+        // console.log(this.state.projects)
         this.getProjects()
         // this.getTaskOrder()
-        // this.getTasks()
+        this.getTasks()
     }
 
     getTasks() {
@@ -76,7 +75,7 @@ export default class Dash extends React.Component {
             return
         }
 
-        ////TRASH CAN: AXIOS DELETE
+    //     ////TRASH CAN: AXIOS DELETE
         if (
             destination.droppableId === 'trash-can'
         ) {
@@ -99,11 +98,6 @@ export default class Dash extends React.Component {
             newTasks[i].droppable_id = this.state.taskOrder[i]
         }
                 
-                
-                
-                
-                
-                
                 return
 
             })
@@ -111,23 +105,23 @@ export default class Dash extends React.Component {
 
 
 
-        const newTaskOrder = Array.from(this.state.taskOrder)
-        const sourceValue = newTaskOrder.splice(source.index, 1)
-        newTaskOrder.splice(destination.index, 0, sourceValue[0])
+    //     const newTaskOrder = Array.from(this.state.taskOrder)
+    //     const sourceValue = newTaskOrder.splice(source.index, 1)
+    //     newTaskOrder.splice(destination.index, 0, sourceValue[0])
 
-        ///need to fix (mutating state)?
-        this.state.taskOrder = newTaskOrder
+    //     ///need to fix (mutating state)?
+    //     this.state.taskOrder = newTaskOrder
 
-        // this.setState({
-        //     taskOrder : newTaskOrder
-        // })
+    //     // this.setState({
+    //     //     taskOrder : newTaskOrder
+    //     // })
 
-        const newTasks = Array.from(this.state.tasks)
+    //     const newTasks = Array.from(this.state.tasks)
 
 
-        for (let i = 0; i < this.state.taskOrder.length; i++) {
-            newTasks[i].droppable_id = this.state.taskOrder[i]
-        }
+    //     for (let i = 0; i < this.state.taskOrder.length; i++) {
+    //         newTasks[i].droppable_id = this.state.taskOrder[i]
+    //     }
     }
 
     //ADD BUTTON METHOD--------------------------------------------------------------------------
@@ -139,7 +133,7 @@ export default class Dash extends React.Component {
 
         // console.log(this.state.drop_id)
 
-        axios.post('/api/tasks', [this.state.drop_id.toString()]).then(res => {
+        axios.post('/api/tasks', ['1']).then(res => {
             // console.log(res.data)
             this.setState({
 
