@@ -38,7 +38,7 @@ export default class Dash extends React.Component {
         // console.log(userID)
         axios.get(`/api/tasks/${userID}`)
             .then(res => {
-                console.log(res.data)
+                // console.log(res.data)
                 this.setState({
                     tasks: res.data
                 })
