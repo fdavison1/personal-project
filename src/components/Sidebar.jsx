@@ -36,11 +36,15 @@ function Sidebar(props) {
         localStorage.clear()
     }
     ///////
-    const allLists =()=> {
+const myList = async () => {
+    await props.allListsFalse()
+    props.getProjects()
+}
+
+    const allLists = async ()=> {
         // console.log('all lists')
-        axios.get('/api/projects').then(res => {
-            console.log(res.data)
-        })
+       await props.allListsTrue()
+       props.getProjects()
     }
     return (
         <SideBar>
@@ -48,7 +52,7 @@ function Sidebar(props) {
             <div>
 
             <Content
-            
+            onClick={()=> myList()}
             >{localStorage.getItem('username')}</Content>
 
 

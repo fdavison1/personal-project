@@ -21,6 +21,9 @@ export default class Dash extends React.Component {
         }
         // this.addButton = this.addButton.bind(this)
         this.getTasks = this.getTasks.bind(this)
+        this.allListsTrue = this.allListsTrue.bind(this)
+        this.allListsFalse = this.allListsFalse.bind(this)
+        this.getProjects = this.getProjects.bind(this)
     }
 
 
@@ -70,7 +73,9 @@ export default class Dash extends React.Component {
             })}
         if (this.state.allLists){
             axios.get('/api/projects').then(res => {
-                console.log(res.data)
+                this.setState({
+                    projects: res.data
+                })
             })
         }
     }
@@ -174,7 +179,11 @@ export default class Dash extends React.Component {
     render() {
         return (
             <Container>
-                <Sidebar />
+                <Sidebar 
+                allListsTrue={this.allListsTrue}
+                allListsFalse={this.allListsFalse}
+                getProjects={this.getProjects}
+                />
 
 
 

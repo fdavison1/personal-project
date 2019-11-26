@@ -8,7 +8,7 @@ module.exports = {
             })
     },
     getAllProjects: (req, res)=> {
-        console.log('get all projects')
+        // console.log('get all projects')
         const db = req.app.get('db')
         db.get_all_projects()
         .then(result => {
