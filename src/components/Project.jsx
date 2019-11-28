@@ -61,17 +61,19 @@ class Project extends React.Component {
 
         this.state = {
             projectUser: '',
-            tasks: [], 
+            tasks: [],
             taskOrder: []
         }
         this.getTasks = this.getTasks.bind(this)
     }
 
-    componentDidMount() {
+    async componentDidMount() {
         this.getProjectUser()
         this.getTasks()
-        this.getTaskOrder()
+        await this.getTaskOrder()
+        // console.log(this.state.taskOrder)
         localStorage.setItem('taskOrder', this.state.taskOrder)
+        // console.log(localStorage.getItem('taskOrder'))
     }
 
     getProjectUser() {
@@ -90,20 +92,31 @@ class Project extends React.Component {
                     tasks: res.data
                 })
             })
-            // this.getTaskOrder()
+        // this.getTaskOrder()
     }
 
-    getTaskOrder(){
+    getTaskOrder() {
         // console.log('fred')
         axios.get(`/api/taskOrder/${this.props.project.project_id}`).then(res => {
             // console.log(res.data)
             const newTaskOrder = []
             newTaskOrder.push(res.data.map(taskID => taskID.task_id))
-            // console.log(newTaskOrder)
-            this.setState({
-                taskOrder: newTaskOrder
-            })
+            console.log(newTaskOrder)
+            console.log(newTaskOrder[0])
+            // this.setState({
+            // taskOrder: newTaskOrder[0]
+            // })
             // console.log(this.state.taskOrder)
+
+            // localStorage.setItem("array", JSON.stringify(array));
+            // array = JSON.parse(localStorage.getItem("array"));
+
+            localStorage.setItem('taskOrder', JSON.stringify(newTaskOrder[0]))
+            
+            const order = JSON.parse(localStorage.getItem('taskOrder'));
+            console.log(order)
+            // localStorage.setItem('taskOrder', newTaskOrder[0])
+            // console.log(localStorage.getItem('taskOrder'))
         })
     }
 
@@ -133,12 +146,17 @@ class Project extends React.Component {
         }
 
         // this.getTaskOrder()
-        console.log(this.state.taskOrder[0])
+        // console.log(this.state.taskOrder[0])
+        // console.log(localStorage.getItem('taskOrder'))
 
         ////////////REORDER TASKID ARRAY
-        const taskOrder = this.state.taskOrder[0]
+        const newTaskOrder = JSON.parse(localStorage.getItem('taskOrder'));
+        // console.log(newTaskOrder)
+
+
+        // const newTaskOrder = localStorage.getItem('taskOrder')
         // console.log(taskOrder)
-        const newTaskOrder = Array.from(taskOrder)
+        // const newTaskOrder = Array.from(taskOrder)
         // const newTaskOrder = [...taskOrder]
         // console.log(newTaskOrder.length)
         // console.log(source.index, destination.index)
@@ -156,7 +174,7 @@ class Project extends React.Component {
             taskOrder: newTaskOrder
         })
 
-        console.log(this.state.taskOrder)
+        // console.log(this.state.taskOrder)
 
 
         //     const newTaskOrder = Array.from(this.state.taskOrder)
@@ -215,12 +233,14 @@ class Project extends React.Component {
                             <Title>{this.props.project.title}</Title>
 
                             {/* TESTING */}
-                            
-                            <button
-                            onClick={()=> this.getTaskOrder()}
+                            {/* {JSON.parse(localStorage.getItem('taskOrder'))} */}
+                            {/* <button
+                                onClick={() => this.getTaskOrder()}
                             >getTaskOrder</button>
-                            <br/>
+                            <br />
                             taskOrder: {this.state.taskOrder}
+                            <br />
+                            localStorage:{localStorage.getItem('taskOrder')} */}
 
                             <TaskList
                                 sessionUser={localStorage.getItem('username')}
