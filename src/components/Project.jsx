@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import { DragDropContext, Droppable } from 'react-beautiful-dnd'
 import Task from './Task'
 import TrashCan from './TrashCan'
-import ToggleSwitch from './ToggleSwitch'
+// import ToggleSwitch from './ToggleSwitch'
 
 const Container = styled.div`
 border: 1px solid lightgray
@@ -61,7 +61,8 @@ class Project extends React.Component {
 
         this.state = {
             projectUser: '',
-            tasks: []
+            tasks: [], 
+            taskOrder: []
         }
         this.getTasks = this.getTasks.bind(this)
     }
@@ -91,7 +92,7 @@ class Project extends React.Component {
 
     //ON DRAG END--------------------------------------------------------------------------
     onDragEnd = result => {
-        const { destination, source } = result
+        const { destination, source, draggableID } = result
         //NO ACTION REQUIRED: no destination or dropped in same location
         if (!destination) {
             return
@@ -112,6 +113,21 @@ class Project extends React.Component {
                 this.getTasks()
             })
         }
+
+        ////////////REORDER TASKID ARRAY
+        const { taskOrder } = this.state
+        const newTaskOrder = Array.from(taskOrder)
+
+        //move task_id from old index to new index
+        newTaskOrder.splice(source.index, 1)
+        newTaskOrder.splice(destination.index, 0, draggableID)
+
+        //set new state
+        this.setState({
+            taskOrder: newTaskOrder
+        })
+
+
         //     const newTaskOrder = Array.from(this.state.taskOrder)
         //     const sourceValue = newTaskOrder.splice(source.index, 1)
         //     newTaskOrder.splice(destination.index, 0, sourceValue[0])
@@ -145,21 +161,22 @@ class Project extends React.Component {
     }
 
     render() {
+        // console.log(this.props.project)
         const { tasks } = this.state
         return (
             <DragDropContext
                 onDragEnd={this.onDragEnd}
             >
 
-                <Droppable droppableId={this.props.project.droppable_id}>
+                <Droppable droppableId={this.props.project.project_id.toString()}>
                     {(provided, snapshot) => (
                         <Container
                             sessionUser={localStorage.getItem('username')}
                             projectUser={this.state.projectUser}
                         >
 
-                            {(localStorage.getItem('username') === this.state.projectUser) &&
-                                <ToggleSwitch />}
+                            {/* {(localStorage.getItem('username') === this.state.projectUser) &&
+                                <ToggleSwitch />} */}
 
 
                             <Content>{this.state.projectUser}</Content>
