@@ -70,6 +70,8 @@ class Project extends React.Component {
     componentDidMount() {
         this.getProjectUser()
         this.getTasks()
+        this.getTaskOrder()
+        localStorage.setItem('taskOrder', this.state.taskOrder)
     }
 
     getProjectUser() {
@@ -88,6 +90,7 @@ class Project extends React.Component {
                     tasks: res.data
                 })
             })
+            // this.getTaskOrder()
     }
 
     getTaskOrder(){
@@ -100,12 +103,14 @@ class Project extends React.Component {
             this.setState({
                 taskOrder: newTaskOrder
             })
+            // console.log(this.state.taskOrder)
         })
     }
 
     //ON DRAG END--------------------------------------------------------------------------
     onDragEnd = result => {
-        const { destination, source, draggableID } = result
+        const { destination, source, draggableId } = result
+
         //NO ACTION REQUIRED: no destination or dropped in same location
         if (!destination) {
             return
@@ -127,18 +132,31 @@ class Project extends React.Component {
             })
         }
 
+        // this.getTaskOrder()
+        console.log(this.state.taskOrder[0])
+
         ////////////REORDER TASKID ARRAY
-        const { taskOrder } = this.state
+        const taskOrder = this.state.taskOrder[0]
+        // console.log(taskOrder)
         const newTaskOrder = Array.from(taskOrder)
+        // const newTaskOrder = [...taskOrder]
+        // console.log(newTaskOrder.length)
+        // console.log(source.index, destination.index)
+        // console.log(newTaskOrder)
 
         //move task_id from old index to new index
         newTaskOrder.splice(source.index, 1)
-        newTaskOrder.splice(destination.index, 0, draggableID)
+        newTaskOrder.splice(destination.index, 0, +draggableId)
+
+        // console.log(newTaskOrder)
+        // console.log(result.draggableID)
 
         //set new state
         this.setState({
             taskOrder: newTaskOrder
         })
+
+        console.log(this.state.taskOrder)
 
 
         //     const newTaskOrder = Array.from(this.state.taskOrder)
