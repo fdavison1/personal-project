@@ -28,7 +28,7 @@ app.post('/api/tasks/', c.addTask)
 app.put('/api/task/:id', c.updateTask)
 app.delete('/api/task/:id', c.deleteTask)
 
-app.get('/api/taskOrder', c.getTaskOrder)
+app.get('/api/taskOrder/:id', c.getTaskOrder)
 
 app.get('/api/projects', c.getAllProjects)
 app.get('/api/projects/:id', c.getProjects)

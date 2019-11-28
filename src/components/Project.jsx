@@ -90,6 +90,19 @@ class Project extends React.Component {
             })
     }
 
+    getTaskOrder(){
+        // console.log('fred')
+        axios.get(`/api/taskOrder/${this.props.project.project_id}`).then(res => {
+            // console.log(res.data)
+            const newTaskOrder = []
+            newTaskOrder.push(res.data.map(taskID => taskID.task_id))
+            // console.log(newTaskOrder)
+            this.setState({
+                taskOrder: newTaskOrder
+            })
+        })
+    }
+
     //ON DRAG END--------------------------------------------------------------------------
     onDragEnd = result => {
         const { destination, source, draggableID } = result
@@ -182,6 +195,14 @@ class Project extends React.Component {
                             <Content>{this.state.projectUser}</Content>
 
                             <Title>{this.props.project.title}</Title>
+
+                            {/* TESTING */}
+                            
+                            <button
+                            onClick={()=> this.getTaskOrder()}
+                            >getTaskOrder</button>
+                            <br/>
+                            taskOrder: {this.state.taskOrder}
 
                             <TaskList
                                 sessionUser={localStorage.getItem('username')}

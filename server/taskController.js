@@ -33,7 +33,8 @@ module.exports = {
     },
     getTaskOrder: (req, res) => {
         const db = req.app.get('db')
-        db.get_taskorder()
+        const projectID = +req.params.id
+        db.get_taskorder(projectID)
             .then(result => {
                 res.status(200).send(result)
             })
