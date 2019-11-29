@@ -1,10 +1,14 @@
 import React from 'react'
 import axios from 'axios'
 import { connect } from 'react-redux'
+import arrayMove from 'array-move'
+// import { SortableContainer } from 'react-sortable-hoc'
 import styled from 'styled-components'
-import Task from './Task'
+// import Task from './Task'
+// import TaskList from './TaskList'
 import TrashCan from './TrashCan'
 // import ToggleSwitch from './ToggleSwitch'
+import ImgContainer from './ImgContainer'
 
 const Container = styled.div`
 border: 1px solid lightgray
@@ -19,9 +23,9 @@ margin: 3px
 font-size: 3rem
 font-weight: 200`
 
-const TaskList = styled.div`
-font-weight: 200
-background: ${props => ((props.sessionUser === props.projectUser) ? 'white' : 'lightgray')}`
+// const TaskList = styled.div`
+// font-weight: 200
+// background: ${props => ((props.sessionUser === props.projectUser) ? 'white' : 'lightgray')}`
 
 const Add = styled.div`
 height: 90px
@@ -62,6 +66,12 @@ class Project extends React.Component {
             projectUser: '',
             tasks: [],
             taskOrder: [],
+            images: [
+                'https://previews.123rf.com/images/tomwang/tomwang1507/tomwang150700058/42561850-successful-young-business-people-working-in-the-office.jpg',
+                'https://previews.123rf.com/images/tomwang/tomwang1609/tomwang160900052/63240267-happy-young-business-people-working-in-office.jpg',
+                'https://previews.123rf.com/images/ivankoivanko/ivankoivanko1608/ivankoivanko160800151/61291636-successful-team-of-young-business-people-a-group-of-creative-professionals-working-together-on-a-new.jpg',
+                'https://ak1.picdn.net/shutterstock/videos/5916011/thumb/1.jpg'
+            ]
 
         }
         this.getTasks = this.getTasks.bind(this)
@@ -114,7 +124,7 @@ class Project extends React.Component {
             localStorage.setItem('taskOrder', JSON.stringify(newTaskOrder[0]))
 
             const order = JSON.parse(localStorage.getItem('taskOrder'));
-            console.log(order)
+            // console.log(order)
             // localStorage.setItem('taskOrder', newTaskOrder[0])
             // console.log(localStorage.getItem('taskOrder'))
         })
@@ -131,11 +141,16 @@ class Project extends React.Component {
             this.getTasks()
         })
     }
+    //ON SORT END----------------------------------------------------------------------------------
+    onSortEnd = ({ oldIndex, newIndex }) => {
+        this.setState({ tasks: arrayMove(this.state.tasks, oldIndex, newIndex) })
+    }
 
     render() {
         // console.log(this.props.project)
         const { tasks } = this.state
         return (
+
 
 
 
@@ -162,16 +177,19 @@ class Project extends React.Component {
                                 <br />
                             localStorage:{localStorage.getItem('taskOrder')} */}
 
-                <TaskList
+                {/* <TaskList images={this.state.images} onSortEnd={this.onSortEnd} /> */}
+                <ImgContainer images={this.state.images} onSortEnd={this.onSortEnd} />
+
+                {/* <TaskList
                     sessionUser={localStorage.getItem('username')}
                     projectUser={this.state.projectUser}
-                >
+                    >
 
                     {tasks.map((task, index) => <Task key={task.task_id}
                         task={task} index={index} tasks={tasks} getTasks={this.getTasks}
                         projectUser={this.state.projectUser} />)}
 
-                </TaskList>
+                </TaskList> */}
 
                 {(localStorage.getItem('username') === this.state.projectUser) &&
                     <div className="test">
