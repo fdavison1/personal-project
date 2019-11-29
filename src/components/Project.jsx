@@ -143,7 +143,7 @@ class Project extends React.Component {
     }
     //ON SORT END----------------------------------------------------------------------------------
     onSortEnd = ({ oldIndex, newIndex }) => {
-        this.setState({ tasks: arrayMove(this.state.tasks, oldIndex, newIndex) })
+        this.setState({ images: arrayMove(this.state.images, oldIndex, newIndex) })
     }
 
     render() {
