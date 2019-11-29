@@ -2,7 +2,6 @@ import React from 'react'
 import axios from 'axios'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
-import { DragDropContext, Droppable } from 'react-beautiful-dnd'
 import Task from './Task'
 import TrashCan from './TrashCan'
 // import ToggleSwitch from './ToggleSwitch'
@@ -62,7 +61,8 @@ class Project extends React.Component {
         this.state = {
             projectUser: '',
             tasks: [],
-            taskOrder: []
+            taskOrder: [],
+
         }
         this.getTasks = this.getTasks.bind(this)
     }
@@ -101,8 +101,8 @@ class Project extends React.Component {
             // console.log(res.data)
             const newTaskOrder = []
             newTaskOrder.push(res.data.map(taskID => taskID.task_id))
-            console.log(newTaskOrder)
-            console.log(newTaskOrder[0])
+            // console.log(newTaskOrder)
+            // console.log(newTaskOrder[0])
             // this.setState({
             // taskOrder: newTaskOrder[0]
             // })
@@ -112,89 +112,12 @@ class Project extends React.Component {
             // array = JSON.parse(localStorage.getItem("array"));
 
             localStorage.setItem('taskOrder', JSON.stringify(newTaskOrder[0]))
-            
+
             const order = JSON.parse(localStorage.getItem('taskOrder'));
             console.log(order)
             // localStorage.setItem('taskOrder', newTaskOrder[0])
             // console.log(localStorage.getItem('taskOrder'))
         })
-    }
-
-    //ON DRAG END--------------------------------------------------------------------------
-    onDragEnd = result => {
-        const { destination, source, draggableId } = result
-
-        //NO ACTION REQUIRED: no destination or dropped in same location
-        if (!destination) {
-            return
-        }
-        if (
-            destination.droppableId === source.droppableId &&
-            destination.index === source.index
-        ) {
-            return
-        }
-        ////TRASH CAN: AXIOS DELETE
-        if (
-            destination.droppableId === 'trash-can'
-        ) {
-            const id = this.state.tasks[source.index].task_id
-            axios.delete(`/api/task/${id}`).then(res => {
-
-                this.getTasks()
-            })
-        }
-
-        // this.getTaskOrder()
-        // console.log(this.state.taskOrder[0])
-        // console.log(localStorage.getItem('taskOrder'))
-
-        ////////////REORDER TASKID ARRAY
-        const newTaskOrder = JSON.parse(localStorage.getItem('taskOrder'));
-        // console.log(newTaskOrder)
-
-
-        // const newTaskOrder = localStorage.getItem('taskOrder')
-        // console.log(taskOrder)
-        // const newTaskOrder = Array.from(taskOrder)
-        // const newTaskOrder = [...taskOrder]
-        // console.log(newTaskOrder.length)
-        // console.log(source.index, destination.index)
-        // console.log(newTaskOrder)
-
-        //move task_id from old index to new index
-        newTaskOrder.splice(source.index, 1)
-        newTaskOrder.splice(destination.index, 0, +draggableId)
-
-        // console.log(newTaskOrder)
-        // console.log(result.draggableID)
-
-        //set new state
-        this.setState({
-            taskOrder: newTaskOrder
-        })
-
-        // console.log(this.state.taskOrder)
-
-
-        //     const newTaskOrder = Array.from(this.state.taskOrder)
-        //     const sourceValue = newTaskOrder.splice(source.index, 1)
-        //     newTaskOrder.splice(destination.index, 0, sourceValue[0])
-
-        //     ///need to fix (mutating state)?
-        //     this.state.taskOrder = newTaskOrder
-
-        //     // this.setState({
-        //     //     taskOrder : newTaskOrder
-        //     // })
-
-        //     const newTasks = Array.from(this.state.tasks)
-
-
-        //     for (let i = 0; i < this.state.taskOrder.length; i++) {
-        //         newTasks[i].droppable_id = this.state.taskOrder[i]
-        //     }
-        // }
     }
 
     //ADD BUTTON METHOD--------------------------------------------------------------------------
@@ -213,64 +136,57 @@ class Project extends React.Component {
         // console.log(this.props.project)
         const { tasks } = this.state
         return (
-            <DragDropContext
-                onDragEnd={this.onDragEnd}
+
+
+
+            <Container
+                sessionUser={localStorage.getItem('username')}
+                projectUser={this.state.projectUser}
             >
 
-                <Droppable droppableId={this.props.project.project_id.toString()}>
-                    {(provided, snapshot) => (
-                        <Container
-                            sessionUser={localStorage.getItem('username')}
-                            projectUser={this.state.projectUser}
-                        >
-
-                            {/* {(localStorage.getItem('username') === this.state.projectUser) &&
+                {/* {(localStorage.getItem('username') === this.state.projectUser) &&
                                 <ToggleSwitch />} */}
 
 
-                            <Content>{this.state.projectUser}</Content>
+                <Content>{this.state.projectUser}</Content>
 
-                            <Title>{this.props.project.title}</Title>
+                <Title>{this.props.project.title}</Title>
 
-                            {/* TESTING */}
-                            {/* {JSON.parse(localStorage.getItem('taskOrder'))} */}
-                            {/* <button
+                {/* TESTING */}
+                {/* {JSON.parse(localStorage.getItem('taskOrder'))} */}
+                {/* <button
                                 onClick={() => this.getTaskOrder()}
-                            >getTaskOrder</button>
-                            <br />
-                            taskOrder: {this.state.taskOrder}
-                            <br />
+                                >getTaskOrder</button>
+                                <br />
+                                taskOrder: {this.state.taskOrder}
+                                <br />
                             localStorage:{localStorage.getItem('taskOrder')} */}
 
-                            <TaskList
-                                sessionUser={localStorage.getItem('username')}
-                                projectUser={this.state.projectUser}
-                                ref={provided.innerRef}
-                                {...provided.droppableProps}
-                                isDraggingOver={snapshot.isDraggingOver}
-                            >
+                <TaskList
+                    sessionUser={localStorage.getItem('username')}
+                    projectUser={this.state.projectUser}
+                >
 
-                                {tasks.map((task, index) => <Task key={task.task_id}
-                                    task={task} index={index} tasks={tasks} getTasks={this.getTasks}
-                                    projectUser={this.state.projectUser} />)}
-                                {provided.placeholder}
-                            </TaskList>
+                    {tasks.map((task, index) => <Task key={task.task_id}
+                        task={task} index={index} tasks={tasks} getTasks={this.getTasks}
+                        projectUser={this.state.projectUser} />)}
 
-                            {(localStorage.getItem('username') === this.state.projectUser) &&
-                                <div className="test">
-                                    <Buttons>
-                                        <Add
-                                            onClick={() => this.addButton()}
-                                        >+</Add>
-                                    </Buttons>
+                </TaskList>
 
-                                    <TrashCan />
-                                </div>}
+                {(localStorage.getItem('username') === this.state.projectUser) &&
+                    <div className="test">
+                        <Buttons>
+                            <Add
+                                onClick={() => this.addButton()}
+                            >+</Add>
+                        </Buttons>
 
-                        </Container>
-                    )}
-                </Droppable>
-            </DragDropContext>
+                        <TrashCan />
+                    </div>}
+
+            </Container>
+
+
         )
     }
 }

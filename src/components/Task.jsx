@@ -1,7 +1,6 @@
 import React from 'react'
 import axios from 'axios'
 import styled from 'styled-components'
-import { Draggable } from 'react-beautiful-dnd'
 
 const Container = styled.div`
 border: 1px solid lightgray
@@ -74,14 +73,10 @@ export default class Task extends React.Component {
 
         return (
 
-            <Draggable draggableId={this.props.task.task_id.toString()} index={this.props.index}>
-                {(provided, snapshot) => (
+
                     <Container
                         onDoubleClick={() => this.editTask()}
-                        {...provided.draggableProps}
-                        {...provided.dragHandleProps}
-                        ref={provided.innerRef}
-                        isDragging={snapshot.isDragging}>
+                    >
 
 
 
@@ -112,9 +107,7 @@ export default class Task extends React.Component {
                         <span>user_id:</span>{this.props.task.user_id} */}
 
                     </Container>
-                )}
-
-            </Draggable>
+                
         )
     }
 }
