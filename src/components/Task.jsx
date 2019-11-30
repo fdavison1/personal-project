@@ -104,14 +104,19 @@ export default class Task extends React.Component {
                 {/* {this.state.localContent} */}
                 <br />
                 <span>task_id:</span>{this.props.task.task_id}
-                <br />
-                <span>drop_id:</span>{this.props.task.droppable_id}
+                {/* <br /> */}
+                {/* <span>drop_id:</span>{this.props.task.droppable_id} */}
                 {/* <br/>
                         <span>user_id:</span>{this.props.task.user_id} */}
 
-                <button
+                { 
+
+                    (localStorage.getItem('username') === this.props.projectUser)
+                        &&
+                    <button
                     onClick={() => this.editTask()}
-                >edit</button>
+                    >edit</button>
+                }
 
             </Container>
 
