@@ -6,9 +6,11 @@ const TaskList = SortableContainer(props => {
     return (
         <div>
             {props.tasks.map((task, index) => <TaskContainer
-            key={task}
+            key={task.task_id}
             index={index}
             task={task}
+            projectUser={props.projectUser}
+            getTasks={props.getTasks}
             />)}
         </div>
     )

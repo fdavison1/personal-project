@@ -16,19 +16,22 @@ export default class Task extends React.Component {
         localContent: ''
     }
 
-  
+
 
     editTask() {
+        // console.log('fred')
         //if sessionUser = projectUser...
         const sessionUser = localStorage.getItem('username')
         const { projectUser } = this.props
 
-        if (sessionUser === projectUser)
+        // console.log(sessionUser)
+        // console.log(projectUser)
 
-
-        {this.setState({
-            editField: !this.state.editField
-        })}
+        if (sessionUser === projectUser) {
+            this.setState({
+                editField: !this.state.editField
+            })
+        }
 
         return
     }
@@ -74,40 +77,44 @@ export default class Task extends React.Component {
         return (
 
 
-                    <Container
-                        onDoubleClick={() => this.editTask()}
-                    >
+            <Container
+                onDoubleClick={() => this.editTask()}
+            >
 
 
 
-                        {!this.state.editField ?
+                {!this.state.editField ?
 
 
-                            <span>{this.props.task.content}</span>
+                    <span>{this.props.task.content}</span>
 
-                            :
+                    :
 
-                            <input
-                                onChange={(e) => this.contentChange(e)}
-                                placeholder={this.props.task.content}
-                                type="text"
-                                onKeyPress={(e) => this.submit(e)}
-                            />
+                    <input
+                        onChange={(e) => this.contentChange(e)}
+                        placeholder={this.props.task.content}
+                        type="text"
+                        onKeyPress={(e) => this.submit(e)}
+                    />
 
-                        }
+                }
 
-                        {/* *****FOR TESTING PURPOSES***** */}
-                        {/* {this.props.task.content} */}
-                        {/* {this.state.localContent} */}
-                        <br />
-                        <span>task_id:</span>{this.props.task.task_id}
-                        <br />
-                        <span>drop_id:</span>{this.props.task.droppable_id}
-                        {/* <br/>
+                {/* *****FOR TESTING PURPOSES***** */}
+                {/* {this.props.task.content} */}
+                {/* {this.state.localContent} */}
+                <br />
+                <span>task_id:</span>{this.props.task.task_id}
+                <br />
+                <span>drop_id:</span>{this.props.task.droppable_id}
+                {/* <br/>
                         <span>user_id:</span>{this.props.task.user_id} */}
 
-                    </Container>
-                
+                <button
+                    onClick={() => this.editTask()}
+                >edit</button>
+
+            </Container>
+
         )
     }
 }

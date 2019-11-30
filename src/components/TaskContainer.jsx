@@ -4,7 +4,9 @@ import Task from './Task'
 
 const TaskContainer = SortableElement(props => {
     return (
-        <Task task={props.task}/>
+        <Task task={props.task}
+        projectUser={props.projectUser}
+        getTasks={props.getTasks}/>
     )
 })
 
