@@ -66,13 +66,7 @@ class Project extends React.Component {
         this.state = {
             projectUser: '',
             tasks: [],
-            taskOrder: [],
-            images: [
-                'https://previews.123rf.com/images/tomwang/tomwang1507/tomwang150700058/42561850-successful-young-business-people-working-in-the-office.jpg',
-                'https://previews.123rf.com/images/tomwang/tomwang1609/tomwang160900052/63240267-happy-young-business-people-working-in-office.jpg',
-                'https://previews.123rf.com/images/ivankoivanko/ivankoivanko1608/ivankoivanko160800151/61291636-successful-team-of-young-business-people-a-group-of-creative-professionals-working-together-on-a-new.jpg',
-                'https://ak1.picdn.net/shutterstock/videos/5916011/thumb/1.jpg'
-            ]
+            taskOrder: []
 
         }
         this.getTasks = this.getTasks.bind(this)
@@ -144,7 +138,7 @@ class Project extends React.Component {
     }
     //ON SORT END----------------------------------------------------------------------------------
     onSortEnd = ({ oldIndex, newIndex }) => {
-        this.setState({ images: arrayMove(this.state.images, oldIndex, newIndex) })
+        this.setState({ tasks: arrayMove(this.state.tasks, oldIndex, newIndex) })
     }
 
     render() {
