@@ -1,11 +1,17 @@
 import React from 'react'
-import { SortableElement } from 'react-sortable-hoc'
-import Image from './Image'
+import { SortableContainer } from 'react-sortable-hoc'
+import TaskContainer from './TaskContainer'
 
-const SortableImageContainer = SortableElement((props) => {
+const TaskList = SortableContainer(props => {
     return (
-        <Image image={props.image}/>
+        <div>
+            {props.tasks.map((task, index) => <TaskContainer
+            key={task}
+            index={index}
+            task={task}
+            />)}
+        </div>
     )
 })
 
-export default SortableImageContainer
+export default TaskList

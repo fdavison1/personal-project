@@ -8,7 +8,8 @@ import styled from 'styled-components'
 // import TaskList from './TaskList'
 import TrashCan from './TrashCan'
 // import ToggleSwitch from './ToggleSwitch'
-import ImgContainer from './ImgContainer'
+// import ImgContainer from './ImgContainer'
+import TaskList from './TaskList'
 
 const Container = styled.div`
 border: 1px solid lightgray
@@ -178,7 +179,8 @@ class Project extends React.Component {
                             localStorage:{localStorage.getItem('taskOrder')} */}
 
                 {/* <TaskList images={this.state.images} onSortEnd={this.onSortEnd} /> */}
-                <ImgContainer images={this.state.images} onSortEnd={this.onSortEnd} />
+                {/* <ImgContainer images={this.state.images} onSortEnd={this.onSortEnd} /> */}
+                <TaskList tasks={this.state.tasks} onSortEnd={this.onSortEnd}/>
 
                 {/* <TaskList
                     sessionUser={localStorage.getItem('username')}
