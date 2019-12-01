@@ -196,7 +196,7 @@ class Project extends React.Component {
                             >+</Add>
                         </Buttons>
 
-                        <TrashCan />
+                        {/* <TrashCan /> */}
                     </div>}
 
             </Container>

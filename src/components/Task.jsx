@@ -36,6 +36,16 @@ export default class Task extends React.Component {
         return
     }
 
+    deleteTask(id){
+        // console.log(id)
+            axios.delete(`/api/task/${id}`).then(res => {
+                
+                
+                
+                this.props.getTasks()
+    })
+}
+
     contentChange(e) {
         // console.log(e.target.value)
         this.setState({
@@ -102,16 +112,23 @@ export default class Task extends React.Component {
                 {/* *****FOR TESTING PURPOSES***** */}
                 {/* {this.props.task.content} */}
                 {/* {this.state.localContent} */}
-                <br />
+                {/* <br />
                 <span>task_id:</span>{this.props.task.task_id}
                 <br />
-                <span>drop_id:</span>{this.props.task.droppable_id}
+                <span>drop_id:</span>{this.props.task.droppable_id} */}
                 {/* <br/>
                         <span>user_id:</span>{this.props.task.user_id} */}
 
-                <button
-                    onClick={() => this.editTask()}
-                >edit</button>
+
+                {(this.props.projectUser === localStorage.getItem('username')) &&
+                <div>
+                    <button
+                        onClick={() => this.editTask()}
+                    >edit
+                </button>
+                    <button
+                        onClick={() => this.deleteTask(this.props.task.task_id)}>X</button>
+                </div>}
 
             </Container>
 
