@@ -173,7 +173,6 @@ class Project extends React.Component {
                             localStorage:{localStorage.getItem('taskOrder')} */}
 
                 {/* <TaskList images={this.state.images} onSortEnd={this.onSortEnd} /> */}
-                {/* <ImgContainer images={this.state.images} onSortEnd={this.onSortEnd} /> */}
                 <TaskList tasks={this.state.tasks} onSortEnd={this.onSortEnd} 
                 projectUser={this.state.projectUser} getTasks={this.getTasks}/>
 
@@ -196,7 +195,7 @@ class Project extends React.Component {
                             >+</Add>
                         </Buttons>
 
-                        <TrashCan />
+                        {/* <TrashCan /> */}
                     </div>}
 
             </Container>
