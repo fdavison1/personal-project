@@ -6,7 +6,7 @@ import arrayMove from 'array-move'
 import styled from 'styled-components'
 // import Task from './Task'
 // import TaskList from './TaskList'
-import TrashCan from './TrashCan'
+// import TrashCan from './TrashCan'
 // import ToggleSwitch from './ToggleSwitch'
 // import ImgContainer from './ImgContainer'
 import TaskList from './TaskList'
@@ -72,12 +72,12 @@ class Project extends React.Component {
         this.getTasks = this.getTasks.bind(this)
     }
 
-    async componentDidMount() {
+    componentDidMount() {
         this.getProjectUser()
         this.getTasks()
-        await this.getTaskOrder()
+        // await this.getTaskOrder()
         // console.log(this.state.taskOrder)
-        localStorage.setItem('taskOrder', this.state.taskOrder)
+        // localStorage.setItem('taskOrder', this.state.taskOrder)
         // console.log(localStorage.getItem('taskOrder'))
     }
 
@@ -100,12 +100,12 @@ class Project extends React.Component {
         // this.getTaskOrder()
     }
 
-    getTaskOrder() {
+    // getTaskOrder() {
         // console.log('fred')
-        axios.get(`/api/taskOrder/${this.props.project.project_id}`).then(res => {
+        // axios.get(`/api/taskOrder/${this.props.project.project_id}`).then(res => {
             // console.log(res.data)
-            const newTaskOrder = []
-            newTaskOrder.push(res.data.map(taskID => taskID.task_id))
+            // const newTaskOrder = []
+            // newTaskOrder.push(res.data.map(taskID => taskID.task_id))
             // console.log(newTaskOrder)
             // console.log(newTaskOrder[0])
             // this.setState({
@@ -116,14 +116,14 @@ class Project extends React.Component {
             // localStorage.setItem("array", JSON.stringify(array));
             // array = JSON.parse(localStorage.getItem("array"));
 
-            localStorage.setItem('taskOrder', JSON.stringify(newTaskOrder[0]))
+            // localStorage.setItem('taskOrder', JSON.stringify(newTaskOrder[0]))
 
-            const order = JSON.parse(localStorage.getItem('taskOrder'));
+            // const order = JSON.parse(localStorage.getItem('taskOrder'));
             // console.log(order)
             // localStorage.setItem('taskOrder', newTaskOrder[0])
             // console.log(localStorage.getItem('taskOrder'))
-        })
-    }
+        // })
+    // }
 
     //ADD BUTTON METHOD--------------------------------------------------------------------------
     addButton() {
@@ -143,7 +143,7 @@ class Project extends React.Component {
 
     render() {
         // console.log(this.props.project)
-        const { tasks } = this.state
+        // const { tasks } = this.state
         return (
 
 

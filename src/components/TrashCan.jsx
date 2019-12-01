@@ -16,19 +16,9 @@ export default class extends React.Component {
 
     render() {
         return (
-
-            
-                    <Trash>
+ 
+                    <Trash/>
                     
-
-
-
-
-
-                  
-                    </Trash>
-
-
         )
     }
 }
