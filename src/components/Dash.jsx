@@ -6,14 +6,20 @@ import Sidebar from './Sidebar'
 
 const Container = styled.div`
 background: white
+display: flex`
+
+const Container2 = styled.div`
+background: white
 display: flex
-flex-wrap: wrap`
+flex-wrap: wrap
+justify-content: space-evenly
+`
 
 const SideBar2 = styled.div`
 min-height: 100vh
 height: auto
 background: lightgray
-width: 300px
+min-width: 300px
 display: flex
 flex-direction: column
 align-items: center
@@ -91,11 +97,10 @@ export default class Dash extends React.Component {
                     allListsFalse={this.allListsFalse}
                     getProjects={this.getProjects}
                 />
-
                 <SideBar2 />
 
                 {(this.state.projects.length > 0) &&
-                    <div>
+                    <Container2>
 
 
                         {this.state.projects.map((projectID, index) => {
@@ -112,7 +117,7 @@ export default class Dash extends React.Component {
                             />
                         })}
 
-                    </div>}
+                    </Container2>}
 
             </Container>
 

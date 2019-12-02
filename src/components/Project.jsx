@@ -14,9 +14,10 @@ import TaskList from './TaskList'
 const Container = styled.div`
 display: flex
 flex-direction: column
+justify-content: center
 border: 2px solid #999999
 border-radius: 5px
-margin: 50px
+margin: 25px
 width: 500px
 background: white`
 
@@ -27,6 +28,7 @@ font-size: 3rem
 font-weight: 200`
 
 const Add = styled.div`
+transition: all 1s ease
 color: #999999
 border: 1px solid #999999
 height: 50px
@@ -37,7 +39,7 @@ align-items: center
 justify-content: center
 font-size: 1.5rem
 font-weight: 200
-padding-bottom: 20px
+margin-left: 10px
 box-sizing: border-box
 padding: 10px
 box-sizing: border-box
@@ -165,7 +167,8 @@ class Project extends React.Component {
 
 
                         <TaskList tasks={this.state.tasks} onSortEnd={this.onSortEnd}
-                            projectUser={this.state.projectUser} getTasks={this.getTasks} />
+                            projectUser={this.state.projectUser} getTasks={this.getTasks}
+                            helperClass='test2' />
 
                         {/* {(localStorage.getItem('username') === this.state.projectUser) &&
                             <div className="test">

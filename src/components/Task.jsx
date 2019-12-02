@@ -3,11 +3,18 @@ import axios from 'axios'
 import styled from 'styled-components'
 
 const Container = styled.div`
+display: flex
+align-items: center
+justify-content: center
 border: 1px solid lightgray
 border-radius: 5px
 padding: 8px
 margin: 8px
-background: ${props => (props.isDragging ? 'lightgreen' : 'oldlace')}`
+background: oldlace`
+
+const TaskButtons = styled.div`
+margin-left: 10px`
+
 
 
 export default class Task extends React.Component {
@@ -109,26 +116,16 @@ export default class Task extends React.Component {
 
                 }
 
-                {/* *****FOR TESTING PURPOSES***** */}
-                {/* {this.props.task.content} */}
-                {/* {this.state.localContent} */}
-                {/* <br />
-                <span>task_id:</span>{this.props.task.task_id}
-                <br />
-                <span>drop_id:</span>{this.props.task.droppable_id} */}
-                {/* <br/>
-                        <span>user_id:</span>{this.props.task.user_id} */}
-
 
                 {(this.props.projectUser === localStorage.getItem('username')) &&
-                <div>
+                <TaskButtons>
                     <button
                         onClick={() => this.editTask()}
                     >edit
                 </button>
                     <button
                         onClick={() => this.deleteTask(this.props.task.task_id)}>X</button>
-                </div>}
+                </TaskButtons>}
 
             </Container>
 

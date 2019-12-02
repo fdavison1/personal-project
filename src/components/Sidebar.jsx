@@ -18,11 +18,11 @@ justify-content: space-between
 z-index: 10`
 
 const StyledLink = styled(Link)`
+text-decoration: none
+color: black
+&:focus, &:hover, &:visited, &:link, &:active {
     text-decoration: none;
-    color: black
-    &:focus, &:hover, &:visited, &:link, &:active {
-        text-decoration: none;
-    }`
+}`
 
 export const Content2 = styled.h1`
 font-size: 1.5rem
