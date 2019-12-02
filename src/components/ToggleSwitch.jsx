@@ -4,10 +4,7 @@ import styled from 'styled-components'
 import '../css/ToggleSwitch.css'
 
 const Toggle = styled.div`
-box-sizing: border-box;
-display: flex
-justify-content: flex-end 
-margin: 10px`
+box-sizing: border-box;`
 
 export default function ToggleSwitch(props) {
 
