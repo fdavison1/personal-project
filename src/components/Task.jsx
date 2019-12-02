@@ -26,13 +26,9 @@ export default class Task extends React.Component {
 
 
     editTask() {
-        // console.log('fred')
         //if sessionUser = projectUser...
         const sessionUser = localStorage.getItem('username')
         const { projectUser } = this.props
-
-        // console.log(sessionUser)
-        // console.log(projectUser)
 
         if (sessionUser === projectUser) {
             this.setState({
@@ -78,9 +74,6 @@ export default class Task extends React.Component {
             this.setState({
                 editField: false
             })
-
-
-
         }
     }
 

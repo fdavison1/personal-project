@@ -33,6 +33,7 @@ app.get('/api/taskOrder/:id', c.getTaskOrder)
 app.get('/api/projects', c.getAllProjects)
 app.get('/api/projects/:id', c.getProjects)
 app.get('/api/project/:user', c.getProjectUser)
+app.put('/api/project/:id', c.updateTitle)
 
 
 

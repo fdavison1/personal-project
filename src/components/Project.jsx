@@ -18,7 +18,7 @@ background: ${props => ((props.sessionUser === props.projectUser) ? 'white' : 'l
 
 const Title = styled.h3`
 font-family: sans-serif
-margin: 3px
+padding: 0px
 font-size: 3rem
 font-weight: 200`
 
@@ -73,7 +73,9 @@ class Project extends React.Component {
             projectUser: '',
             tasks: [],
             taskOrder: [],
-            hiddenValue: false
+            hiddenValue: false,
+            editField: false,
+            newTitle : ''
 
         }
         this.getTasks = this.getTasks.bind(this)
@@ -128,6 +130,49 @@ class Project extends React.Component {
         this.setState({ tasks: arrayMove(this.state.tasks, oldIndex, newIndex) })
     }
 
+    //EDIT TITLE------------------------------------------------------------------------
+    editTitle() {
+        //if sessionUser = projectUser...
+        const sessionUser = localStorage.getItem('username')
+        const { projectUser } = this.state
+
+        if (sessionUser !== projectUser){
+            return
+        }
+
+        this.setState({
+            editField: !this.state.editField
+        })
+    }
+
+    titleChange(e) {
+        this.setState({
+            newTitle: e.target.value
+        })
+    }
+
+    newTitle(e) {
+        const code = e.key
+        if (code === 'Enter') {
+            if (this.state.newTitle.length === 0) {
+                this.setState({
+                    editField: false
+                })
+                return
+            }
+            const id = this.props.project.project_id
+
+            axios.put(`/api/project/${id}`, [this.state.newTitle])
+            .then(res => {
+                this.setState({
+                    editField: false
+                })
+                this.props.getProjects()
+            })
+        }
+    }
+
+    //RENDER----------------------------------------------------------------------------------
     render() {
         return (
             <div>
@@ -142,17 +187,30 @@ class Project extends React.Component {
                     >
 
                         <Buttons2>
+
+
                             <Content>{this.state.projectUser}</Content>
+
+
+
                         {(localStorage.getItem('username') === this.state.projectUser) &&
                             <ToggleSwitch
-                                hidden={this.hidden} />}
-                        {/* </Buttons2>
-                        <Buttons2> */}
+                            hidden={this.hidden} />}
                         </Buttons2>
 
 
                         <Buttons>
-                        <Title>{this.props.project.title}</Title>
+
+
+                            {!this.state.editField ?
+                        <Title
+                        onDoubleClick={() => this.editTitle()}
+                        >{this.props.project.title}</Title> 
+                    
+                        : <input
+                        onChange={(e) => this.titleChange(e)}
+                        onKeyPress={(e) => this.newTitle(e)}
+                        />}
 
                         {(localStorage.getItem('username') === this.state.projectUser) &&
                         <Add onClick={() => this.addButton()}> 
@@ -164,17 +222,6 @@ class Project extends React.Component {
                         <TaskList tasks={this.state.tasks} onSortEnd={this.onSortEnd}
                             projectUser={this.state.projectUser} getTasks={this.getTasks}
                             helperClass='test2' />
-
-                        {/* {(localStorage.getItem('username') === this.state.projectUser) &&
-                            <div className="test">
-                                <Buttons>
-                                    <Add
-                                        onClick={() => this.addButton()}
-                                    > <i className="fas fa-plus"></i> </Add>
-                                </Buttons> */}
-
-                                {/* <TrashCan /> */}
-                            {/* </div>} */}
 
                     </Container>
                 }

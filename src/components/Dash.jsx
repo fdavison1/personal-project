@@ -114,6 +114,7 @@ export default class Dash extends React.Component {
                                 addButton={this.addButton}
                                 getTasks={this.getTasks}
                                 allLists={this.state.allLists}
+                                getProjects={this.getProjects}
                             />
                         })}
 

@@ -62,5 +62,14 @@ module.exports = {
         .then(result => {
             res.status(200).send(result)
         })
+    },
+    updateTitle: (req, res) => {
+        const db = req.app.get('db')
+        const id = req.params.id
+        const title = req.body[0]
+        db.update_title([id, title])
+        .then(result => {
+            res.status(200).send(result)
+        })
     }
 }
