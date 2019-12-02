@@ -26,7 +26,8 @@ const StyledLink = styled(Link)`
 
 export const Content2 = styled.h1`
 font-size: 1.5rem
-margin-top: 25px
+margin: 0
+padding: 0
 font-weight: 600`
 
 function Sidebar(props) {
@@ -58,7 +59,7 @@ function Sidebar(props) {
 
                 <Content2
                 >{localStorage.getItem('username')}</Content2>
-                userID: {localStorage.getItem('userID')}
+                {/* userID: {localStorage.getItem('userID')} */}
 
                 <Content
                     onClick={() => myList()}

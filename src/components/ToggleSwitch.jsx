@@ -9,16 +9,26 @@ display: flex
 justify-content: flex-end 
 margin: 10px`
 
-export default function ToggleSwitch() {
+export default function ToggleSwitch(props) {
+
+
+    function toggle(e){
+        // console.log(e.target.checked)
+        props.hidden(e)
+    }
+
+
     return (
 
         <Toggle>
 
-            <div class="onoffswitch">
-                <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" />
-                <label class="onoffswitch-label" for="myonoffswitch">
-                    <span class="onoffswitch-inner"></span>
-                    <span class="onoffswitch-switch"></span>
+            <div className="onoffswitch">
+                <input type="checkbox" className="onoffswitch" 
+                className="onoffswitch-checkbox" id="myonoffswitch" 
+                onChange={(e)=> toggle(e)}/>
+                <label className="onoffswitch-label" htmlFor="myonoffswitch">
+                    <span className="onoffswitch-inner"></span>
+                    <span className="onoffswitch-switch"></span>
                 </label>
             </div>
 

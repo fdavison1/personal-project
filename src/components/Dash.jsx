@@ -102,11 +102,13 @@ export default class Dash extends React.Component {
                             const project = this.state.projects[index]
 
                             const tasks = this.state.tasks.map((taskId, index) => this.state.tasks[index])
-                            return <Project key={project.project_id}
+                            return <Project 
+                            key={project.project_id}
                                 project={project}
                                 tasks={tasks}
                                 addButton={this.addButton}
                                 getTasks={this.getTasks}
+                                allLists={this.state.allLists}
                             />
                         })}
 

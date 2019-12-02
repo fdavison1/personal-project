@@ -56,6 +56,9 @@ const Content = styled.div`
 font-size: 1.5rem
 margin-top: 25px`
 
+const Hidden = styled.div`
+display: none`
+
 
 class Project extends React.Component {
     constructor(props) {
@@ -64,19 +67,17 @@ class Project extends React.Component {
         this.state = {
             projectUser: '',
             tasks: [],
-            taskOrder: []
+            taskOrder: [],
+            hiddenValue: false
 
         }
         this.getTasks = this.getTasks.bind(this)
+        this.hidden = this.hidden.bind(this)
     }
 
     componentDidMount() {
         this.getProjectUser()
         this.getTasks()
-        // await this.getTaskOrder()
-        // console.log(this.state.taskOrder)
-        // localStorage.setItem('taskOrder', this.state.taskOrder)
-        // console.log(localStorage.getItem('taskOrder'))
     }
 
     getProjectUser() {
@@ -95,33 +96,16 @@ class Project extends React.Component {
                     tasks: res.data
                 })
             })
-        // this.getTaskOrder()
+    }
+    //HIDDEN PROJECT--------------------------------------------------------------------------
+    hidden(e) {
+        // console.log(e.target.checked)
+        this.setState({
+            hiddenValue: !e.target.checked
+        })
+        // console.log(this.state.hiddenValue)
     }
 
-    // getTaskOrder() {
-        // console.log('fred')
-        // axios.get(`/api/taskOrder/${this.props.project.project_id}`).then(res => {
-            // console.log(res.data)
-            // const newTaskOrder = []
-            // newTaskOrder.push(res.data.map(taskID => taskID.task_id))
-            // console.log(newTaskOrder)
-            // console.log(newTaskOrder[0])
-            // this.setState({
-            // taskOrder: newTaskOrder[0]
-            // })
-            // console.log(this.state.taskOrder)
-
-            // localStorage.setItem("array", JSON.stringify(array));
-            // array = JSON.parse(localStorage.getItem("array"));
-
-            // localStorage.setItem('taskOrder', JSON.stringify(newTaskOrder[0]))
-
-            // const order = JSON.parse(localStorage.getItem('taskOrder'));
-            // console.log(order)
-            // localStorage.setItem('taskOrder', newTaskOrder[0])
-            // console.log(localStorage.getItem('taskOrder'))
-        // })
-    // }
 
     //ADD BUTTON METHOD--------------------------------------------------------------------------
     addButton() {
@@ -140,64 +124,44 @@ class Project extends React.Component {
     }
 
     render() {
-        // console.log(this.props.project)
-        // const { tasks } = this.state
         return (
+            <div>
 
 
+                {(this.props.allLists && this.state.hiddenValue) ? <Hidden />
 
 
-            <Container
-                sessionUser={localStorage.getItem('username')}
-                projectUser={this.state.projectUser}
-            >
-
-                {(localStorage.getItem('username') === this.state.projectUser) &&
-                                <ToggleSwitch />}
-
-
-                <Content>{this.state.projectUser}</Content>
-
-                <Title>{this.props.project.title}</Title>
-
-                {/* TESTING */}
-                {/* {JSON.parse(localStorage.getItem('taskOrder'))} */}
-                {/* <button
-                                onClick={() => this.getTaskOrder()}
-                                >getTaskOrder</button>
-                                <br />
-                                taskOrder: {this.state.taskOrder}
-                                <br />
-                            localStorage:{localStorage.getItem('taskOrder')} */}
-
-                {/* <TaskList images={this.state.images} onSortEnd={this.onSortEnd} /> */}
-                <TaskList tasks={this.state.tasks} onSortEnd={this.onSortEnd} 
-                projectUser={this.state.projectUser} getTasks={this.getTasks}/>
-
-                {/* <TaskList
-                    sessionUser={localStorage.getItem('username')}
-                    projectUser={this.state.projectUser}
+                    : <Container
+                        sessionUser={localStorage.getItem('username')}
+                        projectUser={this.state.projectUser}
                     >
 
-                    {tasks.map((task, index) => <Task key={task.task_id}
-                        task={task} index={index} tasks={tasks} getTasks={this.getTasks}
-                        projectUser={this.state.projectUser} />)}
+                        {(localStorage.getItem('username') === this.state.projectUser) &&
+                            <ToggleSwitch
+                                hidden={this.hidden} />}
 
-                </TaskList> */}
 
-                {(localStorage.getItem('username') === this.state.projectUser) &&
-                    <div className="test">
-                        <Buttons>
-                            <Add
-                                onClick={() => this.addButton()}
-                            >+</Add>
-                        </Buttons>
+                        <Content>{this.state.projectUser}</Content>
 
-                        {/* <TrashCan /> */}
-                    </div>}
+                        <Title>{this.props.project.title}</Title>
 
-            </Container>
+                        <TaskList tasks={this.state.tasks} onSortEnd={this.onSortEnd}
+                            projectUser={this.state.projectUser} getTasks={this.getTasks} />
 
+                        {(localStorage.getItem('username') === this.state.projectUser) &&
+                            <div className="test">
+                                <Buttons>
+                                    <Add
+                                        onClick={() => this.addButton()}
+                                    >+</Add>
+                                </Buttons>
+
+                                {/* <TrashCan /> */}
+                            </div>}
+
+                    </Container>
+                }
+            </div>
 
         )
     }
