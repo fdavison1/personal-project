@@ -2,13 +2,8 @@ import React from 'react'
 import axios from 'axios'
 import { connect } from 'react-redux'
 import arrayMove from 'array-move'
-// import { SortableContainer } from 'react-sortable-hoc'
 import styled from 'styled-components'
-// import Task from './Task'
-// import TaskList from './TaskList'
-// import TrashCan from './TrashCan'
 import ToggleSwitch from './ToggleSwitch'
-// import ImgContainer from './ImgContainer'
 import TaskList from './TaskList'
 
 const Container = styled.div`
@@ -19,7 +14,7 @@ border: 2px solid #999999
 border-radius: 5px
 margin: 25px
 width: 500px
-background: white`
+background: ${props => ((props.sessionUser === props.projectUser) ? 'white' : 'lightgray')}`
 
 const Title = styled.h3`
 font-family: sans-serif
