@@ -78,8 +78,11 @@ display: flex;
 flex-direction: row-reverse;`
 
 export const Button = styled.button`
+transition: all 1s ease
 background: none
 border: none
 &:hover {
+  font-size: 1rem
   font-weight: 600
+  border-radius: 3px
 }`

@@ -18,8 +18,7 @@ display: flex
 justify-content: center
 width: 85%`
 
-const TaskButtons = styled.div`
-`
+const TaskButtons = styled.div``
 
 
 
