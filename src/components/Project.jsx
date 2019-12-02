@@ -7,11 +7,13 @@ import styled from 'styled-components'
 // import Task from './Task'
 // import TaskList from './TaskList'
 // import TrashCan from './TrashCan'
-// import ToggleSwitch from './ToggleSwitch'
+import ToggleSwitch from './ToggleSwitch'
 // import ImgContainer from './ImgContainer'
 import TaskList from './TaskList'
 
 const Container = styled.div`
+display: flex
+flex-direction: column
 border: 1px solid lightgray
 border-radius: 5px
 margin: 50px
@@ -154,8 +156,8 @@ class Project extends React.Component {
                 projectUser={this.state.projectUser}
             >
 
-                {/* {(localStorage.getItem('username') === this.state.projectUser) &&
-                                <ToggleSwitch />} */}
+                {(localStorage.getItem('username') === this.state.projectUser) &&
+                                <ToggleSwitch />}
 
 
                 <Content>{this.state.projectUser}</Content>
