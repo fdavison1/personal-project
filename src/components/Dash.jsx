@@ -18,12 +18,13 @@ justify-content: space-evenly
 const SideBar2 = styled.div`
 min-height: 100vh
 height: auto
-background: lightgray
+background: #c2dde6
 min-width: 300px
 display: flex
 flex-direction: column
 align-items: center
 justify-content: space-between`
+
 
 
 export default class Dash extends React.Component {

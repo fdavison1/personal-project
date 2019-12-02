@@ -14,7 +14,7 @@ border: 2px solid #999999
 border-radius: 5px
 margin: 25px
 width: 500px
-background: ${props => ((props.sessionUser === props.projectUser) ? 'white' : 'lightgray')}`
+background: ${props => ((props.sessionUser === props.projectUser) ? '#ffdc6a' : '#bccbde')}`
 
 const Title = styled.h3`
 font-family: sans-serif
@@ -40,7 +40,7 @@ padding: 10px
 box-sizing: border-box
 &:hover {
     font-weight: 600
-    border: 2px solid black
+    border: 2px solid #262626
     color: black
     background: #34A7C1
 }`

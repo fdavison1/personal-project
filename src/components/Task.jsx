@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import styled from 'styled-components'
+import { Button } from '../css/styledComponents'
 
 const Container = styled.div`
 display: flex
@@ -12,8 +13,13 @@ padding: 8px
 margin: 8px
 background: oldlace`
 
+const Container2 =styled.div`
+display: flex
+justify-content: center
+width: 85%`
+
 const TaskButtons = styled.div`
-margin-left: 10px`
+`
 
 
 
@@ -35,15 +41,12 @@ export default class Task extends React.Component {
                 editField: !this.state.editField
             })
         }
-
         return
     }
 
     deleteTask(id){
         // console.log(id)
             axios.delete(`/api/task/${id}`).then(res => {
-                
-                
                 
                 this.props.getTasks()
     })
@@ -87,40 +90,46 @@ export default class Task extends React.Component {
         return (
 
 
-            <Container
+            <Container>
+
+
+            <Container2
                 onDoubleClick={() => this.editTask()}
-            >
+                >
 
 
 
                 {!this.state.editField ?
 
 
-                    <span>{this.props.task.content}</span>
+<span>{this.props.task.content}</span>
 
-                    :
+:
 
-                    <input
+<input
                         onChange={(e) => this.contentChange(e)}
                         placeholder={this.props.task.content}
                         type="text"
                         onKeyPress={(e) => this.submit(e)}
-                    />
+                        />
+                        
+                    }
 
-                }
+</Container2>
 
 
                 {(this.props.projectUser === localStorage.getItem('username')) &&
                 <TaskButtons>
-                    <button
+                    <Button
                         onClick={() => this.editTask()}
                     >edit
-                </button>
-                    <button
-                        onClick={() => this.deleteTask(this.props.task.task_id)}>X</button>
+                </Button>
+                    <Button
+                        onClick={() => this.deleteTask(this.props.task.task_id)}>X
+                    </Button>
                 </TaskButtons>}
-
             </Container>
+
 
         )
     }

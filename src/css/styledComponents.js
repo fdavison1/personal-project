@@ -72,9 +72,14 @@ font-size: 2.5rem
 color: oldlace
 justify-content: center
 margin-left: 30px`
-//need to transform 50%.............
-//fix margin-left (cheater fix)
 
 export const Right = styled.div`
 display: flex;
 flex-direction: row-reverse;`
+
+export const Button = styled.button`
+background: none
+border: none
+&:hover {
+  font-weight: 600
+}`

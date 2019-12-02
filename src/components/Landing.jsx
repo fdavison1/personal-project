@@ -5,8 +5,12 @@ import { Div, Title } from '../css/styledComponents'
 import Header from './Header'
 
 const Section = styled.div`
-border: 1px solid lightgray
-border-radius: 3px
+font-size: 3rem
+font-weight: 200
+font-color: #262626
+transition: all 0.75s ease
+border: 1px solid #999999
+border-radius: 10px
 background: lightgray
 width: 300px
 height: 300px
@@ -15,8 +19,9 @@ display: flex
 align-items: center
 justify-content: center
 &:hover {
-    background: yellow
-    font-weight: 500
+    background: #ffdc6a
+    font-weight: 400
+    border: 2px solid #999999
 }`
 
 const Container = styled.div`
@@ -50,18 +55,13 @@ export default function Landing() {
             <Header />
 
             <Container>
-
                 <StyledLink to='/register'>
-                    <Section>
-                        <Title>Register</Title>
-                    </Section>
+                    <Section>Register</Section>
                 </StyledLink>
 
 
                 <StyledLink to='/login'>
-                    <Section>
-                        <Title>Login</Title>
-                    </Section>
+                    <Section>Login</Section>
                 </StyledLink>
             </Container>
 

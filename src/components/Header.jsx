@@ -4,7 +4,7 @@ import { Title } from '../css/styledComponents'
 import { Link } from 'react-router-dom'
 
 const StyledHeader = styled.header`
-background: lightgray
+background: #bccbde
 height: 200px
 display: flex
 align-items: center
