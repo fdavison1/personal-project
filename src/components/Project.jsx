@@ -14,21 +14,17 @@ import TaskList from './TaskList'
 const Container = styled.div`
 display: flex
 flex-direction: column
-border: 1px solid lightgray
+border: 1px solid #999999
 border-radius: 5px
 margin: 50px
 width: 500px
-background: ${props => ((props.sessionUser === props.projectUser) ? 'white' : 'lightgray')}`
+background: white`
 
 const Title = styled.h3`
 font-family: sans-serif
 margin: 3px
 font-size: 3rem
 font-weight: 200`
-
-// const TaskList = styled.div`
-// font-weight: 200
-// background: ${props => ((props.sessionUser === props.projectUser) ? 'white' : 'lightgray')}`
 
 const Add = styled.div`
 height: 90px

@@ -14,29 +14,14 @@ export default function ToggleSwitch() {
 
         <Toggle>
 
-        {/* <input
-            className="react-switch-checkbox"
-            id={`react-switch-new`}
-            type="checkbox"
-        />
-        <label
-            className="react-switch-label"
-            htmlFor={`react-switch-new`}
-        >
-            <span className={`react-switch-button`} />
-        </label> */}
+            <div class="onoffswitch">
+                <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" />
+                <label class="onoffswitch-label" for="myonoffswitch">
+                    <span class="onoffswitch-inner"></span>
+                    <span class="onoffswitch-switch"></span>
+                </label>
+            </div>
 
-<div class="onoffswitch">
-    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch"/>
-    <label class="onoffswitch-label" for="myonoffswitch">
-        <span class="onoffswitch-inner"></span>
-        <span class="onoffswitch-switch"></span>
-    </label>
-</div>
-
-<i class="fas fa-eye"></i>
-<i class="fas fa-eye-slash"></i>
-        
         </Toggle>
     )
 }
