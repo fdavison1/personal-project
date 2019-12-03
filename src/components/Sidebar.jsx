@@ -15,7 +15,19 @@ top: 80px
 flex-direction: column
 align-items: center
 justify-content: space-between
-z-index: 10`
+z-index: 10
+@media (max-width: 500px){
+    height: 150px
+    width: 100vw
+    z-index: 1
+    background: #c2dde6
+    position: fixed
+    top: 0
+    position: sticky
+    opacity: .95
+    flex-direction: row
+    border-bottom: 2px solid #999999
+}`
 
 const StyledLink = styled(Link)`
 text-decoration: none
@@ -28,7 +40,13 @@ export const Content2 = styled.h1`
 font-size: 1.5rem
 margin: 0
 padding: 0
-font-weight: 600`
+font-weight: 600
+@media (max-width: 500px){
+    display: flex
+    width: 100vw
+    justify-content: space-evenly
+    flex-direction: row
+}`
 
 function Sidebar(props) {
     const logout = () => {

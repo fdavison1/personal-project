@@ -7,6 +7,10 @@ import ToggleSwitch from './ToggleSwitch'
 import TaskList from './TaskList'
 
 const Container = styled.div`
+@media (max-width: 500px){
+    width: 350px
+    margin: 25px
+}
 display: flex
 flex-direction: column
 justify-content: center

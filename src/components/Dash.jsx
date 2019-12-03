@@ -6,7 +6,11 @@ import Sidebar from './Sidebar'
 
 const Container = styled.div`
 background: white
-display: flex`
+display: flex
+@media (max-width: 500px){
+    flex-direction: column
+}
+`
 
 const Container2 = styled.div`
 background: white
@@ -23,10 +27,10 @@ min-width: 300px
 display: flex
 flex-direction: column
 align-items: center
-justify-content: space-between`
-
-
-
+justify-content: space-between
+@media (max-width: 500px){
+    display: none
+}`
 
 
 export default class Dash extends React.Component {
