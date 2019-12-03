@@ -22,6 +22,7 @@ flex-direction: column
 @media (max-width: 500px){
     width: 350px
 }`
+
 const StyledSpan = styled.span`
 font-size: 1.5rem
 font-weight: 200`
@@ -31,8 +32,8 @@ const StyledLink = styled(Link)`
     color: black
     &:focus, &:hover, &:visited, &:link, &:active {
         text-decoration: none;
-    }
-`
+    }`
+    
 const Title2 = styled.p`
 font-size: 3rem
 font-weight: 200

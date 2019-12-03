@@ -82,8 +82,8 @@ export default function Header() {
 
                 <StyledLink to='/'>
 
-                    <LogoTitle><i class="fas fa-stream"></i> List App</LogoTitle>
-                    <MobileTitle><i class="fas fa-stream"></i></MobileTitle>
+                    <LogoTitle><i className="fas fa-stream"></i> List App</LogoTitle>
+                    <MobileTitle><i className="fas fa-stream"></i></MobileTitle>
                 </StyledLink>
 
                 <Nav>

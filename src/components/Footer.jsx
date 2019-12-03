@@ -15,7 +15,6 @@ position: absolute
 width: 100%
 height: 100px`
 
-
 const Foot = styled.div`
 margin: 10px
 padding: 0 50px
@@ -44,31 +43,31 @@ align-items: center`
 
 const Paragraph = styled.p`
 font-size: 1.2rem
-font-weight: 200
-`
+font-weight: 200`
 
-export default function Footer(){
+export default function Footer() {
     return (
         <Stripe>
 
-        <Foot>
+            <Foot>
 
-        <Paragraph>
-        <span>Fred Davison</span> DevMountain Student 2019
-        </Paragraph>
+                <Paragraph>
+                    <span>Fred Davison</span> DevMountain Student 2019
+                </Paragraph>
 
-        <LogoBox>
-        <a href='https://www.linkedin.com/in/fred-davison-220425196/' target='_blank'>
-            <FootLogo src={linked} alt="linkedIn logo"/>
-            </a>
-            <a href='https://github.com/fdavison1' target='_blank'>
-            <FootLogo src={github} alt="github logo"/>
-            </a>
-        </LogoBox>
+                <LogoBox>
+                    <a href='https://www.linkedin.com/in/fred-davison-220425196/' target='_blank'
+                        rel="noopener noreferrer">
+                        <FootLogo src={linked} alt="linkedIn logo" />
+                    </a>
+                    <a href='https://github.com/fdavison1' target='_blank'
+                        rel="noopener noreferrer">
+                        <FootLogo src={github} alt="github logo" />
+                    </a>
+                </LogoBox>
 
+            </Foot>
 
-        </Foot>
-
-    </Stripe>
+        </Stripe>
     )
 }

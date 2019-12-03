@@ -9,15 +9,13 @@ background: white
 display: flex
 @media (max-width: 500px){
     flex-direction: column
-}
-`
+}`
 
 const Container2 = styled.div`
 background: white
 display: flex
 flex-wrap: wrap
-justify-content: flex-start
-`
+justify-content: flex-start`
 
 const SideBar2 = styled.div`
 min-height: 100vh

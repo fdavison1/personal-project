@@ -16,14 +16,11 @@ export function updateUsername(username){
     }
 }
 
-
-
-
 //REDUCER FUNCTION----------------------------------
 export default function reducer(state = initialState, action){
     switch(action.type){
         case UPDATE_USERNAME:
-            return { username: action.payload}///here??
+            return { username: action.payload}
         default: return state
     }
 }
