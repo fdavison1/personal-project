@@ -10,7 +10,6 @@ export default function ToggleSwitch(props) {
 
 
     function toggle(e){
-        // console.log(e.target.checked)
         props.hidden(e)
     }
 
@@ -20,8 +19,7 @@ export default function ToggleSwitch(props) {
         <Toggle>
 
             <div className="onoffswitch">
-                <input type="checkbox" className="onoffswitch" 
-                className="onoffswitch-checkbox" id="myonoffswitch" 
+                <input type="checkbox" className="onoffswitch onoffswitch-checkbox" id="myonoffswitch" 
                 onChange={(e)=> toggle(e)}/>
                 <label className="onoffswitch-label" htmlFor="myonoffswitch">
                     <span className="onoffswitch-inner"></span>

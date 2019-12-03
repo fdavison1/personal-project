@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { Div, Title } from '../css/styledComponents'
 import Header from './Header'
+import Footer from './Footer'
 
 const Section = styled.div`
 border: 1px solid lightgray
@@ -112,9 +113,6 @@ class Register extends React.Component {
                         onChange={e => this.handleChange('password2', e.target.value)}
                         type="password" />
                     </div>}
-                    
-
-
 
 
                     {!this.props.username && 
@@ -136,7 +134,7 @@ class Register extends React.Component {
                     }
 
                 </Section>
-
+                <Footer />
             </Div>
         )
     }

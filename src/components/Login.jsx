@@ -6,6 +6,7 @@ import { Div, Title } from '../css/styledComponents'
 import { updateUsername } from '../dux/reducer'
 import Swal from 'sweetalert2'
 import Header from './Header'
+import Footer from './Footer'
 
 const Section = styled.div`
 border: 1px solid lightgray
@@ -91,6 +92,7 @@ class Login extends React.Component {
 
                 </Section>
 
+                <Footer />
             </Div>
         )
     }

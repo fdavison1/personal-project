@@ -4,16 +4,16 @@ import { Title } from '../css/styledComponents'
 import { Link } from 'react-router-dom'
 
 const Container = styled.div`
+position: sticky
+top: 0
+opacity: .95
 background: #bccbde
 box-sizing: border-box
-height: 200px
 display: flex
 align-items: center
 width: 100vw`
 
-const StyledHeader = styled.header`
-position: sticky
-top: 0
+const StyledHeader = styled.div`
 height: 100px
 box-sizing: border-box
 background: #bccbde
@@ -46,26 +46,28 @@ width: 300px
 justify-content: space-between`
 
 export default function Header() {
+
     return (
+
         <Container>
-        <StyledHeader>
+            <StyledHeader className='header'>
 
-            <StyledLink to='/'>
-            
-                <Title><i class="fas fa-stream"></i> List App</Title>
-            </StyledLink>
+                <StyledLink to='/'>
 
-            <Nav>
-                <StyledLink to='/register'>
-                    <Title>Register</Title>
+                    <Title><i class="fas fa-stream"></i> List App</Title>
                 </StyledLink>
-                <StyledLink to='/login'>
-                    <Title>Login</Title>
-                </StyledLink>
-            </Nav>
+
+                <Nav>
+                    <StyledLink to='/register'>
+                        <Title>Register</Title>
+                    </StyledLink>
+                    <StyledLink to='/login'>
+                        <Title>Login</Title>
+                    </StyledLink>
+                </Nav>
 
 
-        </StyledHeader>
-        </Container>
+            </StyledHeader>
+         </Container>
     )
 }
