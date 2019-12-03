@@ -37,11 +37,12 @@ const TitleContainer = styled.div`
 margin: 35px`
 
 const Paragraph = styled.div`
+
 width: 1050px
-background: lightgray
+background: #ffdc6a
+border-radius: 3px
 font-size: 1.3rem
-font-weight: 200
-text-align: justify
+font-weight: 300
 margin-top: 5px
 padding: 15px
 @media (max-width: 500px){
@@ -62,12 +63,9 @@ export default function Landing() {
                 <SectionContainer>
 
                 <TitleContainer>
-                <Title>about</Title>
                 <Paragraph>
+                <Title><span>about</span></Title>
                     The following is a personal project designed to demonstrate skills and technologies learned while participating in an immersive 13-week web development program at DevMountain. <span></span>The project was designed, built, and tested over the course of three weeks and utilizes the following technologies:
-                  {/* <br/><br/> */}
-                        {/* <span> */}
-                        {/* </span> */}
                 </Paragraph>
                 </TitleContainer>
                 

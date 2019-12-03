@@ -58,8 +58,12 @@ export default function Footer(){
         </Paragraph>
 
         <LogoBox>
+        <a href='https://www.linkedin.com/in/fred-davison-220425196/' target='_blank'>
             <FootLogo src={linked} alt="linkedIn logo"/>
+            </a>
+            <a href='https://github.com/fdavison1' target='_blank'>
             <FootLogo src={github} alt="github logo"/>
+            </a>
         </LogoBox>
 
 

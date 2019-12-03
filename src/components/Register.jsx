@@ -96,7 +96,7 @@ class Register extends React.Component {
                 <Section>
                 {!this.props.username && 
                     <Title>Register</Title>}
-
+                    <br/>
                     
                      
                     {!this.props.username && 
@@ -106,7 +106,7 @@ class Register extends React.Component {
                         <input 
                         onChange={e => this.handleChange('username', e.target.value)}
                         type="text" />
-                    <br />
+                    <br /><br/>
                     </div>}
 
                     {!this.props.username && 
@@ -115,7 +115,7 @@ class Register extends React.Component {
                         <input 
                         onChange={e => this.handleChange('password1', e.target.value)}
                         type="password" />
-                    <br />
+                    <br /><br/>
                     </div>}
 
 
@@ -125,9 +125,10 @@ class Register extends React.Component {
                         <input 
                         onChange={e => this.handleChange('password2', e.target.value)}
                         type="password" />
+
                     </div>}
 
-
+                        <br/>
                     {!this.props.username && 
                     <button
                     onClick={this.register}>Register</button>
