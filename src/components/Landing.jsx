@@ -37,10 +37,13 @@ const TitleContainer = styled.div`
 margin: 35px`
 
 const Paragraph = styled.div`
+width: 1050px
+background: lightgray
 font-size: 1.3rem
 font-weight: 200
 text-align: justify
 margin-top: 5px
+padding: 15px
 @media (max-width: 500px){
     width: 350px
     margin: 25px
