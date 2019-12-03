@@ -24,7 +24,10 @@ box-sizing: border-box
 display: flex
 align-items: center
 justify-content: space-between
-width: 1100px`
+width: 1100px
+@media (max-width: 1025px){
+    width: 800px
+}`
 
 const FootLogo = styled.img`
 height: 50px

@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Title } from '../css/styledComponents'
 import { Link } from 'react-router-dom'
 
 const Container = styled.div`
@@ -43,7 +42,32 @@ color: black
 const Nav = styled.div`
 display: flex
 width: 300px
-justify-content: space-between`
+justify-content: space-between
+@media (max-width: 1025px){
+    width: 250px
+}`
+
+const MobileTitle = styled.div`
+display: none
+@media (max-width: 1025px){
+    display: inline
+}`
+
+export const LogoTitle = styled.p`
+  font-size: 3rem
+  font-weight: 200
+  margin: 0
+  @media (max-width: 1025px){
+    display: none
+}`
+
+export const Title = styled.p`
+  font-size: 3rem
+  font-weight: 200
+  margin: 0
+  @media (max-width: 1025px){
+    font-size: 2rem
+}`
 
 export default function Header() {
 
@@ -54,7 +78,8 @@ export default function Header() {
 
                 <StyledLink to='/'>
 
-                    <Title><i class="fas fa-stream"></i> List App</Title>
+                    <LogoTitle><i class="fas fa-stream"></i> List App</LogoTitle>
+                    <MobileTitle><i class="fas fa-stream"></i></MobileTitle>
                 </StyledLink>
 
                 <Nav>
