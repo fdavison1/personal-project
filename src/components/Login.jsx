@@ -2,7 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
-import { Div, Title } from '../css/styledComponents'
+import { Title } from '../css/styledComponents'
 import { updateUsername } from '../dux/reducer'
 import Swal from 'sweetalert2'
 import Header from './Header'
@@ -24,6 +24,14 @@ flex-direction: column
 const StyledSpan = styled.span`
 font-size: 1.5rem
 font-weight: 200`
+
+const PageContainer = styled.div`
+height: 100vh
+position: relative`
+
+const SectionContainer = styled.div`
+padding-bottom: 100px`
+
 
 class Login extends React.Component {
     state = {
@@ -61,9 +69,12 @@ class Login extends React.Component {
 
     render() {
         return (
-            <Div>
+            <PageContainer>
+
 
                 <Header />
+
+                <SectionContainer>
 
                 <Section>
                     <Title>Login</Title>
@@ -88,12 +99,13 @@ class Login extends React.Component {
 
                     <button
                         onClick={() => this.login()}
-                    >Login</button>
+                        >Login</button>
 
                 </Section>
+                </SectionContainer>
 
                 <Footer />
-            </Div>
+            </PageContainer>
         )
     }
 }

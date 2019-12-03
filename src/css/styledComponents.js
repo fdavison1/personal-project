@@ -16,7 +16,9 @@ flex-direction: column
 //Div
 export const Div = styled.div`
 text-align: center
-margin: 0 auto`
+margin: 0 auto
+position: relative
+min-height: 100vh`
 
 //Container
 export const Container = styled.div`

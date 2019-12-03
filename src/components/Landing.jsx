@@ -39,16 +39,21 @@ margin: 50px 15px`
 const Paragraph = styled.p`
 `
 
+const SectionContainer = styled.div`
+padding-bottom: 100px`
+
 export default function Landing() {
     return (
         <Div>
             <Header />
             
             <Container>
+                <SectionContainer>
+
                 <TitleContainer>
                 <Title>features</Title>
                 <Paragraph>
-                    Personal project designed to demonstrate skills and technologies learned while at DevMountain. This project was built in React. 
+                    A personal project designed to demonstrate skills and technologies learned while at DevMountain. This project was built in React. 
                 </Paragraph>
                 </TitleContainer>
                 
@@ -87,6 +92,7 @@ export default function Landing() {
                     </Box>
                 </BoxContainer>
 
+                </SectionContainer>
             </Container>
 
             <Footer />

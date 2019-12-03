@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { updateUsername } from '../dux/reducer'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import { Div, Title } from '../css/styledComponents'
+import { Title } from '../css/styledComponents'
 import Header from './Header'
 import Footer from './Footer'
 
@@ -37,6 +37,15 @@ font-weight: 200
 &:hover {
     font-weight: 500
 } `
+
+const PageContainer = styled.div`
+height: 100vh
+position: relative`
+
+const SectionContainer = styled.div`
+padding-bottom: 100px
+display: flex
+align-items: center`
 
 class Register extends React.Component {
     state = {
@@ -78,8 +87,10 @@ class Register extends React.Component {
 
 
         return (
-            <Div>
+            <PageContainer>
                 <Header />
+                <SectionContainer>
+
                 <Section>
                 {!this.props.username && 
                     <Title>Register</Title>}
@@ -134,8 +145,9 @@ class Register extends React.Component {
                     }
 
                 </Section>
+                    </SectionContainer>
                 <Footer />
-            </Div>
+            </PageContainer>
         )
     }
 }
