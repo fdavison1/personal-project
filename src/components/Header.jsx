@@ -43,15 +43,16 @@ const Nav = styled.div`
 display: flex
 width: 300px
 justify-content: space-between
-@media (max-width: 1025px){
-    width: 250px
+@media (max-width: 500px){
+    width: 150px
 }`
 
 const MobileTitle = styled.div`
 display: none
 @media (max-width: 1025px){
     display: inline
-}`
+}
+`
 
 export const LogoTitle = styled.p`
   font-size: 3rem
@@ -67,6 +68,9 @@ export const Title = styled.p`
   margin: 0
   @media (max-width: 1025px){
     font-size: 2rem
+}
+@media (max-width: 500px){
+    font-size: 1.5rem
 }`
 
 export default function Header() {

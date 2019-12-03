@@ -27,6 +27,11 @@ justify-content: space-between
 width: 1100px
 @media (max-width: 1025px){
     width: 800px
+}
+@media (max-width: 500px){
+    width: 100vw
+    justify-content: space-evenly
+    margin: 0
 }`
 
 const FootLogo = styled.img`

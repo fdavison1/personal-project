@@ -19,7 +19,9 @@ align-items: center
 justify-content: center
 margin: 100px auto
 flex-direction: column
-`
+@media (max-width: 500px){
+    width: 350px
+}`
 const StyledSpan = styled.span`
 font-size: 1.5rem
 font-weight: 200`

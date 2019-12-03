@@ -19,7 +19,9 @@ align-items: center
 justify-content: center
 margin: 100px auto
 flex-direction: column
-`
+@media (max-width: 500px){
+    width: 350px
+}`
 
 const StyledSpan = styled.span`
 font-size: 1.5rem
@@ -30,7 +32,9 @@ height: 100vh
 position: relative`
 
 const SectionContainer = styled.div`
-padding-bottom: 100px`
+padding-bottom: 100px
+display: flex
+align-items: center`
 
 
 class Login extends React.Component {
