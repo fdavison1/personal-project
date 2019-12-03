@@ -3,14 +3,26 @@ import styled from 'styled-components'
 import { Title } from '../css/styledComponents'
 import { Link } from 'react-router-dom'
 
-const StyledHeader = styled.header`
-box-sizing: border-box
+const Container = styled.div`
 background: #bccbde
+box-sizing: border-box
 height: 200px
 display: flex
 align-items: center
+width: 100vw`
+
+const StyledHeader = styled.header`
+position: sticky
+top: 0
+height: 100px
+box-sizing: border-box
+background: #bccbde
+display: flex
+align-items: center
 justify-content: space-between
-padding: 50px`
+width: 100vw
+padding: 50px
+z-index: 10`
 
 const StyledLink = styled(Link)`
 transition: all 1s ease
@@ -35,6 +47,7 @@ justify-content: space-between`
 
 export default function Header() {
     return (
+        <Container>
         <StyledHeader>
 
             <StyledLink to='/'>
@@ -53,5 +66,6 @@ export default function Header() {
 
 
         </StyledHeader>
+        </Container>
     )
 }
