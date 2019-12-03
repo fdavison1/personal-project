@@ -34,10 +34,18 @@ padding: 0
 font-weight: 200`
 
 const TitleContainer = styled.div`
-margin: 50px 15px`
+margin: 35px`
 
-const Paragraph = styled.p`
-`
+const Paragraph = styled.div`
+font-size: 1.3rem
+font-weight: 200
+text-align: justify
+margin-top: 5px
+@media (max-width: 500px){
+    width: 350px
+    margin: 25px
+    text-align: center
+}`
 
 const SectionContainer = styled.div`
 padding-bottom: 100px`
@@ -51,9 +59,12 @@ export default function Landing() {
                 <SectionContainer>
 
                 <TitleContainer>
-                <Title>features</Title>
+                <Title>about</Title>
                 <Paragraph>
-                    A personal project designed to demonstrate skills and technologies learned while at DevMountain. This project was built in React. 
+                    The following is a personal project designed to demonstrate skills and technologies learned while participating in an immersive 13-week web development program at DevMountain. <span></span>The project was designed, built, and tested over the course of three weeks and utilizes the following technologies:
+                  {/* <br/><br/> */}
+                        {/* <span> */}
+                        {/* </span> */}
                 </Paragraph>
                 </TitleContainer>
                 
