@@ -12,7 +12,7 @@ const Container2 = styled.div`
 background: white
 display: flex
 flex-wrap: wrap
-justify-content: space-evenly
+justify-content: flex-start
 `
 
 const SideBar2 = styled.div`
