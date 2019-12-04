@@ -1,7 +1,8 @@
 import React from 'react'
 import { shallow } from '../enzyme'
+import 'jest-styled-components'
 import renderer from 'react-test-renderer'
-import Footer from '../components/Footer'
+import Footer, { Stripe } from '../components/Footer'
 
 
 describe ('Footer.jsx', () => {
@@ -14,5 +15,10 @@ describe ('Footer.jsx', () => {
     it('matches snapshot', () => {
         const tree = renderer.create(<Footer />).toJSON()
         expect(tree).toMatchSnapshot()
+    })
+    it('Footer css', () => {
+        const tree = renderer.create(<Stripe />).toJSON()
+        expect(tree).toMatchSnapshot()
+        expect(tree).toHaveStyleRule('background', '#c2dde6')
     })
 })

@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import linked from '../assets/In.png'
 import github from '../assets/25231.png'
 
-const Stripe = styled.div`
+export const Stripe = styled.div`
 display: flex
 position: relative
 bottom: 0
