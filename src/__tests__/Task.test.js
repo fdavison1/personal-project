@@ -1,6 +1,5 @@
 import React from 'react'
-import { shallow, mount, configure } from 'enzyme'
-import '../setupTests'
+import { shallow } from '../enzyme'
 import Task from '../components/Task'
 
 

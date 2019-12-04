@@ -1,13 +1,8 @@
 import React from 'react'
-import { shallow, mount, configure } from 'enzyme'
-import '../setupTests'
+import { shallow } from '../enzyme'
 import Project from '../components/Project'
 import store from '../dux/store'
 
-
-// beforeEach(()=> {
-//   wrapper = shallow(<Project/>)
-// })
 
 describe ('Project.jsx tests', () => {
   it('renders', () => {
