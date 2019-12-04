@@ -1,9 +1,9 @@
 import React from 'react'
 import { shallow, mount, configure } from 'enzyme'
-import Adapter from 'enzyme-adapter-react-16'
+import '../setupTests'
 import Project from '../components/Project'
+import store from '../dux/store'
 
-configure({ adapter: new Adapter()})
 
 // beforeEach(()=> {
 //   wrapper = shallow(<Project/>)
@@ -11,7 +11,7 @@ configure({ adapter: new Adapter()})
 
 describe ('Project.jsx tests', () => {
   it('renders', () => {
-    const wrapper = shallow(<Project projectObj/>)
+    const wrapper = shallow(<Project store={store}/>)
 
     expect(wrapper.exists()).toBe(true)
   })

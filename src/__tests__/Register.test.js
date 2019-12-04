@@ -1,13 +1,12 @@
 import React from 'react'
 import { shallow, mount, configure } from 'enzyme'
-import Adapter from 'enzyme-adapter-react-16'
+import '../setupTests'
 import Register from '../components/Register'
-
-configure({ adapter: new Adapter()})
+import store from '../dux/store'
 
 describe ('Register.jsx tests', () => {
   it('renders', () => {
-    const wrapper = shallow(<Register/>)
+    const wrapper = shallow(<Register store={store}/>)
 
     expect(wrapper.exists()).toBe(true)
   })

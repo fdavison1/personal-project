@@ -1,13 +1,13 @@
 import React from 'react'
 import { shallow, mount, configure } from 'enzyme'
-import Adapter from 'enzyme-adapter-react-16'
+import '../setupTests'
 import Login from '../components/Login'
+import store from '../dux/store'
 
-configure({ adapter: new Adapter()})
 
 describe ('Login.jsx tests', () => {
   it('renders', () => {
-    const wrapper = shallow(<Login/>)
+    const wrapper = shallow(<Login store={store}/>)
 
     expect(wrapper.exists()).toBe(true)
   })

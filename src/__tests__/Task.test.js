@@ -1,13 +1,12 @@
 import React from 'react'
 import { shallow, mount, configure } from 'enzyme'
-import Adapter from 'enzyme-adapter-react-16'
+import '../setupTests'
 import Task from '../components/Task'
 
-configure({adapter: new Adapter() })
 
 describe('Task.jsx tests', ()=> {
     test('renders', () => {
-        const wrapper = shallow(<Task taskObj/>)
+        const wrapper = shallow(<Task task/>)
 
         expect(wrapper.exists()).toBe(true)
     })
