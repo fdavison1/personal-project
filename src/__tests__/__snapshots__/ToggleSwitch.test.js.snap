@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ToggleSwitch.jsx matches snapshot 1`] = `
+<div
+  className="sc-bdVaJa gByhnJ"
+>
+  <div
+    className="onoffswitch"
+  >
+    <input
+      className="onoffswitch onoffswitch-checkbox"
+      id="myonoffswitch"
+      onChange={[Function]}
+      type="checkbox"
+    />
+    <label
+      className="onoffswitch-label"
+      htmlFor="myonoffswitch"
+    >
+      <span
+        className="onoffswitch-inner"
+      />
+      <span
+        className="onoffswitch-switch"
+      />
+    </label>
+  </div>
+</div>
+`;

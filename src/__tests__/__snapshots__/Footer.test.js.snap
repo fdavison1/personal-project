@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer.jsx matches snapshot 1`] = `
+<div
+  className="sc-bdVaJa SVsBH"
+>
+  <div
+    className="sc-bwzfXH bDWBho"
+  >
+    <p
+      className="sc-ifAKCX KPPau"
+    >
+      <span>
+        Fred Davison
+      </span>
+       DevMountain Student 2019
+    </p>
+    <div
+      className="sc-bxivhb kEktHT"
+    >
+      <a
+        href="https://www.linkedin.com/in/fred-davison-220425196/"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        <img
+          alt="linkedIn logo"
+          className="sc-htpNat jSueMA"
+          src="In.png"
+        />
+      </a>
+      <a
+        href="https://github.com/fdavison1"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        <img
+          alt="github logo"
+          className="sc-htpNat jSueMA"
+          src="25231.png"
+        />
+      </a>
+    </div>
+  </div>
+</div>
+`;
