@@ -13,7 +13,7 @@ padding: 8px
 margin: 8px
 background: oldlace`
 
-const Container2 =styled.div`
+const Container2 = styled.div`
 display: flex
 justify-content: center
 width: 85%`
@@ -43,16 +43,15 @@ export default class Task extends React.Component {
         return
     }
 
-    deleteTask(id){
+    deleteTask(id) {
         // console.log(id)
-            axios.delete(`/api/task/${id}`).then(res => {
-                
-                this.props.getTasks()
-    })
-}
+        axios.delete(`/api/task/${id}`).then(res => {
+
+            this.props.getTasks()
+        })
+    }
 
     contentChange(e) {
-        // console.log(e.target.value)
         this.setState({
             localContent: e.target.value
         })
@@ -92,41 +91,41 @@ export default class Task extends React.Component {
             <Container>
 
 
-            <Container2
-                onDoubleClick={() => this.editTask()}
+                <Container2
+                    onDoubleClick={() => this.editTask()}
                 >
 
 
 
-                {!this.state.editField ?
+                    {!this.state.editField ?
 
 
-<span>{this.props.task.content}</span>
+                        <span>{this.props.task.content}</span>
 
-:
+                        :
 
-<input
-                        onChange={(e) => this.contentChange(e)}
-                        placeholder={this.props.task.content}
-                        type="text"
-                        onKeyPress={(e) => this.submit(e)}
+                        <input
+                            onChange={(e) => this.contentChange(e)}
+                            placeholder={this.props.task.content}
+                            type="text"
+                            onKeyPress={(e) => this.submit(e)}
                         />
-                        
+
                     }
 
-</Container2>
+                </Container2>
 
 
                 {(this.props.projectUser === localStorage.getItem('username')) &&
-                <TaskButtons>
-                    <Button
-                        onClick={() => this.editTask()}
-                    >edit
+                    <TaskButtons>
+                        <Button
+                            onClick={() => this.editTask()}
+                        >edit
                 </Button>
-                    <Button
-                        onClick={() => this.deleteTask(this.props.task.task_id)}>X
+                        <Button
+                            onClick={() => this.deleteTask(this.props.task.task_id)}>X
                     </Button>
-                </TaskButtons>}
+                    </TaskButtons>}
             </Container>
 
 

@@ -110,11 +110,9 @@ class Project extends React.Component {
     }
     //HIDDEN PROJECT--------------------------------------------------------------------------
     hidden(e) {
-        // console.log(e.target.checked)
         this.setState({
             hiddenValue: !e.target.checked
         })
-        // console.log(this.state.hiddenValue)
     }
 
 

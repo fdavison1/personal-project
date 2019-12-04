@@ -66,7 +66,6 @@ function Sidebar(props) {
     }
 
     const allLists = async () => {
-        // console.log('all lists')
         await props.allListsTrue()
         props.getProjects()
     }
@@ -77,7 +76,6 @@ function Sidebar(props) {
 
                 <Content2
                 >{localStorage.getItem('username')}</Content2>
-                {/* userID: {localStorage.getItem('userID')} */}
 
                 <Content
                     onClick={() => myList()}
