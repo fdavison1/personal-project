@@ -50,6 +50,6 @@ module.exports = {
     },
     logout: (req, res) => {
         req.session.destroy()
-        res.status(200).send({message: 'Logged Out'})
+        res.status(200).send({message: 'goodbye!'})
     }
 }
