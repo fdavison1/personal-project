@@ -17,6 +17,9 @@ app.use(
     })
 )
 
+//BUILD FOLDER
+app.use( express.static( `${__dirname}/../build` ) )
+
 //AUTH CONTROLLER ENDPOINTS--------------------------------------------------------------------------
 app.post('/auth/register', a.register)
 app.post('/auth/login', a.login)
