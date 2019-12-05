@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "main": "server/server.js",
-  "proxy": "REACT_APP_LOGIN",
+  "proxy": "http://localhost:4001",
   "dependencies": {
     "array-move": "^2.2.0",
     "axios": "^0.19.0",
