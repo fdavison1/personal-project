@@ -5,8 +5,8 @@ import github from '../assets/25231.png'
 
 export const Stripe = styled.div`
 display: flex
-position: relative
-bottom: 0
+margin-bottom: -100px
+padding-bottom: 100px
 flex-direction: column
 align-items: center
 background: #c2dde6
