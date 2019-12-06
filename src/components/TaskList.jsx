@@ -11,6 +11,7 @@ const TaskList = SortableContainer(props => {
             task={task}
             projectUser={props.projectUser}
             getTasks={props.getTasks}
+            helperClass='test2' 
             />)}
         </div>
     )

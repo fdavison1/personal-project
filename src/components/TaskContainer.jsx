@@ -6,6 +6,7 @@ const TaskContainer = SortableElement(props => {
     return (
         <Task task={props.task}
         projectUser={props.projectUser}
+        helperClass='test2' 
         getTasks={props.getTasks}/>
     )
 })
