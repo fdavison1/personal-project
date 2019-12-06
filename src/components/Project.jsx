@@ -223,7 +223,7 @@ class Project extends React.Component {
 
                         <TaskList tasks={this.state.tasks} onSortEnd={this.onSortEnd}
                             projectUser={this.state.projectUser} getTasks={this.getTasks}
-                            helperClass='test2' />
+                            helperClass='test2' className= 'test2'/>
 
                     </Container>
                 }
